@@ -11,5 +11,5 @@ npm install simplygrow-ui
 In your root component, paste the following code:
 
 ```bash
-import 'simplygrow-ui/dish/index.css';
+import 'simplygrow-ui/dist/index.css';
 ```
