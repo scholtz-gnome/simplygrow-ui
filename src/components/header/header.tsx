@@ -1,5 +1,5 @@
-import Heading from '@/heading';
 import React, { FC, ReactNode } from 'react';
+import Heading from '../heading';
 import styles from './header.module.css';
 
 interface HeaderProps {
