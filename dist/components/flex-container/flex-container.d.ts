@@ -17,5 +17,5 @@ interface FlexContainerProps {
  *  - `lg` = `18px`
  *  - `xl` = `24px`
  */
-declare const FlexContainer: FC<FlexContainerProps>;
-export default FlexContainer;
+export declare const FlexContainer: FC<FlexContainerProps>;
+export {};

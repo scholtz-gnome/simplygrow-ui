@@ -1,1 +1,1 @@
-export * from './flex-container';
+export { default } from './flex-container';

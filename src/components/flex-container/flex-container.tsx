@@ -1,5 +1,5 @@
+import Header from '@/header';
 import React, { FC, ReactNode } from 'react';
-import { Header } from '../header';
 import styles from './flex-container.module.css';
 
 interface FlexContainerProps {
@@ -21,7 +21,7 @@ interface FlexContainerProps {
  *  - `lg` = `18px`
  *  - `xl` = `24px`
  */
-export const FlexContainer: FC<FlexContainerProps> = ({
+const FlexContainer: FC<FlexContainerProps> = ({
   flexDirection,
   justify,
   align,
@@ -91,3 +91,5 @@ export const FlexContainer: FC<FlexContainerProps> = ({
     </div>
   );
 };
+
+export default FlexContainer;
