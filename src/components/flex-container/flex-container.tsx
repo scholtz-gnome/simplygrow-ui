@@ -21,7 +21,7 @@ interface FlexContainerProps {
  *  - `lg` = `18px`
  *  - `xl` = `24px`
  */
-const FlexContainer: FC<FlexContainerProps> = ({
+export const FlexContainer: FC<FlexContainerProps> = ({
   flexDirection,
   justify,
   align,
@@ -91,5 +91,3 @@ const FlexContainer: FC<FlexContainerProps> = ({
     </div>
   );
 };
-
-export default FlexContainer;

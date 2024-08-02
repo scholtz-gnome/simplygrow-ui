@@ -18,7 +18,6 @@ module.exports = {
     commonjs(),
     postcss({
       modules: true,
-      extract: true,
     }),
   ],
 };

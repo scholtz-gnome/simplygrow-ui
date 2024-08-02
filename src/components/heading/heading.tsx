@@ -13,7 +13,7 @@ interface HeadingProps {
   children: ReactNode;
 }
 
-const Heading: FC<HeadingProps> = ({ order = 1, textAlign, children }) => {
+export const Heading: FC<HeadingProps> = ({ order = 1, textAlign, children }) => {
   const textAlignStyles = textAlign === 'center' ? styles.textAlign : undefined;
 
   let headingElement: JSX.Element = <h1 className={`${styles.headingOne} ${textAlignStyles}`}>{children}</h1>;
@@ -29,5 +29,3 @@ const Heading: FC<HeadingProps> = ({ order = 1, textAlign, children }) => {
 
   return headingElement;
 };
-
-export default Heading;
