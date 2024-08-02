@@ -10,5 +10,5 @@ interface HeadingProps {
     textAlign?: 'center';
     children: ReactNode;
 }
-export declare const Heading: FC<HeadingProps>;
-export {};
+declare const Heading: FC<HeadingProps>;
+export default Heading;
