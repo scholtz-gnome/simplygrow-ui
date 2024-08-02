@@ -1,6 +1,3 @@
-import React from 'react';
-type TestComponentProps = {
-    textText?: string;
-};
-export declare const TestComponent: React.FC<TestComponentProps>;
-export {};
+export { default as FlexContainer } from './flex-container';
+export { default as Header } from './header';
+export { default as Heading } from './heading';
