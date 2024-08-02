@@ -1,5 +1,5 @@
 {
-  "name": "@simplygrow/ui",
+  "name": "simplygrow-ui",
   "version": "0.1.0",
   "description": "A library of React components built in TypeScript and CSS.",
   "main": "dist/index.js",
@@ -13,19 +13,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/PeopleFlowZA/ui"
+    "url": "https://github.com/scholtz-gnome/simplygrow-ui"
   },
   "keywords": [
     "react",
     "typescript",
     "bottom-sheet"
   ],
-  "author": "SimplyGrow Venture Studio",
+  "author": "Stephen Scholtz",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/helgastogova/npm-react-typescript-template/issues"
-  },
-  "homepage": "https://github.com/helgastogova/npm-react-typescript-template#readme",
   "peerDependencies": {
     "react": ">=18.2.0",
     "react-dom": ">=18.2.0",
