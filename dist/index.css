@@ -99,3 +99,61 @@
 .flex-container-module_xlGap__JdQP4 {
   gap: 24px;
 }
+
+.paragraph-module_defaultStyles__Q0Vby {
+  color: #20283f;
+}
+
+.paragraph-module_paragraph__Xd2qS {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22px;
+}
+
+.paragraph-module_action__UEXq5 {
+  color: #3056d3;
+}
+
+.paragraph-module_action__UEXq5:hover {
+  cursor: pointer;
+}
+
+.paragraph-module_centerAlign__IglEk {
+  text-align: center;
+}
+
+.paragraph-module_subtle__QCITN {
+  color: #64748b;
+}
+
+.paragraph-module_weightLight__b25t- {
+  font-weight: 400;
+}
+
+.paragraph-module_weightMedium__yU5Pc {
+  font-weight: 500;
+}
+
+.paragraph-module_weightHeavy__F-anG {
+  font-weight: 700;
+}
+
+.paragraph-module_xsSize__8jOt4 {
+  font-size: 12px;
+}
+
+.paragraph-module_smSize__yPpcK {
+  font-size: 14px;
+}
+
+.paragraph-module_mdSize__ex-Op {
+  font-size: 16px;
+}
+
+.paragraph-module_lgSize__oEZ6u {
+  font-size: 18px;
+}
+
+.paragraph-module_xlSize__MOXhl {
+  font-size: 20px;
+}
