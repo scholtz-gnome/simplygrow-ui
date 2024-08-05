@@ -1,6 +1,7 @@
 export { default as ActionButton } from './action-button';
 export { default as CheckboxInput } from './checkbox-input';
 export { default as FlexContainer } from './flex-container';
+export { default as FormContainer } from './form-container';
 export { default as GridContainer } from './grid-container';
 export { default as Header } from './header';
 export { default as Heading } from './heading';
