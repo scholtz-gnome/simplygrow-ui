@@ -1,4 +1,3 @@
-'use client';
 import { BaseSyntheticEvent, Dispatch, FC, SetStateAction } from 'react';
 import { formatIDNumber } from '../../utils/format-id-number.util';
 import { formatMobile } from '../../utils/format-mobile.util';

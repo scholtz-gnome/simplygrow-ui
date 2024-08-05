@@ -1,4 +1,3 @@
-'use client';
 import { Dispatch, FC, SetStateAction } from 'react';
 import OtpInput from 'react-otp-input';
 import styles from './otp-input.module.css';

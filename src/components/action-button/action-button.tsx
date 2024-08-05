@@ -1,4 +1,3 @@
-'use client';
 import { ButtonHTMLAttributes, FC, ReactNode } from 'react';
 import styles from './action-button.module.css';
 

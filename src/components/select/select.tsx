@@ -1,4 +1,3 @@
-'use client';
 import { ChangeEvent, FC, useState } from 'react';
 import Dropdown from './dropdown';
 import Options from './options';
