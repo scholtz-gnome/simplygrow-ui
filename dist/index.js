@@ -429,7 +429,7 @@ const OTPInput = ({ value, setValue }) => {
     return (jsxRuntime.jsx(OTPInput$1, { value: value, onChange: setValue, numInputs: 6, containerStyle: styles$7.container, inputStyle: styles$7.input, renderInput: (props) => jsxRuntime.jsx("input", Object.assign({}, props)) }));
 };
 
-var styles$6 = {"defaultStyles":"paragraph-module_defaultStyles__Q0Vby","paragraph":"paragraph-module_paragraph__Xd2qS","action":"paragraph-module_action__UEXq5","centerAlign":"paragraph-module_centerAlign__IglEk","subtle":"paragraph-module_subtle__QCITN","weightLight":"paragraph-module_weightLight__b25t-","weightMedium":"paragraph-module_weightMedium__yU5Pc","weightHeavy":"paragraph-module_weightHeavy__F-anG","xsSize":"paragraph-module_xsSize__8jOt4","smSize":"paragraph-module_smSize__yPpcK","mdSize":"paragraph-module_mdSize__ex-Op","lgSize":"paragraph-module_lgSize__oEZ6u","xlSize":"paragraph-module_xlSize__MOXhl"};
+var styles$6 = {"defaultVariant":"paragraph-module_defaultVariant__HMYT-","paragraph":"paragraph-module_paragraph__Xd2qS","action":"paragraph-module_action__UEXq5","centerAlign":"paragraph-module_centerAlign__IglEk","subtle":"paragraph-module_subtle__QCITN","weightLight":"paragraph-module_weightLight__b25t-","weightMedium":"paragraph-module_weightMedium__yU5Pc","weightHeavy":"paragraph-module_weightHeavy__F-anG","xsSize":"paragraph-module_xsSize__8jOt4","smSize":"paragraph-module_smSize__yPpcK","mdSize":"paragraph-module_mdSize__ex-Op","lgSize":"paragraph-module_lgSize__oEZ6u","xlSize":"paragraph-module_xlSize__MOXhl"};
 
 /**
  * `weight` | `'medium'` | Represent `font-weight`
@@ -446,7 +446,7 @@ var styles$6 = {"defaultStyles":"paragraph-module_defaultStyles__Q0Vby","paragra
  */
 const Paragraph = ({ variant, weight = 'medium', size = 'md', alignText, children, onClick }) => {
     const textAlign = alignText === 'center' ? styles$6.centerAlign : undefined;
-    const variantStyles = variant === 'subtle' ? styles$6.subtle : styles$6.defaultStyles;
+    const variantStyles = variant === 'subtle' ? styles$6.subtle : styles$6.defaultVariant;
     const actionStyles = onClick ? styles$6.action : undefined;
     let weightStyles;
     let sizeStyles;
