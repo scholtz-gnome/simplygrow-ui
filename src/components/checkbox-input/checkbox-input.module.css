@@ -1,0 +1,40 @@
+.checkboxRadio {
+  display: flex;
+  gap: 8px;
+  color: #64748b;
+  font-weight: 500;
+  font-size: 14px;
+
+  align-items: center;
+}
+
+.checkboxRadio:hover {
+  cursor: pointer;
+}
+
+.checkboxRadio > input[type='checkbox'] {
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: #fff;
+  margin: 0;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #cfd7e2;
+  border-radius: 4px;
+  display: grid;
+  place-content: center;
+}
+
+.checkboxRadio > input[type='checkbox']::before {
+  content: '';
+  width: 13px;
+  height: 13px;
+  border-radius: 2px;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1em 1em #8bcc33;
+}
+
+.checkboxRadio > input[type='checkbox']:checked::before {
+  transform: scale(1);
+}

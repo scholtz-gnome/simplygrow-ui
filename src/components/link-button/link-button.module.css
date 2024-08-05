@@ -1,0 +1,38 @@
+.defaultVariant {
+  color: #fff;
+  display: block;
+  background-color: #8bcc33;
+  border-radius: 25px;
+  border: none;
+  overflow: hidden;
+}
+
+.defaultWidth {
+  min-width: 150px;
+  width: fit-content;
+}
+
+.bigWidth {
+  width: 450px;
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+.secondaryVariant {
+  color: #000;
+  background-color: inherit;
+  border: 1.5px solid #000;
+  border-radius: 25px;
+}
+
+.link {
+  display: block;
+  font-weight: 500;
+  font-size: 16px;
+  padding: 13px 26px;
+  border: none;
+  border-radius: 25px;
+  line-height: 24px;
+}

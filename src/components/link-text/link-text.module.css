@@ -1,0 +1,11 @@
+.linkText {
+  font-size: inherit;
+}
+
+.defaultStyles {
+  color: #3056d3;
+}
+
+.inheritColor {
+  color: inherit;
+}

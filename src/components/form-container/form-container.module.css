@@ -1,0 +1,35 @@
+.formContainer {
+  display: flex;
+}
+
+.flexDirectionColumn {
+  flex-direction: column;
+}
+
+.justifySpaceBetween {
+  justify-content: space-between;
+}
+
+.justifyFlexEnd {
+  justify-content: flex-end;
+}
+
+.xsGap {
+  gap: 6px;
+}
+
+.smGap {
+  gap: 8px;
+}
+
+.mdGap {
+  gap: 12px;
+}
+
+.lgGap {
+  gap: 18px;
+}
+
+.xlGap {
+  gap: 24px;
+}

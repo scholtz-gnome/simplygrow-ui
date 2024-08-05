@@ -1,0 +1,16 @@
+.selectChevron {
+  position: absolute;
+  top: 16px;
+  right: 15px;
+  transition: transform 300ms;
+  z-index: 4;
+}
+
+.selectChevronFocused {
+  transform: rotate(180deg);
+  transition: transform 300ms;
+}
+
+.selectChevron:hover {
+  cursor: pointer;
+}

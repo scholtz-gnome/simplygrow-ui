@@ -1,0 +1,19 @@
+.dropdown {
+  position: absolute;
+  right: 0;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+  padding-top: 50px;
+  border-radius: 4px;
+  border: 1.5px solid #dee4ee;
+  outline: none;
+  min-height: 50px;
+  line-height: 24px;
+}
+
+.focused {
+  outline: none;
+  border: 1.5px solid #8bcc33;
+  box-shadow: 2px 5px 8px #00000033;
+}

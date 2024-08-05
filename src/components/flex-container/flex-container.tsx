@@ -1,5 +1,5 @@
 import Header from '@/header';
-import React, { FC, ReactNode } from 'react';
+import { FC, ReactNode } from 'react';
 import styles from './flex-container.module.css';
 
 interface FlexContainerProps {
