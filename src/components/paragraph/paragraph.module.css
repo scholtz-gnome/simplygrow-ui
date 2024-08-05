@@ -1,4 +1,4 @@
-.defaultStyles {
+.defaultVariant {
   color: #20283f;
 }
 
@@ -6,6 +6,7 @@
   font-weight: 500;
   font-size: 16px;
   line-height: 22px;
+  font-family: inherit, sans-serif;
 }
 
 .action {

@@ -26,7 +26,7 @@ const Paragraph: FC<
   ParagraphProps & Partial<DetailedHTMLProps<HTMLAttributes<HTMLParagraphElement>, HTMLParagraphElement>>
 > = ({ variant, weight = 'medium', size = 'md', alignText, children, onClick }) => {
   const textAlign = alignText === 'center' ? styles.centerAlign : undefined;
-  const variantStyles = variant === 'subtle' ? styles.subtle : styles.defaultStyles;
+  const variantStyles = variant === 'subtle' ? styles.subtle : styles.defaultVariant;
   const actionStyles = onClick ? styles.action : undefined;
   let weightStyles;
   let sizeStyles;

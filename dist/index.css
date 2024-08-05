@@ -199,6 +199,42 @@
   gap: 24px;
 }
 
+.form-container-module_formContainer__K9UV6 {
+  display: flex;
+}
+
+.form-container-module_flexDirectionColumn__JeiYh {
+  flex-direction: column;
+}
+
+.form-container-module_justifySpaceBetween__ATcML {
+  justify-content: space-between;
+}
+
+.form-container-module_justifyFlexEnd__vzcLZ {
+  justify-content: flex-end;
+}
+
+.form-container-module_xsGap__m8iYU {
+  gap: 6px;
+}
+
+.form-container-module_smGap__PkOO- {
+  gap: 8px;
+}
+
+.form-container-module_mdGap__bs0l0 {
+  gap: 12px;
+}
+
+.form-container-module_lgGap__vY71I {
+  gap: 18px;
+}
+
+.form-container-module_xlGap__CkKhr {
+  gap: 24px;
+}
+
 .grid-container-module_gridContainer__5D5ts {
   display: grid;
   width: 100%;

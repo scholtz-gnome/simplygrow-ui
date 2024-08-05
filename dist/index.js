@@ -3,44 +3,44 @@
 var jsxRuntime = require('react/jsx-runtime');
 var React = require('react');
 
-var styles$j = {"defaultStyles":"action-button-module_defaultStyles__sgj2s","fullWidth":"action-button-module_fullWidth__-NZJ5","loadingStyles":"action-button-module_loadingStyles__TYgl4","buttonText":"action-button-module_buttonText__2HqDk","button-loading-spinner":"action-button-module_button-loading-spinner__XpyOV"};
+var styles$k = {"defaultStyles":"action-button-module_defaultStyles__sgj2s","fullWidth":"action-button-module_fullWidth__-NZJ5","loadingStyles":"action-button-module_loadingStyles__TYgl4","buttonText":"action-button-module_buttonText__2HqDk","button-loading-spinner":"action-button-module_button-loading-spinner__XpyOV"};
 
 const ActionButton = ({ onClick, fullWidth, loading = false, children, }) => {
-    const defaultStyles = styles$j.defaultStyles;
-    const fullWidthStyles = fullWidth ? styles$j.fullWidth : '';
-    const loadingStyles = loading ? styles$j.loadingStyles : '';
-    return (jsxRuntime.jsx("button", { onClick: onClick, className: `${defaultStyles} ${fullWidthStyles} ${loadingStyles}`, disabled: loading, children: jsxRuntime.jsx("span", { className: styles$j.buttonText, children: children }) }));
+    const defaultStyles = styles$k.defaultStyles;
+    const fullWidthStyles = fullWidth ? styles$k.fullWidth : '';
+    const loadingStyles = loading ? styles$k.loadingStyles : '';
+    return (jsxRuntime.jsx("button", { onClick: onClick, className: `${defaultStyles} ${fullWidthStyles} ${loadingStyles}`, disabled: loading, children: jsxRuntime.jsx("span", { className: styles$k.buttonText, children: children }) }));
 };
 
-var styles$i = {"checkboxRadio":"checkbox-input-module_checkboxRadio__NwEvn"};
+var styles$j = {"checkboxRadio":"checkbox-input-module_checkboxRadio__NwEvn"};
 
 const CheckboxInput = ({ id, children }) => {
-    return (jsxRuntime.jsxs("label", { htmlFor: id, className: styles$i.checkboxRadio, children: [jsxRuntime.jsx("input", { type: 'checkbox', id: id, name: id }), children] }));
+    return (jsxRuntime.jsxs("label", { htmlFor: id, className: styles$j.checkboxRadio, children: [jsxRuntime.jsx("input", { type: 'checkbox', id: id, name: id }), children] }));
 };
 
-var styles$h = {"headingOne":"heading-module_headingOne__gOIMQ","headingTwo":"heading-module_headingTwo__Y-i2W","headingThree":"heading-module_headingThree__Of688","textAlign":"heading-module_textAlign__Dm75T"};
+var styles$i = {"headingOne":"heading-module_headingOne__gOIMQ","headingTwo":"heading-module_headingTwo__Y-i2W","headingThree":"heading-module_headingThree__Of688","textAlign":"heading-module_textAlign__Dm75T"};
 
 const Heading = ({ order = 1, textAlign, children }) => {
-    const textAlignStyles = textAlign === 'center' ? styles$h.textAlign : undefined;
-    let headingElement = jsxRuntime.jsx("h1", { className: `${styles$h.headingOne} ${textAlignStyles}`, children: children });
+    const textAlignStyles = textAlign === 'center' ? styles$i.textAlign : undefined;
+    let headingElement = jsxRuntime.jsx("h1", { className: `${styles$i.headingOne} ${textAlignStyles}`, children: children });
     switch (order) {
         case 2:
-            headingElement = jsxRuntime.jsx("h2", { className: `${styles$h.headingTwo} ${textAlignStyles}`, children: children });
+            headingElement = jsxRuntime.jsx("h2", { className: `${styles$i.headingTwo} ${textAlignStyles}`, children: children });
             break;
         case 3:
-            headingElement = jsxRuntime.jsx("h3", { className: `${styles$h.headingThree} ${textAlignStyles}`, children: children });
+            headingElement = jsxRuntime.jsx("h3", { className: `${styles$i.headingThree} ${textAlignStyles}`, children: children });
             break;
     }
     return headingElement;
 };
 
-var styles$g = {"header":"header-module_header__Tv17b"};
+var styles$h = {"header":"header-module_header__Tv17b"};
 
 const Header = ({ children }) => {
-    return (jsxRuntime.jsx("header", { className: styles$g.header, children: jsxRuntime.jsx(Heading, { order: 2, children: children }) }));
+    return (jsxRuntime.jsx("header", { className: styles$h.header, children: jsxRuntime.jsx(Heading, { order: 2, children: children }) }));
 };
 
-var styles$f = {"containerStyles":"flex-container-module_containerStyles__ochhf","children":"flex-container-module_children__YvOuW","flexContainer":"flex-container-module_flexContainer__sjCC6","flexDirectionColumn":"flex-container-module_flexDirectionColumn__wD97f","justifySpaceBetween":"flex-container-module_justifySpaceBetween__TlWte","justifyFlexEnd":"flex-container-module_justifyFlexEnd__2Wl6W","justifyCenter":"flex-container-module_justifyCenter__9Miyp","alignSpaceBetween":"flex-container-module_alignSpaceBetween__zaMWT","alignFlexEnd":"flex-container-module_alignFlexEnd__Oj6iR","alignCenter":"flex-container-module_alignCenter__01oXx","xsGap":"flex-container-module_xsGap__R-otE","smGap":"flex-container-module_smGap__5oYmU","mdGap":"flex-container-module_mdGap__3IIbh","lgGap":"flex-container-module_lgGap__IybLF","xlGap":"flex-container-module_xlGap__JdQP4"};
+var styles$g = {"containerStyles":"flex-container-module_containerStyles__ochhf","children":"flex-container-module_children__YvOuW","flexContainer":"flex-container-module_flexContainer__sjCC6","flexDirectionColumn":"flex-container-module_flexDirectionColumn__wD97f","justifySpaceBetween":"flex-container-module_justifySpaceBetween__TlWte","justifyFlexEnd":"flex-container-module_justifyFlexEnd__2Wl6W","justifyCenter":"flex-container-module_justifyCenter__9Miyp","alignSpaceBetween":"flex-container-module_alignSpaceBetween__zaMWT","alignFlexEnd":"flex-container-module_alignFlexEnd__Oj6iR","alignCenter":"flex-container-module_alignCenter__01oXx","xsGap":"flex-container-module_xsGap__R-otE","smGap":"flex-container-module_smGap__5oYmU","mdGap":"flex-container-module_mdGap__3IIbh","lgGap":"flex-container-module_lgGap__IybLF","xlGap":"flex-container-module_xlGap__JdQP4"};
 
 /**
  * gap | default `xs`
@@ -51,11 +51,62 @@ var styles$f = {"containerStyles":"flex-container-module_containerStyles__ochhf"
  *  - `xl` = `24px`
  */
 const FlexContainer = ({ flexDirection, justify, align, gap, children, headerText, styledContainer, className, }) => {
-    const containerStyles = styledContainer ? styles$f.containerStyles : undefined;
-    const flexDirectionStyles = flexDirection === 'column' ? styles$f.flexDirectionColumn : undefined;
+    const containerStyles = styledContainer ? styles$g.containerStyles : undefined;
+    const flexDirectionStyles = flexDirection === 'column' ? styles$g.flexDirectionColumn : undefined;
     let justifyStyles;
     let alignStyles;
     let gapStyles;
+    switch (gap) {
+        case 'xs':
+            gapStyles = styles$g.xsGap;
+            break;
+        case 'sm':
+            gapStyles = styles$g.smGap;
+            break;
+        case 'md':
+            gapStyles = styles$g.mdGap;
+            break;
+        case 'lg':
+            gapStyles = styles$g.lgGap;
+            break;
+        case 'xl':
+            gapStyles = styles$g.xlGap;
+            break;
+    }
+    switch (justify) {
+        case 'space-between':
+            justifyStyles = styles$g.justifySpaceBetween;
+            break;
+        case 'flex-end':
+            justifyStyles = styles$g.justifyFlexEnd;
+            break;
+        case 'center':
+            justifyStyles = styles$g.justifyCenter;
+            break;
+    }
+    switch (align) {
+        case 'space-between':
+            alignStyles = styles$g.alignSpaceBetween;
+            break;
+        case 'flex-end':
+            alignStyles = styles$g.alignFlexEnd;
+            break;
+        case 'center':
+            alignStyles = styles$g.alignCenter;
+            break;
+    }
+    return (jsxRuntime.jsxs("div", { className: `${styles$g.flexContainer} ${flexDirectionStyles} ${justifyStyles} ${alignStyles} ${gapStyles} ${containerStyles} ${className}`, children: [!!headerText && jsxRuntime.jsx(Header, { children: headerText }), styledContainer && jsxRuntime.jsx("div", { className: styles$g.children, children: children }), !styledContainer && children] }));
+};
+
+var styles$f = {"formContainer":"form-container-module_formContainer__K9UV6","flexDirectionColumn":"form-container-module_flexDirectionColumn__JeiYh","justifySpaceBetween":"form-container-module_justifySpaceBetween__ATcML","justifyFlexEnd":"form-container-module_justifyFlexEnd__vzcLZ","xsGap":"form-container-module_xsGap__m8iYU","smGap":"form-container-module_smGap__PkOO-","mdGap":"form-container-module_mdGap__bs0l0","lgGap":"form-container-module_lgGap__vY71I","xlGap":"form-container-module_xlGap__CkKhr"};
+
+const FormContainer = ({ flexDirection, justify, gap = 'xs', className, children }) => {
+    const flexDirectionStyles = flexDirection === 'column' ? styles$f.flexDirectionColumn : undefined;
+    let justifyStyles = undefined;
+    let gapStyles;
+    const handleFormSubmit = (e) => {
+        e.preventDefault();
+    };
     switch (gap) {
         case 'xs':
             gapStyles = styles$f.xsGap;
@@ -80,22 +131,8 @@ const FlexContainer = ({ flexDirection, justify, align, gap, children, headerTex
         case 'flex-end':
             justifyStyles = styles$f.justifyFlexEnd;
             break;
-        case 'center':
-            justifyStyles = styles$f.justifyCenter;
-            break;
     }
-    switch (align) {
-        case 'space-between':
-            alignStyles = styles$f.alignSpaceBetween;
-            break;
-        case 'flex-end':
-            alignStyles = styles$f.alignFlexEnd;
-            break;
-        case 'center':
-            alignStyles = styles$f.alignCenter;
-            break;
-    }
-    return (jsxRuntime.jsxs("div", { className: `${styles$f.flexContainer} ${flexDirectionStyles} ${justifyStyles} ${alignStyles} ${gapStyles} ${containerStyles} ${className}`, children: [!!headerText && jsxRuntime.jsx(Header, { children: headerText }), styledContainer && jsxRuntime.jsx("div", { className: styles$f.children, children: children }), !styledContainer && children] }));
+    return (jsxRuntime.jsx("form", { onSubmit: handleFormSubmit, className: `${styles$f.formContainer} ${flexDirectionStyles} ${justifyStyles} ${gapStyles} ${className}`, children: children }));
 };
 
 var styles$e = {"gridContainer":"grid-container-module_gridContainer__5D5ts","xsGap":"grid-container-module_xsGap__3ZVWI","smGap":"grid-container-module_smGap__qR1ET","mdGap":"grid-container-module_mdGap__zusgI","lgGap":"grid-container-module_lgGap__bIzoR","xlGap":"grid-container-module_xlGap__ih9PD","gridContainerTwoColumns":"grid-container-module_gridContainerTwoColumns__z9ppB","gridContainerThreeColumns":"grid-container-module_gridContainerThreeColumns__E-qaZ","gridContainerFourColumns":"grid-container-module_gridContainerFourColumns__UXIN2"};
@@ -534,6 +571,7 @@ const UnorderedList = ({ bullets = false, className, style, children }) => {
 exports.ActionButton = ActionButton;
 exports.CheckboxInput = CheckboxInput;
 exports.FlexContainer = FlexContainer;
+exports.FormContainer = FormContainer;
 exports.GridContainer = GridContainer;
 exports.Header = Header;
 exports.Heading = Heading;
