@@ -4,7 +4,7 @@ import styles from './flex-container.module.css';
 
 interface FlexContainerProps {
   flexDirection?: 'column';
-  justify?: 'space-between' | 'flex-end' | 'center';
+  justify?: 'space-between' | 'flex-end' | 'center' | 'flex-start';
   align?: 'center' | 'flex-end' | 'space-between';
   gap?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   headerText?: string;
@@ -64,6 +64,9 @@ const FlexContainer: FC<FlexContainerProps> = ({
       break;
     case 'center':
       justifyStyles = styles.justifyCenter;
+      break;
+    case 'flex-start':
+      justifyStyles = styles.justifyFlexStart;
       break;
   }
 

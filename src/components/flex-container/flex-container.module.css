@@ -29,6 +29,10 @@
   justify-content: center;
 }
 
+.justifyFlexStart {
+  justify-content: flex-start;
+}
+
 .alignSpaceBetween {
   align-items: space-between;
 }
