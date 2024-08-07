@@ -1,6 +1,6 @@
 # SimplyGrow UI
 
-A library of React components and hooks built in TypeScript and CSS.
+A library of React components, hooks and utility functions built with TypeScript and CSS Modules.
 
 # Setup
 
