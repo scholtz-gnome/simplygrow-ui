@@ -358,6 +358,8 @@
   border: none;
   border-radius: 25px;
   line-height: 24px;
+  text-decoration: none;
+  color: inherit;
 }
 
 .link-text-module_linkText__qYwqc {
