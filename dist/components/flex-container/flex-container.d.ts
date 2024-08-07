@@ -1,7 +1,7 @@
 import { FC, ReactNode } from 'react';
 interface FlexContainerProps {
     flexDirection?: 'column';
-    justify?: 'space-between' | 'flex-end' | 'center';
+    justify?: 'space-between' | 'flex-end' | 'center' | 'flex-start';
     align?: 'center' | 'flex-end' | 'space-between';
     gap?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
     headerText?: string;

@@ -18,7 +18,10 @@
   "keywords": [
     "react",
     "typescript",
-    "bottom-sheet"
+    "components",
+    "hooks",
+    "ui-library",
+    "simplygrow"
   ],
   "author": "Stephen Scholtz",
   "license": "MIT",
