@@ -11,7 +11,7 @@
     "lint": "eslint './{src,app}/**/*.{ts,tsx}'",
     "size": "size-limit",
     "prepare": "npm run build",
-    "start": "serve ./public"
+    "dev": "serve ./public"
   },
   "repository": {
     "type": "git",
