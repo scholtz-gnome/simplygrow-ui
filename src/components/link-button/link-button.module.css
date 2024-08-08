@@ -1,10 +1,25 @@
 .defaultVariant {
   color: #fff;
   display: block;
-  background-color: #8bcc33;
   border-radius: 25px;
   border: none;
   overflow: hidden;
+}
+
+.defaultTheme {
+  background-color: #313c5a;
+}
+
+.worklightTheme {
+  background-color: #8bcc33;
+}
+
+.peopleflowTheme {
+  background-color: #2bc8ff;
+}
+
+.skillbookTheme {
+  background-color: #2db857;
 }
 
 .defaultWidth {

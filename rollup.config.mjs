@@ -18,7 +18,7 @@ export default [
       peerDepsExternal(),
       nodeResolve(),
       typescript({
-        exclude: ['src/app.css', 'src/container.js', 'src/index.js'],
+        exclude: ['src/app.js', 'src/container.js', 'src/index.js'],
       }),
       commonjs(),
       postcss({

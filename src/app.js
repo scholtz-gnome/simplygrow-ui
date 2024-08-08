@@ -1,8 +1,7 @@
-import 'app.css';
 import React from 'react';
-import '../dist/index.css';
-import { ActionButton, FlexContainer, GridContainer, Heading, LinkButton } from './components';
+import { ActionButton, FlexContainer, GridContainer, Heading, LinkButton, Paragraph, Select } from './components';
 import Container from './container';
+import { UIProvider } from './providers';
 
 function App() {
   return (
@@ -16,22 +15,42 @@ function App() {
         flexDirection: 'column',
       }}
     >
-      <Container>
-        <FlexContainer justify={'space-between'}>
-          <Heading order={1}>H1</Heading>
-          <Heading order={2}>H2</Heading>
-          <Heading order={3}>H3</Heading>
-        </FlexContainer>
+      <UIProvider appTheme={'worklight'}>
+        <Container>
+          <FlexContainer justify={'space-between'}>
+            <Heading order={1}>H1</Heading>
+            <Heading order={2}>H2</Heading>
+            <Heading order={3}>H3</Heading>
+          </FlexContainer>
 
-        <GridContainer>
-          <ActionButton>One</ActionButton>
-          <ActionButton>Two</ActionButton>
-        </GridContainer>
-      </Container>
+          <GridContainer columns={3}>
+            <ActionButton>Action Button 1</ActionButton>
+            <ActionButton>Action Button 2</ActionButton>
+          </GridContainer>
 
-      <Container>
-        <LinkButton href={'https://worklight.co.za/login'}>Log in</LinkButton>
-      </Container>
+          <Heading>Paragraphs</Heading>
+
+          <GridContainer>
+            <Paragraph>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores fugit ea minima similique. Suscipit
+              laudantium aut rerum repellat officiis omnis culpa quae quas placeat. Culpa magni magnam eaque
+              perspiciatis deserunt.
+            </Paragraph>
+
+            <Paragraph>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores fugit ea minima similique. Suscipit
+              laudantium aut rerum repellat officiis omnis culpa quae quas placeat. Culpa magni magnam eaque
+              perspiciatis deserunt.
+            </Paragraph>
+
+            <Select id={'select-me'} options={['one', 'two', 'three']} onSelect={() => console.log('hello')} />
+          </GridContainer>
+        </Container>
+
+        <Container>
+          <LinkButton href={'https://google.com'}>Link button</LinkButton>
+        </Container>
+      </UIProvider>
     </div>
   );
 }

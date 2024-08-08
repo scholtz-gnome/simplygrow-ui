@@ -1,4 +1,5 @@
-import { ButtonHTMLAttributes, FC, ReactNode } from 'react';
+import { ButtonHTMLAttributes, FC, ReactNode, useContext } from 'react';
+import ThemeContext from '../../context/theme.context';
 import styles from './action-button.module.css';
 
 interface ActionButtonProps {
@@ -14,12 +15,34 @@ const ActionButton: FC<ActionButtonProps & Partial<ButtonHTMLAttributes<HTMLButt
   loading = false,
   children,
 }) => {
+  const theme = useContext(ThemeContext);
+
   const defaultStyles = styles.defaultStyles;
   const fullWidthStyles = fullWidth ? styles.fullWidth : '';
   const loadingStyles = loading ? styles.loadingStyles : '';
+  let themeStyles = '';
+
+  switch (theme) {
+    case 'peopleflow':
+      themeStyles = styles.peopleflowTheme;
+      break;
+    case 'worklight':
+      themeStyles = styles.worklightTheme;
+      break;
+    case 'skillbook':
+      themeStyles = styles.skillbookTheme;
+      break;
+    case undefined:
+      themeStyles = styles.defaultTheme;
+      break;
+  }
 
   return (
-    <button onClick={onClick} className={`${defaultStyles} ${fullWidthStyles} ${loadingStyles}`} disabled={loading}>
+    <button
+      onClick={onClick}
+      className={`${defaultStyles} ${fullWidthStyles} ${loadingStyles} ${themeStyles}`}
+      disabled={loading}
+    >
       <span className={styles.buttonText}>{children}</span>
     </button>
   );
