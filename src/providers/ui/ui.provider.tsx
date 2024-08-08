@@ -1,3 +1,4 @@
+'use client';
 import { FC, ReactNode } from 'react';
 import '../../../dist/index.css';
 import ThemeContext, { AppTheme } from '../../context';

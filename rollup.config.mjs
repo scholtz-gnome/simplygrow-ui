@@ -5,6 +5,7 @@ import replace from '@rollup/plugin-replace';
 import typescript from '@rollup/plugin-typescript';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import postcss from 'rollup-plugin-postcss';
+import preserveDirectives from 'rollup-preserve-directives';
 
 export default [
   {
@@ -21,6 +22,7 @@ export default [
         exclude: ['src/app.js', 'src/container.js', 'src/index.js'],
       }),
       commonjs(),
+      preserveDirectives(),
       postcss({
         modules: true,
         extract: true,
@@ -44,6 +46,7 @@ export default [
         extensions: ['.js', '.jsx', '.tsx', '.ts'],
       }),
       commonjs(),
+      preserveDirectives(),
       postcss(),
       replace({
         preventAssignment: false,
