@@ -5,7 +5,7 @@ import ThemeContext, { AppTheme } from '../../context';
 import './ui.provider.css';
 
 interface UIProviderProps {
-  appTheme: AppTheme;
+  appTheme?: AppTheme;
   children: ReactNode;
 }
 

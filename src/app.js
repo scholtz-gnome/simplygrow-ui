@@ -15,7 +15,7 @@ function App() {
         flexDirection: 'column',
       }}
     >
-      <UIProvider appTheme={'worklight'}>
+      <UIProvider appTheme={'peopleflow'}>
         <Container>
           <FlexContainer justify={'space-between'}>
             <Heading order={1}>H1</Heading>
