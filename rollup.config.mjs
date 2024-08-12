@@ -6,7 +6,7 @@ import typescript from '@rollup/plugin-typescript';
 import banner from 'rollup-plugin-banner2';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import postcss from 'rollup-plugin-postcss';
-import { ROLLUP_EXCLUDE_USE_CLIENT } from './rollup-exclude-use-client.mjs';
+import { ROLLUP_INCLUDE_USE_CLIENT } from './rollup-exclude-use-client.mjs';
 
 export default [
   {
@@ -37,9 +37,10 @@ export default [
         extract: true,
       }),
       banner((chunk) => {
-        console.log(chunk.fileName);
+        console.log(ROLLUP_INCLUDE_USE_CLIENT);
+        console.log(typeof chunk.fileName);
 
-        if (!ROLLUP_EXCLUDE_USE_CLIENT.includes(chunk.fileName)) {
+        if (!ROLLUP_INCLUDE_USE_CLIENT.includes(chunk.fileName)) {
           return "'use client';\n";
         }
 
@@ -52,6 +53,7 @@ export default [
     output: {
       file: 'public/bundle.js',
       format: 'iife',
+      sourcemap: true,
     },
     plugins: [
       nodeResolve({
