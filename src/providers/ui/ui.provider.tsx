@@ -1,6 +1,5 @@
 import { FC, ReactNode } from 'react';
 import ThemeContext, { AppTheme } from '../../context';
-import '../../index.css';
 
 interface UIProviderProps {
   appTheme?: AppTheme;
