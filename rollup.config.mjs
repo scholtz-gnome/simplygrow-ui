@@ -11,22 +11,23 @@ export default [
   {
     input: 'src/index.ts',
     output: {
-      dir: 'dist',
+      dir: 'dist/src',
       format: 'cjs',
       sourcemap: true,
+      // preserveModules: true,
     },
     plugins: [
       peerDepsExternal(),
       nodeResolve(),
       typescript({
-        exclude: ['src/app.js', 'src/container.js', 'src/index.js'],
+        exclude: ['src/app.js', 'src/app.css', 'src/container.js', 'src/index.js'],
       }),
       commonjs(),
-      preserveDirectives(),
       postcss({
         modules: true,
         extract: true,
       }),
+      preserveDirectives(),
     ],
   },
   {
@@ -46,7 +47,6 @@ export default [
         extensions: ['.js', '.jsx', '.tsx', '.ts'],
       }),
       commonjs(),
-      preserveDirectives(),
       postcss(),
       replace({
         preventAssignment: false,
