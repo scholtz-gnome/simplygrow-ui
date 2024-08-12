@@ -5,6 +5,7 @@ import replace from '@rollup/plugin-replace';
 import typescript from '@rollup/plugin-typescript';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import postcss from 'rollup-plugin-postcss';
+import preserveDirectives from 'rollup-preserve-directives';
 
 export default [
   {
@@ -13,6 +14,7 @@ export default [
       dir: 'dist',
       format: 'cjs',
       sourcemap: true,
+      preserveModules: true,
     },
     plugins: [
       peerDepsExternal(),
@@ -25,6 +27,7 @@ export default [
         modules: true,
         extract: true,
       }),
+      preserveDirectives(),
     ],
   },
   {
