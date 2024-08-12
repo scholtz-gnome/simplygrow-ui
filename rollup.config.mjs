@@ -16,13 +16,13 @@ export default [
         dir: 'dist',
         format: 'cjs',
         sourcemap: true,
-        preserveModules: true,
+        preserveModules: false,
       },
       {
         dir: 'dist',
         format: 'esm',
         sourcemap: true,
-        preserveModules: true,
+        preserveModules: false,
       },
     ],
     plugins: [
@@ -53,7 +53,6 @@ export default [
     output: {
       file: 'public/bundle.js',
       format: 'iife',
-      sourcemap: true,
     },
     plugins: [
       nodeResolve({
