@@ -3,8 +3,10 @@ import commonjs from '@rollup/plugin-commonjs';
 import nodeResolve from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
 import typescript from '@rollup/plugin-typescript';
+import banner from 'rollup-plugin-banner2';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import postcss from 'rollup-plugin-postcss';
+import { ROLLUP_EXCLUDE_USE_CLIENT } from './rollup-exclude-use-client.mjs';
 
 export default [
   {
@@ -13,6 +15,7 @@ export default [
       dir: 'dist',
       format: 'cjs',
       sourcemap: true,
+      preserveModules: true,
     },
     plugins: [
       peerDepsExternal(),
@@ -24,6 +27,15 @@ export default [
       postcss({
         modules: true,
         extract: true,
+      }),
+      banner((chunk) => {
+        console.log(ROLLUP_EXCLUDE_USE_CLIENT);
+
+        if (!ROLLUP_EXCLUDE_USE_CLIENT.includes(chunk.fileName)) {
+          return "'use client';\n";
+        }
+
+        return undefined;
       }),
     ],
   },
