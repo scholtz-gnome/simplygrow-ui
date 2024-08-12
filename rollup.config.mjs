@@ -11,12 +11,20 @@ import { ROLLUP_EXCLUDE_USE_CLIENT } from './rollup-exclude-use-client.mjs';
 export default [
   {
     input: 'src/index.ts',
-    output: {
-      dir: 'dist',
-      format: 'cjs',
-      sourcemap: true,
-      preserveModules: true,
-    },
+    output: [
+      {
+        dir: 'dist',
+        format: 'cjs',
+        sourcemap: true,
+        preserveModules: true,
+      },
+      {
+        dir: 'dist',
+        format: 'esm',
+        sourcemap: true,
+        preserveModules: true,
+      },
+    ],
     plugins: [
       peerDepsExternal(),
       nodeResolve(),
@@ -29,7 +37,7 @@ export default [
         extract: true,
       }),
       banner((chunk) => {
-        console.log(ROLLUP_EXCLUDE_USE_CLIENT);
+        console.log(chunk.fileName);
 
         if (!ROLLUP_EXCLUDE_USE_CLIENT.includes(chunk.fileName)) {
           return "'use client';\n";
