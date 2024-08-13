@@ -2,16 +2,73 @@
 
 A library of React components, hooks and utility functions built with TypeScript and CSS Modules.
 
-# Setup
+- [Usage](#usage)
+  - [Install package](#install-package)
+  - [Global CSS](#global-css)
+  - [`<UIProvider />` Component](#uiprovider-component)
+    - [Next.js](#nextjs)
+    - [Create React App](#create-react-app)
+- [Components](#components)
+- [Developing](#developing)
+
+# Usage
+
+## Install package
 
 ```bash
 npm install simplygrow-ui
 ```
 
-In your root component, paste the following code:
+## Global CSS
 
-```bash
-import 'simplygrow-ui/dist/index.css';
+In your root component/layout, paste the following code:
+
+```typescript
+import 'simplygrow-ui/dist/esm/index.css';
+```
+
+## UIProvider component
+
+In your root component/layout, import the `<UIProvider />` component and wrap your React children (as well as any other React context providers involving UI). This allows you to select the SimplyGrow app you are using, which will update the colours of all components.
+
+### Next.js
+
+```typescript
+import { UIProvider } from 'simplygrow-ui';
+
+interface RootLayoutProps {
+  children: ReactNode
+}
+
+const RootLayout: FC<RootLayoutProps> = ({ children }) => {
+  return (
+    <html lang="en">
+      <body>
+        <UIProvider appTheme={'skillbook'}>
+          <main>{children}</main>
+        </UIProvider>
+      </body>
+    </html>
+  )
+}
+
+export default RootLayout
+```
+
+### Create React App
+
+```typescript
+import { UIProvider } from 'simplygrow-ui';
+
+function App({ children }) {
+  return (
+    <UIProvider appTheme={'peopleflow'}>
+      {children}
+    </UIProvider>
+  );
+}
+
+export default App
 ```
 
 # Components

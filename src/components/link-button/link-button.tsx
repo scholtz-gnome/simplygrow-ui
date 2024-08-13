@@ -6,6 +6,7 @@ interface LinkButtonProps {
   href: string;
   buttonWidth?: 'default' | 'big' | 'full-width';
   variant?: 'primary' | 'secondary';
+  disabled?: boolean;
   children: ReactNode;
 }
 
@@ -14,11 +15,14 @@ const LinkButton: FC<LinkButtonProps & Partial<AnchorHTMLAttributes<HTMLAnchorEl
   target,
   variant = 'primary',
   buttonWidth = 'default',
+  disabled = false,
   children,
 }) => {
   const theme = useContext(ThemeContext);
 
   const variantStyles = variant === 'primary' ? styles.primaryVariant : styles.secondaryVariant;
+  const disabledStyles = disabled ? styles.disabledStyles : '';
+
   let buttonWidthStyles;
   let themeStyles = '';
 
@@ -67,7 +71,8 @@ const LinkButton: FC<LinkButtonProps & Partial<AnchorHTMLAttributes<HTMLAnchorEl
 
   return (
     <button
-      className={`${styles.commonStyles} ${variantStyles} ${buttonWidthStyles} ${themeStyles} ${styles.commonStyles}`}
+      className={`${styles.commonStyles} ${disabledStyles} ${variantStyles} ${buttonWidthStyles} ${themeStyles} ${styles.commonStyles}`}
+      disabled={disabled}
     >
       <a target={target} className={styles.link} href={href}>
         {children}

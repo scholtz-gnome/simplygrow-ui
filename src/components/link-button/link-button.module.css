@@ -51,6 +51,39 @@
   border: 1px solid #2db857;
 }
 
+.defaultThemePrimary:disabled {
+  background-color: #313c5a88;
+}
+
+.worklightThemePrimary:disabled {
+  background-color: #8bcc3388;
+}
+
+.peopleflowThemePrimary:disabled {
+  background-color: #2bc8ff88;
+}
+
+.skillbookThemePrimary:disabled {
+  background-color: #2db85788;
+}
+
+.defaultThemeSecondary:disabled {
+  border: 1px solid #313c5a88;
+  color: #666;
+}
+.worklightThemeSecondary:disabled {
+  border: 1px solid #8bcc3388;
+  color: #666;
+}
+.peopleflowThemeSecondary:disabled {
+  border: 1px solid #2bc8ff88;
+  color: #666;
+}
+.skillbookThemeSecondary:disabled {
+  border: 1px solid #2db85788;
+  color: #666;
+}
+
 .defaultWidth {
   min-width: 150px;
   width: fit-content;

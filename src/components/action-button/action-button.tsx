@@ -17,6 +17,7 @@ const ActionButton: FC<ActionButtonProps & Partial<ButtonHTMLAttributes<HTMLButt
   loading = false,
   variant = 'primary',
   disabled = false,
+  type,
   children,
 }) => {
   const theme = useContext(ThemeContext);
@@ -64,6 +65,7 @@ const ActionButton: FC<ActionButtonProps & Partial<ButtonHTMLAttributes<HTMLButt
       onClick={onClick}
       className={`${styles.commonStyles} ${variantStyles} ${fullWidthStyles} ${loadingStyles} ${disabledStyles} ${themeStyles}`}
       disabled={loading || disabled}
+      type={type}
     >
       <span className={styles.buttonText}>{children}</span>
     </button>

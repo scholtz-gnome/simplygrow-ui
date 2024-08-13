@@ -35,6 +35,9 @@ function App() {
             <LinkButton buttonWidth={'full-width'}>Full Width</LinkButton>
             <LinkButton disabled>Disabled Link Button</LinkButton>
             <LinkButton variant={'secondary'}>Secondary Button</LinkButton>
+            <LinkButton variant={'secondary'} disabled>
+              Secondary Button Disabled
+            </LinkButton>
           </FlexContainer>
 
           <Heading>Paragraphs</Heading>
