@@ -1,4 +1,4 @@
-import { FC, ReactNode, useContext } from 'react';
+import { AnchorHTMLAttributes, FC, ReactNode, useContext } from 'react';
 import ThemeContext from '../../context';
 import styles from './link-button.module.css';
 
@@ -9,7 +9,13 @@ interface LinkButtonProps {
   children: ReactNode;
 }
 
-const LinkButton: FC<LinkButtonProps> = ({ href, variant, buttonWidth = 'default', children }) => {
+const LinkButton: FC<LinkButtonProps & Partial<AnchorHTMLAttributes<HTMLAnchorElement>>> = ({
+  href,
+  target,
+  variant,
+  buttonWidth = 'default',
+  children,
+}) => {
   const theme = useContext(ThemeContext);
 
   const defaultVariantStyles = variant === 'secondary' ? styles.secondaryVariant : styles.defaultVariant;
@@ -46,7 +52,7 @@ const LinkButton: FC<LinkButtonProps> = ({ href, variant, buttonWidth = 'default
 
   return (
     <button className={`${defaultVariantStyles} ${buttonWidthStyles} ${themeStyles}`}>
-      <a className={styles.link} href={href}>
+      <a target={target} className={styles.link} href={href}>
         {children}
       </a>
     </button>
