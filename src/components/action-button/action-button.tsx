@@ -11,7 +11,7 @@ interface ActionButtonProps {
 
 const ActionButton: FC<ActionButtonProps & Partial<ButtonHTMLAttributes<HTMLButtonElement>>> = ({
   onClick,
-  fullWidth,
+  fullWidth = false,
   loading = false,
   children,
 }) => {

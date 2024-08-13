@@ -1,6 +1,7 @@
 import React from 'react';
 import { ActionButton, FlexContainer, GridContainer, Heading, LinkButton, Paragraph, Select } from './components';
 import Container from './container';
+import './index.css';
 import { UIProvider } from './providers';
 
 function App() {
@@ -17,16 +18,17 @@ function App() {
         }}
       >
         <Container>
-          <FlexContainer justify={'space-between'}>
-            <Heading order={1}>H1</Heading>
-            <Heading order={2}>H2</Heading>
-            <Heading order={3}>H3</Heading>
-          </FlexContainer>
+          <FlexContainer flexDirection={'column'} gap={'md'}>
+            <Heading order={2}>Action Buttons</Heading>
+            <ActionButton>Min</ActionButton>
+            <ActionButton>Fit to Text Action Button</ActionButton>
+            <ActionButton fullWidth>Full Width Action Button</ActionButton>
 
-          <GridContainer columns={3}>
-            <ActionButton>Action Button 1</ActionButton>
-            <ActionButton>Action Button 2</ActionButton>
-          </GridContainer>
+            <Heading order={2}>Link Buttons</Heading>
+            <LinkButton>Min Width</LinkButton>
+            <LinkButton>Fit to Content Width</LinkButton>
+            <LinkButton buttonWidth={'full-width'}>Full Width</LinkButton>
+          </FlexContainer>
 
           <Heading>Paragraphs</Heading>
 
@@ -45,10 +47,6 @@ function App() {
 
             <Select id={'select-me'} options={['one', 'two', 'three']} onSelect={() => console.log('hello')} />
           </GridContainer>
-        </Container>
-
-        <Container>
-          <LinkButton href={'https://google.com'}>Link button</LinkButton>
         </Container>
       </div>
     </UIProvider>

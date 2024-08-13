@@ -1,7 +1,9 @@
 .defaultStyles {
   color: #fff;
   display: block;
+  height: 50px;
   min-width: 125px;
+  width: fit-content;
   border-radius: 25px;
   border: none;
   overflow: hidden;
