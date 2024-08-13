@@ -12,14 +12,15 @@ interface LinkButtonProps {
 const LinkButton: FC<LinkButtonProps & Partial<AnchorHTMLAttributes<HTMLAnchorElement>>> = ({
   href,
   target,
-  variant,
+  variant = 'primary',
   buttonWidth = 'default',
   children,
 }) => {
   const theme = useContext(ThemeContext);
 
-  const defaultVariantStyles = variant === 'secondary' ? styles.secondaryVariant : styles.defaultVariant;
+  const variantStyles = variant === 'primary' ? styles.primaryVariant : styles.secondaryVariant;
   let buttonWidthStyles;
+  let themeStyles = '';
 
   switch (buttonWidth) {
     case 'default':
@@ -33,25 +34,41 @@ const LinkButton: FC<LinkButtonProps & Partial<AnchorHTMLAttributes<HTMLAnchorEl
       break;
   }
 
-  let themeStyles = '';
-
   switch (theme) {
     case 'peopleflow':
-      themeStyles = styles.peopleflowTheme;
+      if (variant === 'primary') {
+        themeStyles = styles.peopleflowThemePrimary;
+      } else {
+        themeStyles = styles.peopleflowThemeSecondary;
+      }
       break;
     case 'worklight':
-      themeStyles = styles.worklightTheme;
+      if (variant === 'primary') {
+        themeStyles = styles.worklightThemePrimary;
+      } else {
+        themeStyles = styles.worklightThemeSecondary;
+      }
       break;
     case 'skillbook':
-      themeStyles = styles.skillbookTheme;
+      if (variant === 'primary') {
+        themeStyles = styles.skillbookThemePrimary;
+      } else {
+        themeStyles = styles.skillbookThemeSecondary;
+      }
       break;
     case undefined:
-      themeStyles = styles.defaultTheme;
+      if (variant === 'primary') {
+        themeStyles = styles.defaultThemePrimary;
+      } else {
+        themeStyles = styles.defaultThemeSecondary;
+      }
       break;
   }
 
   return (
-    <button className={`${defaultVariantStyles} ${buttonWidthStyles} ${themeStyles}`}>
+    <button
+      className={`${styles.commonStyles} ${variantStyles} ${buttonWidthStyles} ${themeStyles} ${styles.commonStyles}`}
+    >
       <a target={target} className={styles.link} href={href}>
         {children}
       </a>

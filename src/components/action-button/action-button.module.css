@@ -1,57 +1,100 @@
-.defaultStyles {
-  color: #fff;
+.commonStyles {
+  border-radius: 25px;
+  cursor: pointer;
   display: block;
+  font-weight: 500;
+  font-size: 16px;
   height: 50px;
   min-width: 125px;
   width: fit-content;
-  border-radius: 25px;
-  border: none;
   overflow: hidden;
-  font-weight: 500;
-  font-size: 16px;
-  padding: 13px 20px;
-  border: none;
-  border-radius: 25px;
-  line-height: 24px;
   transition: all 0.2s;
+  line-height: 24px;
+  padding: 13px 24px;
   position: relative;
-  cursor: pointer;
 }
 
-.defaultTheme {
+.commonStyles:disabled {
+  cursor: not-allowed;
+}
+
+.primaryVariant {
+  border: none;
+  color: #fff;
+}
+
+.secondaryVariant {
+  background-color: inherit;
+  color: #000;
+}
+
+.defaultThemePrimary {
   background-color: #313c5a;
+  color: #fff;
 }
 
-.worklightTheme {
+.defaultThemeSecondary {
+  border: 1px solid #313c5a;
+}
+
+.worklightThemePrimary {
   background-color: #8bcc33;
 }
 
-.peopleflowTheme {
+.worklightThemeSecondary {
+  border: 1px solid #8bcc33;
+}
+
+.peopleflowThemePrimary {
   background-color: #2bc8ff;
 }
 
-.skillbookTheme {
+.peopleflowThemeSecondary {
+  border: 1px solid #2bc8ff;
+}
+
+.skillbookThemePrimary {
   background-color: #2db857;
 }
 
-.defaultTheme:disabled {
+.skillbookThemeSecondary {
+  border: 1px solid #2db857;
+}
+
+.defaultThemePrimary:disabled {
   background-color: #313c5a88;
 }
 
-.worklightTheme:disabled {
+.worklightThemePrimary:disabled {
   background-color: #8bcc3388;
 }
 
-.peopleflowTheme:disabled {
+.peopleflowThemePrimary:disabled {
   background-color: #2bc8ff88;
 }
 
-.skillbookTheme:disabled {
+.skillbookThemePrimary:disabled {
   background-color: #2db85788;
 }
 
-.defaultStyles:disabled {
-  cursor: not-allowed;
+.defaultThemeSecondary:disabled {
+  border: 1px solid #313c5a88;
+  color: #666;
+}
+
+.worklightThemeSecondary:disabled {
+  border: 1px solid #8bcc3388;
+  color: #666;
+}
+
+.peopleflowThemeSecondary:disabled {
+  border: 1px solid #2bc8ff88;
+  color: #666;
+}
+
+.skillbookThemeSecondary:disabled {
+  border: 1px solid #2db85788;
+  color: #666;
 }
 
 .fullWidth {

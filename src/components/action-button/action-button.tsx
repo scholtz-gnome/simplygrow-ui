@@ -5,6 +5,7 @@ import styles from './action-button.module.css';
 interface ActionButtonProps {
   onClick?: () => void;
   loading?: boolean;
+  variant?: 'primary' | 'secondary';
   fullWidth?: boolean;
   children: ReactNode;
   disabled?: boolean;
@@ -14,36 +15,54 @@ const ActionButton: FC<ActionButtonProps & Partial<ButtonHTMLAttributes<HTMLButt
   onClick,
   fullWidth = false,
   loading = false,
+  variant = 'primary',
   disabled = false,
   children,
 }) => {
   const theme = useContext(ThemeContext);
 
-  const defaultStyles = styles.defaultStyles;
+  const variantStyles = variant === 'primary' ? styles.primaryVariant : styles.secondaryVariant;
   const fullWidthStyles = fullWidth ? styles.fullWidth : '';
   const loadingStyles = loading ? styles.loadingStyles : '';
   const disabledStyles = disabled ? styles.disabledStyles : '';
+
   let themeStyles = '';
 
   switch (theme) {
     case 'peopleflow':
-      themeStyles = styles.peopleflowTheme;
+      if (variant === 'primary') {
+        themeStyles = styles.peopleflowThemePrimary;
+      } else {
+        themeStyles = styles.peopleflowThemeSecondary;
+      }
       break;
     case 'worklight':
-      themeStyles = styles.worklightTheme;
+      if (variant === 'primary') {
+        themeStyles = styles.worklightThemePrimary;
+      } else {
+        themeStyles = styles.worklightThemeSecondary;
+      }
       break;
     case 'skillbook':
-      themeStyles = styles.skillbookTheme;
+      if (variant === 'primary') {
+        themeStyles = styles.skillbookThemePrimary;
+      } else {
+        themeStyles = styles.skillbookThemeSecondary;
+      }
       break;
     case undefined:
-      themeStyles = styles.defaultTheme;
+      if (variant === 'primary') {
+        themeStyles = styles.defaultThemePrimary;
+      } else {
+        themeStyles = styles.defaultThemeSecondary;
+      }
       break;
   }
 
   return (
     <button
       onClick={onClick}
-      className={`${defaultStyles} ${fullWidthStyles} ${loadingStyles} ${disabledStyles} ${themeStyles}`}
+      className={`${styles.commonStyles} ${variantStyles} ${fullWidthStyles} ${loadingStyles} ${disabledStyles} ${themeStyles}`}
       disabled={loading || disabled}
     >
       <span className={styles.buttonText}>{children}</span>

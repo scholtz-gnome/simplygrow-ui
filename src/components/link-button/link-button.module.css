@@ -1,26 +1,54 @@
-.defaultVariant {
-  color: #fff;
+.commonStyles {
   height: 50px;
   display: block;
   border-radius: 25px;
+}
+
+.commonStyles:disabled {
+  cursor: not-allowed;
+}
+
+.primaryVariant {
   border: none;
+  color: #fff;
   overflow: hidden;
 }
 
-.defaultTheme {
+.secondaryVariant {
+  color: #000;
+  background-color: inherit;
+}
+
+.defaultThemePrimary {
   background-color: #313c5a;
 }
 
-.worklightTheme {
+.defaultThemeSecondary {
+  border: 1px solid #313c5a;
+}
+
+.worklightThemePrimary {
   background-color: #8bcc33;
 }
 
-.peopleflowTheme {
+.worklightThemeSecondary {
+  border: 1px solid #8bcc33;
+}
+
+.peopleflowThemePrimary {
   background-color: #2bc8ff;
 }
 
-.skillbookTheme {
+.peopleflowThemeSecondary {
+  border: 1px solid #2bc8ff;
+}
+
+.skillbookThemePrimary {
   background-color: #2db857;
+}
+
+.skillbookThemeSecondary {
+  border: 1px solid #2db857;
 }
 
 .defaultWidth {
@@ -36,21 +64,14 @@
   width: 100%;
 }
 
-.secondaryVariant {
-  color: #000;
-  background-color: inherit;
-  border: 1.5px solid #000;
-  border-radius: 25px;
-}
-
 .link {
   display: block;
   font-weight: 500;
   font-size: 16px;
-  padding: 13px 26px;
+  padding: 13px 24px;
   border: none;
   border-radius: 25px;
-  line-height: 24px;
+  line-height: 22px;
   text-decoration: none;
   color: inherit;
 }
