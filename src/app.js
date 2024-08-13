@@ -6,7 +6,7 @@ import { UIProvider } from './providers';
 
 function App() {
   return (
-    <UIProvider appTheme={'peopleflow'}>
+    <UIProvider appTheme={undefined}>
       <div
         style={{
           backgroundColor: '#f1f5f9',
@@ -23,6 +23,7 @@ function App() {
             <ActionButton>Min</ActionButton>
             <ActionButton>Fit to Text Action Button</ActionButton>
             <ActionButton fullWidth>Full Width Action Button</ActionButton>
+            <ActionButton disabled>Disabled Action Button</ActionButton>
 
             <Heading order={2}>Link Buttons</Heading>
             <LinkButton>Min Width</LinkButton>

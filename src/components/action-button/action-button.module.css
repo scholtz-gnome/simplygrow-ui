@@ -34,6 +34,22 @@
   background-color: #2db857;
 }
 
+.defaultTheme:disabled {
+  background-color: #313c5a88;
+}
+
+.worklightTheme:disabled {
+  background-color: #8bcc3388;
+}
+
+.peopleflowTheme:disabled {
+  background-color: #2bc8ff88;
+}
+
+.skillbookTheme:disabled {
+  background-color: #2db85788;
+}
+
 .defaultStyles:disabled {
   cursor: not-allowed;
 }
