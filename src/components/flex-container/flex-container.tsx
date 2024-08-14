@@ -7,6 +7,7 @@ interface FlexContainerProps {
   justify?: 'space-between' | 'flex-end' | 'center' | 'flex-start';
   align?: 'center' | 'flex-end' | 'space-between';
   gap?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  wrap?: boolean;
   headerText?: string;
   styledContainer?: boolean;
   className?: string;
@@ -28,10 +29,12 @@ const FlexContainer: FC<FlexContainerProps> = ({
   gap,
   children,
   headerText,
+  wrap = false,
   styledContainer,
   className,
 }) => {
   const containerStyles = styledContainer ? styles.containerStyles : undefined;
+  const wrapStyles = wrap ? styles.flexWrap : undefined;
   const flexDirectionStyles = flexDirection === 'column' ? styles.flexDirectionColumn : undefined;
   let justifyStyles;
   let alignStyles;
@@ -84,7 +87,7 @@ const FlexContainer: FC<FlexContainerProps> = ({
 
   return (
     <div
-      className={`${styles.flexContainer} ${flexDirectionStyles} ${justifyStyles} ${alignStyles} ${gapStyles} ${containerStyles} ${className}`}
+      className={`${styles.flexContainer} ${wrapStyles} ${flexDirectionStyles} ${justifyStyles} ${alignStyles} ${gapStyles} ${containerStyles} ${className}`}
     >
       {!!headerText && <Header>{headerText}</Header>}
 

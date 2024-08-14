@@ -8,6 +8,10 @@
   cursor: not-allowed;
 }
 
+.commonStyles:disabled > a {
+  cursor: not-allowed;
+}
+
 .primaryVariant {
   border: none;
   color: #fff;

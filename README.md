@@ -89,6 +89,7 @@ export default App
 - Paragraph
 - Select
 - UnorderedList
+- Code
 
 # Developing
 
