@@ -74,6 +74,8 @@ export default App
 # Components
 
 - ActionButton
+- LinkButton
+- FileInputButton
 - CheckboxInput
 - FlexContainer
 - FormContainer
@@ -81,7 +83,6 @@ export default App
 - Header
 - Heading
 - Input
-- LinkButton
 - LinkText
 - LoadingSpinner
 - Modal

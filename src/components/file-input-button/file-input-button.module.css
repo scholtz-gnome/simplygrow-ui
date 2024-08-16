@@ -1,0 +1,113 @@
+.fileSelectInput[type='file'] {
+  display: none;
+}
+
+.fileSelectButton {
+  border-radius: 25px;
+}
+
+.commonStyles {
+  border: none;
+  display: block;
+  justify-content: center;
+  font-weight: 500;
+  border-radius: 25px;
+  font-size: 16px;
+  height: 50px;
+  min-width: 125px;
+  width: fit-content;
+  overflow: hidden;
+  transition: all 0.2s;
+  line-height: 24px;
+  padding: 13px 24px;
+  position: relative;
+  text-align: center;
+}
+
+.labelCommon {
+  cursor: pointer;
+  color: white;
+}
+
+.disabledCommon {
+  cursor: not-allowed;
+  color: white;
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+.secondaryVariant {
+  background-color: inherit;
+  color: #000;
+}
+
+.peopleflowThemePrimaryLabel {
+  background-color: #2bc8ff;
+}
+
+.peopleflowThemeSecondaryLabel {
+  border: 1px solid #2bc8ff;
+}
+
+.worklightThemePrimaryLabel {
+  background-color: #8bcc33;
+}
+
+.worklightThemeSecondaryLabel {
+  border: 1px solid #8bcc33;
+}
+
+.skillbookThemePrimaryLabel {
+  background-color: #2db857;
+}
+
+.skillbookThemeSecondaryLabel {
+  border: 1px solid #2db857;
+}
+
+.defaultThemePrimaryLabel {
+  background-color: #313c5a;
+  color: #fff;
+}
+
+.defaultThemeSecondaryLabel {
+  border: 1px solid #313c5a;
+}
+
+.peopleflowThemePrimaryLabelDisabled {
+  background-color: #2bc8ff88;
+}
+
+.peopleflowThemeSecondaryLabelDisabled {
+  border: 1px solid #2bc8ff88;
+  color: #666;
+}
+
+.worklightThemePrimaryLabelDisabled {
+  background-color: #8bcc3388;
+}
+
+.worklightThemeSecondaryLabelDisabled {
+  border: 1px solid #8bcc3388;
+  color: #666;
+}
+
+.skillbookThemePrimaryLabelDisabled {
+  background-color: #2db85788;
+}
+
+.skillbookThemeSecondaryLabelDisabled {
+  border: 1px solid #2db85788;
+  color: #666;
+}
+
+.defaultThemePrimaryLabelDisabled {
+  background-color: #313c5a88;
+}
+
+.defaultThemeSecondaryLabelDisabled {
+  border: 1px solid #313c5a88;
+  color: #666;
+}

@@ -2,6 +2,7 @@
   height: 50px;
   display: block;
   border-radius: 25px;
+  overflow: hidden;
 }
 
 .commonStyles:disabled {
