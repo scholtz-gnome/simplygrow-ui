@@ -1,12 +1,14 @@
-import React from 'react';
-import { ActionButton, Code, FlexContainer, GridContainer, Heading, LinkButton, Paragraph } from './components';
+import React, { useState } from 'react';
+import { ActionButton, Code, FlexContainer, GridContainer, Heading, Input, LinkButton, Paragraph } from './components';
 import Container from './container';
 import './index.css';
 import { UIProvider } from './providers';
 
 function App() {
+  const [email, setEmail] = useState();
+
   return (
-    <UIProvider appTheme={'peopleflow'}>
+    <UIProvider appTheme={'skillbook'}>
       <div
         style={{
           backgroundColor: '#f1f5f9',
@@ -302,6 +304,20 @@ function App() {
             >
               4
             </div>
+          </GridContainer>
+        </Container>
+
+        <Container>
+          <Heading>Inputs</Heading>
+
+          <GridContainer>
+            <FlexContainer flexDirection={'column'} gap={'md'}>
+              <Code>
+                {"<Input id={'email'} type={'email'} placeholder={'Enter email'} value={email} setValue={setEmail} />"}
+              </Code>
+
+              <Input id={'email'} type={'email'} placeholder={'Enter email'} value={email} setValue={setEmail} />
+            </FlexContainer>
           </GridContainer>
         </Container>
       </div>

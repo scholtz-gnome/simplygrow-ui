@@ -19,8 +19,23 @@
 }
 
 .input:focus {
-  border: 1.5px solid #8bcc33;
   outline: none;
+}
+
+.peopleflowTheme:focus {
+  border: 1.5px solid #2bc8ff;
+}
+
+.worklightTheme:focus {
+  border: 1.5px solid #8bcc33;
+}
+
+.skillbookTheme:focus {
+  border: 1.5px solid #2db857;
+}
+
+.defaultTheme:focus {
+  border: 1.5px solid #313c5a;
 }
 
 .label {
