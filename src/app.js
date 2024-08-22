@@ -9,6 +9,7 @@ import {
   Input,
   LinkButton,
   Paragraph,
+  Textarea,
 } from './components';
 import Container from './container';
 import './index.css';
@@ -17,6 +18,7 @@ import { UIProvider } from './providers';
 function App() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [textarea, setTextarea] = useState('');
   const [_file, setFile] = useState(undefined);
 
   return (
@@ -356,7 +358,7 @@ function App() {
 
           <Code>
             {
-              "<Input required id={'email'} type={'email'} placeholder={'Enter email'} value={email} setValue={setEmail} />"
+              "<Input required label={'Email'} id={'email'} type={'email'} placeholder={'Enter email'} value={email} setValue={setEmail} />"
             }
           </Code>
 
@@ -366,6 +368,7 @@ function App() {
 
               <Input
                 required
+                label={'Email'}
                 id={'email'}
                 type={'email'}
                 placeholder={'Enter email'}
@@ -379,11 +382,25 @@ function App() {
 
               <Input
                 required
+                label={'Password'}
                 id={'password'}
                 type={'password'}
                 placeholder={'Password'}
                 value={password}
                 setValue={setPassword}
+              />
+            </FlexContainer>
+
+            <FlexContainer flexDirection={'column'} gap={'md'}>
+              <Paragraph>Textarea</Paragraph>
+
+              <Textarea
+                id={'text-area'}
+                label={'Textarea'}
+                value={textarea}
+                setValue={setTextarea}
+                placeholder={'Enter text...'}
+                required
               />
             </FlexContainer>
           </GridContainer>

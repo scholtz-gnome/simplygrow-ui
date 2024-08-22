@@ -15,4 +15,5 @@ export { default as Modal } from './modal';
 export { default as OTPInput } from './otp-input';
 export { default as Paragraph } from './paragraph';
 export { default as Select } from './select';
+export { default as Textarea } from './textarea';
 export { default as UnorderedList } from './unordered-list';
