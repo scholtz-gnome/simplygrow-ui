@@ -12,7 +12,7 @@
   border: 1.5px solid #dee4ee;
   outline: none;
   padding: 13px 12px;
-  color: #64748b;
+  color: #000;
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;
@@ -22,20 +22,40 @@
   outline: none;
 }
 
-.peopleflowTheme:focus {
+.input:not(:placeholder-shown):invalid {
+  border: 1.5px solid red;
+}
+
+.peopleflowTheme:not(:placeholder-shown):valid:focus {
   border: 1.5px solid #2bc8ff;
 }
 
-.worklightTheme:focus {
+.worklightTheme:not(:placeholder-shown):valid:focus {
   border: 1.5px solid #8bcc33;
 }
 
-.skillbookTheme:focus {
+.skillbookTheme:not(:placeholder-shown):valid:focus {
   border: 1.5px solid #2db857;
 }
 
-.defaultTheme:focus {
+.defaultTheme:not(:placeholder-shown):valid:focus {
   border: 1.5px solid #313c5a;
+}
+
+.peopleflowTheme:focus:invalid {
+  border: 1.5px solid orange;
+}
+
+.worklightTheme:focus:invalid {
+  border: 1.5px solid orange;
+}
+
+.skillbookTheme:focus:invalid {
+  border: 1.5px solid orange;
+}
+
+.defaultTheme:focus:invalid {
+  border: 1.5px solid orange;
 }
 
 .label {

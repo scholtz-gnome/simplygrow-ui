@@ -10,10 +10,21 @@ interface InputProps {
   id: string;
   type?: 'text' | 'email' | 'radio' | 'password' | 'id' | 'mobile';
   placeholder?: string;
+  required?: boolean;
   label?: string;
+  minLength?: number;
 }
 
-const Input: FC<InputProps> = ({ value, setValue, id, placeholder, type = 'text', label }) => {
+const Input: FC<InputProps> = ({
+  value,
+  setValue,
+  id,
+  placeholder,
+  type = 'text',
+  label,
+  required = false,
+  minLength = 10,
+}) => {
   const theme = useContext(ThemeContext);
 
   let themeStyles = '';
@@ -59,12 +70,15 @@ const Input: FC<InputProps> = ({ value, setValue, id, placeholder, type = 'text'
 
       <input
         className={`${styles.input} ${themeStyles}`}
+        required={required}
         id={id}
         type={type}
         name={id}
         placeholder={placeholder}
         onChange={handleInput}
         value={value}
+        minLength={type === 'password' ? minLength : undefined}
+        maxLength={type === 'password' ? undefined : 64}
       />
     </div>
   );

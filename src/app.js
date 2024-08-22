@@ -15,7 +15,8 @@ import './index.css';
 import { UIProvider } from './providers';
 
 function App() {
-  const [email, setEmail] = useState();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [_file, setFile] = useState(undefined);
 
   return (
@@ -23,7 +24,7 @@ function App() {
       <div
         style={{
           backgroundColor: '#f1f5f9',
-          padding: '12px 24px',
+          padding: '24px 24px 86px 24px',
           minHeight: '100svh',
           display: 'flex',
           gap: '12px',
@@ -351,15 +352,39 @@ function App() {
         </Container>
 
         <Container>
-          <Heading>Inputs</Heading>
+          <Heading>Form fields</Heading>
+
+          <Code>
+            {
+              "<Input required id={'email'} type={'email'} placeholder={'Enter email'} value={email} setValue={setEmail} />"
+            }
+          </Code>
 
           <GridContainer>
             <FlexContainer flexDirection={'column'} gap={'md'}>
-              <Code>
-                {"<Input id={'email'} type={'email'} placeholder={'Enter email'} value={email} setValue={setEmail} />"}
-              </Code>
+              <Paragraph>Required email input</Paragraph>
 
-              <Input id={'email'} type={'email'} placeholder={'Enter email'} value={email} setValue={setEmail} />
+              <Input
+                required
+                id={'email'}
+                type={'email'}
+                placeholder={'Enter email'}
+                value={email}
+                setValue={setEmail}
+              />
+            </FlexContainer>
+
+            <FlexContainer flexDirection={'column'} gap={'md'}>
+              <Paragraph>Required password input</Paragraph>
+
+              <Input
+                required
+                id={'password'}
+                type={'password'}
+                placeholder={'Password'}
+                value={password}
+                setValue={setPassword}
+              />
             </FlexContainer>
           </GridContainer>
         </Container>
