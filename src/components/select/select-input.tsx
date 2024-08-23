@@ -49,6 +49,7 @@ const SelectInput: FC<SelectInputProps> = ({
         onChange={onChange}
         onFocus={focusInput}
         placeholder={placeholder}
+        readOnly
       />
 
       <SelectChevronIcon focused={focused} setFocused={setFocused} />
