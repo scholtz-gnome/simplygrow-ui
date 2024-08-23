@@ -8,6 +8,7 @@ interface SelectChevronIconProps {
 
 const SelectChevronIcon: FC<SelectChevronIconProps> = ({ focused, setFocused }) => {
   const handleClick = () => {
+    console.log('SelectChevronIcon()', focused);
     setFocused(!focused);
   };
 

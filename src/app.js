@@ -9,6 +9,7 @@ import {
   Input,
   LinkButton,
   Paragraph,
+  Select,
   Textarea,
 } from './components';
 import Container from './container';
@@ -19,6 +20,7 @@ function App() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [textarea, setTextarea] = useState('');
+  const [selectValue, setSelectValue] = useState('');
   const [_file, setFile] = useState(undefined);
 
   return (
@@ -26,7 +28,7 @@ function App() {
       <div
         style={{
           backgroundColor: '#f1f5f9',
-          padding: '24px 24px 86px 24px',
+          padding: '24px 24px 236px 24px',
           minHeight: '100svh',
           display: 'flex',
           gap: '12px',
@@ -401,6 +403,18 @@ function App() {
                 setValue={setTextarea}
                 placeholder={'Enter text...'}
                 required
+              />
+            </FlexContainer>
+
+            <FlexContainer flexDirection={'column'} gap={'md'}>
+              <Paragraph>Select</Paragraph>
+
+              <Select
+                id={'select'}
+                label={'Select'}
+                value={selectValue}
+                onSelect={setSelectValue}
+                options={['Option 1', 'Option 2', 'Option 3', 'Option 4']}
               />
             </FlexContainer>
           </GridContainer>

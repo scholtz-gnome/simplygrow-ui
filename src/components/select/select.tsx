@@ -4,7 +4,7 @@ import Options from './options';
 import SelectInput from './select-input';
 import styles from './select.module.css';
 
-interface DropdownProps {
+interface SelectProps {
   id: string;
   onSelect: (selectedData: string) => void;
   options: string[];
@@ -12,14 +12,16 @@ interface DropdownProps {
   label?: string;
 }
 
-const Select: FC<DropdownProps> = ({ id, onSelect, options, placeholder, label }) => {
+const Select: FC<SelectProps> = ({ id, onSelect, options, placeholder, label }) => {
   const [focused, setFocused] = useState(false);
   const [selectedValue, setSelectedValue] = useState('');
+  const [isValidInput, setIsValidInput] = useState(false);
+
+  console.log('Select()', focused);
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setFocused(true);
     const value = e.target.value;
-
     console.log(value);
   };
 
@@ -38,7 +40,7 @@ const Select: FC<DropdownProps> = ({ id, onSelect, options, placeholder, label }
       )}
 
       <div className={styles.selectInput}>
-        <Dropdown focused={focused}>
+        <Dropdown focused={focused} isValid={isValidInput}>
           <SelectInput
             id={id}
             value={selectedValue}
@@ -46,6 +48,7 @@ const Select: FC<DropdownProps> = ({ id, onSelect, options, placeholder, label }
             onChange={handleInputChange}
             setFocused={setFocused}
             placeholder={placeholder || 'Select'}
+            setIsValidInput={setIsValidInput}
           />
 
           {focused && <Options options={options} selectedValue={selectedValue} selectOption={selectOption} />}
