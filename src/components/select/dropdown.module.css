@@ -13,9 +13,24 @@
   top: 0;
 }
 
+.peopleflowThemeFocused {
+  border: 1.5px solid #2bc8ff;
+}
+
+.worklightThemeFocused {
+  border: 1.5px solid #8bcc33;
+}
+
+.skillbookThemeFocused {
+  border: 1.5px solid #2db857;
+}
+
+.defaultThemeFocused {
+  border: 1.5px solid #313c5a;
+}
+
 .focused {
   outline: none;
-  border: 1.5px solid #8bcc33;
   box-shadow: 2px 5px 8px #00000033;
   z-index: 3;
 }
