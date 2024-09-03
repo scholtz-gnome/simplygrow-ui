@@ -94,6 +94,20 @@ export default App
 
 # Developing
 
+To contribute to `simplygrow-ui`, following these steps:
+
+Ensure you have Node v20.14.0 installed. If you use `nvm`, run the following command to use the version of Node stipulated in `nvmrc`.
+
+```bash
+nvm use
+```
+
+Install the project dependencies.
+
+```bash
+npm install
+```
+
 In order to test out the components in a realistic React context while developing, use the simple React app bundled with Rollup. Import any components into `src/app.js` to test them out. To run the React app, run the following terminal commands in two terminal instances at the same time:
 
 ```bash
