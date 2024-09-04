@@ -4,17 +4,19 @@ import { TableHeader } from './header';
 import { TableFooter } from './footer';
 import { TableRows } from './rows';
 
+import styles from './table.module.css';
+
 type TableProps = {
-  name?: string;
+  title?: string;
   columns: { id: string; label: string }[];
   data: any[];
   footerValues: { id: string; label: string }[];
 };
 
 const Table: FC<TableProps> = (props: TableProps) => {
-  let name = null;
-  if (props.name) {
-    name = <caption>{props.name}</caption>;
+  let title = null;
+  if (props.title) {
+    title = <caption>{props.title}</caption>;
   }
 
   let footer = null;
@@ -28,12 +30,16 @@ const Table: FC<TableProps> = (props: TableProps) => {
   // }
 
   return (
-    <table>
-      {name}
-      <TableHeader columns={props.columns} />
-      {rows}
-      {footer}
-    </table>
+    <div className={styles.wrapper}>
+      <div className={styles.tableContainer}>
+        <table className={styles.table} style={{ backgroundColor: 'white' }}>
+          {title}
+          <TableHeader columns={props.columns} />
+          {rows}
+          {footer}
+        </table>
+      </div>
+    </div>
   );
 };
 
