@@ -1,0 +1,36 @@
+.wrapper {
+  width: min(900px, 100% - 3rem);
+  margin-inline: auto;
+}
+
+.tableContainer {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.table {
+  padding: 1rem;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tableCaption,
+.tableTh,
+.tableTd {
+  padding: 1rem;
+}
+
+.tableCaption,
+.tableTh {
+  text-align: left;
+}
+
+.tableCaption {
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.tableTr:nth-of-type(2n) {
+  background: hsl(0 0% 100% / 0.5);
+}
