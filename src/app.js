@@ -10,6 +10,7 @@ import {
   LinkButton,
   Paragraph,
   Select,
+  Table,
   Textarea,
 } from './components';
 import Container from './container';
@@ -35,6 +36,20 @@ function App() {
           flexDirection: 'column',
         }}
       >
+        <Table
+          columns={[
+            { id: 'col1', label: 'Column 1' },
+            { id: 'col2', label: 'Column 2' },
+            { id: 'col3', label: 'Column 3' },
+          ]}
+          data={[]}
+          footerValues={[
+            { id: 'footer1', label: 'Footer 1' },
+            { id: 'footer2', label: 'Footer 2' },
+            { id: 'footer3', label: 'Footer 3' },
+          ]}
+        />
+
         <GridContainer gap={'md'}>
           <Container>
             <Heading>Action Buttons</Heading>
