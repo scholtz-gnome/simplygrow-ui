@@ -1,5 +1,5 @@
 .wrapper {
-  width: min(900px, 100% - 3rem);
+  width: max(900px, 100% - 3rem);
   margin-inline: auto;
 }
 
@@ -14,6 +14,10 @@
   border-collapse: collapse;
 }
 
+.tableTr:nth-child(2n) {
+  background-color: rgb(247, 247, 247);
+}
+
 .tableCaption,
 .tableTh,
 .tableTd {
@@ -25,12 +29,19 @@
   text-align: left;
 }
 
+.tableTh {
+  font-weight: 600;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
 .tableCaption {
   font-size: 1.5rem;
   font-weight: 600;
   text-transform: uppercase;
 }
 
-.tableTr:nth-of-type(2n) {
-  background: hsl(0 0% 100% / 0.5);
+.tableFooter tr td {
+  padding: 1rem;
+  font-weight: 600;
 }

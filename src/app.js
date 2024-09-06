@@ -36,20 +36,136 @@ function App() {
           flexDirection: 'column',
         }}
       >
-        <Table
-          title="Table Title"
-          columns={[
-            { id: 'col1', label: 'Column 1' },
-            { id: 'col2', label: 'Column 2' },
-            { id: 'col3', label: 'Column 3' },
-          ]}
-          data={[]}
-          footerValues={[
-            { id: 'footer1', label: 'Footer 1' },
-            { id: 'footer2', label: 'Footer 2' },
-            { id: 'footer3', label: 'Footer 3' },
-          ]}
-        />
+        <Container>
+          <Heading>Table</Heading>
+          <Container>
+            <Code>{'<Table .../>'}</Code>
+          </Container>
+
+          <Table
+            title="Table Title"
+            columns={[
+              { id: 'col1', label: 'Column 1' },
+              { id: 'col2', label: 'Column 2' },
+              { id: 'col3', label: 'Column 3' },
+              { id: 'col4', label: 'Column 4' },
+              { id: 'col5', label: 'Column 5' },
+              { id: 'col6', label: 'Column 6' },
+              { id: 'col7', label: 'Column 7' },
+              { id: 'col8', label: 'Column 8' },
+              { id: 'col9', label: 'Column 9' },
+              { id: 'col10', label: 'Column 10' },
+              { id: 'col11', label: 'Column 11' },
+              { id: 'col12', label: 'Column 12' },
+            ]}
+            data={[
+              {
+                id: 'row1',
+                col1: 'Row 1 Column 1',
+                col2: 'Row 1 Column 2',
+                col3: 'Row 1 Column 3',
+                col4: 'Row 1 Column 4',
+                col5: 'Row 1 Column 5',
+                col6: 'Row 1 Column 6',
+                col7: 'Row 1 Column 7',
+                col8: 'Row 1 Column 8',
+                col9: 'Row 1 Column 9',
+                col10: 'Row 1 Column 10',
+                col11: 'Row 1 Column 11',
+                col12: 'Row 1 Column 12',
+              },
+              {
+                id: 'row2',
+                col1: 'Row 2 Column 1',
+                col2: 'Row 2 Column 2',
+                col3: 'Row 2 Column 3',
+                col4: 'Row 2 Column 4',
+                col5: 'Row 2 Column 5',
+                col6: 'Row 2 Column 6',
+                col7: 'Row 2 Column 7',
+                col8: 'Row 2 Column 8',
+                col9: 'Row 2 Column 9',
+                col10: 'Row 2 Column 10',
+                col11: 'Row 2 Column 11',
+                col12: 'Row 2 Column 12',
+              },
+              {
+                id: 'row3',
+                col1: 'Row 3 Column 1',
+                col2: 'Row 3 Column 2',
+                col3: 'Row 3 Column 3',
+                col4: 'Row 3 Column 4',
+                col5: 'Row 3 Column 5',
+                col6: 'Row 3 Column 6',
+                col7: 'Row 3 Column 7',
+                col8: 'Row 3 Column 8',
+                col9: 'Row 3 Column 9',
+                col10: 'Row 3 Column 10',
+                col11: 'Row 3 Column 11',
+                col12: 'Row 3 Column 12',
+              },
+              {
+                id: 'row4',
+                col1: 'Row 4 Column 1',
+                col2: 'Row 4 Column 2',
+                col3: 'Row 4 Column 3',
+                col4: 'Row 4 Column 4',
+                col5: 'Row 4 Column 5',
+                col6: 'Row 4 Column 6',
+                col7: 'Row 4 Column 7',
+                col8: 'Row 4 Column 8',
+                col9: 'Row 4 Column 9',
+                col10: 'Row 4 Column 10',
+                col11: 'Row 4 Column 11',
+                col12: 'Row 4 Column 12',
+              },
+              {
+                id: 'row5',
+                col1: 'Row 5 Column 1',
+                col2: 'Row 5 Column 2',
+                col3: 'Row 5 Column 3',
+                col4: 'Row 5 Column 4',
+                col5: 'Row 5 Column 5',
+                col6: 'Row 5 Column 6',
+                col7: 'Row 5 Column 7',
+                col8: 'Row 5 Column 8',
+                col9: 'Row 5 Column 9',
+                col10: 'Row 5 Column 10',
+                col11: 'Row 5 Column 11',
+                col12: 'Row 5 Column 12',
+              },
+              {
+                id: 'row6',
+                col1: 'Row 6 Column 1',
+                col2: 'Row 6 Column 2',
+                col3: 'Row 6 Column 3',
+                col4: 'Row 6 Column 4',
+                col5: 'Row 6 Column 5',
+                col6: 'Row 6 Column 6',
+                col7: 'Row 6 Column 7',
+                col8: 'Row 6 Column 8',
+                col9: 'Row 6 Column 9',
+                col10: 'Row 6 Column 10',
+                col11: 'Row 6 Column 11',
+                col12: 'Row 6 Column 12',
+              },
+            ]}
+            footerValues={[
+              { id: 'footer1', label: 'Footer 1' },
+              { id: 'footer2', label: 'Footer 2' },
+              { id: 'footer3', label: 'Footer 3' },
+              { id: 'footer4', label: 'Footer 4' },
+              { id: 'footer5', label: 'Footer 5' },
+              { id: 'footer6', label: 'Footer 6' },
+              { id: 'footer7', label: 'Footer 7' },
+              { id: 'footer8', label: 'Footer 8' },
+              { id: 'footer9', label: 'Footer 9' },
+              { id: 'footer10', label: 'Footer 10' },
+              { id: 'footer11', label: 'Footer 11' },
+              { id: 'footer12', label: 'Footer 12' },
+            ]}
+          />
+        </Container>
 
         <GridContainer gap={'md'}>
           <Container>

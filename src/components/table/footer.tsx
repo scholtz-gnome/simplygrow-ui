@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import styles from './select.module.css';
+import styles from './table.module.css';
 
 type TableFooterProps = {
   values: { id: string; label: string }[];
@@ -8,15 +8,11 @@ type TableFooterProps = {
 
 export const TableFooter: FC<TableFooterProps> = (props: TableFooterProps) => {
   const footerRow = props.values.map((value) => {
-    return (
-      <td className={styles.tableTd} key={value.id}>
-        {value.label}
-      </td>
-    );
+    return <td key={value.id}>{value.label}</td>;
   });
-  console.debug('>>>', footerRow);
+
   return (
-    <tfoot>
+    <tfoot className={styles.tableFooter}>
       <tr className={styles.tableTr}>{footerRow}</tr>
     </tfoot>
   );

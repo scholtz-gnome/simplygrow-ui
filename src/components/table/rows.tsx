@@ -1,38 +1,30 @@
-import { FC } from 'react';
+import { FC, ReactNode } from 'react';
 
 import styles from './table.module.css';
 
 type TableRowsProps = {
-  data: any[];
+  data: { id: string; [key: string]: string }[];
 };
 
 export const TableRows: FC<TableRowsProps> = (props: TableRowsProps) => {
-  const rows = (
-    <>
-      <tr className={styles.tableTr}>
-        <td data-cell="" className={styles.tableTd}>
-          Row 1 Column 1
+  const rows = props.data.map((row) => {
+    const cells = Object.keys(row).map((key) => {
+      if (key === 'id') {
+        return null;
+      }
+      return (
+        <td className={styles.tableTd} key={key}>
+          {row[key]}
         </td>
-        <td data-cell="" className={styles.tableTd}>
-          Row 1 Column 2
-        </td>
-        <td data-cell="" className={styles.tableTd}>
-          Row 1 Column 3
-        </td>
+      );
+    });
+
+    return (
+      <tr className={styles.tableTr} key={row.id}>
+        {cells}
       </tr>
-      <tr className={styles.tableTr}>
-        <td data-cell="" className={styles.tableTd}>
-          Row 2 Column 1
-        </td>
-        <td data-cell="" className={styles.tableTd}>
-          Row 2 Column 2
-        </td>
-        <td data-cell="" className={styles.tableTd}>
-          Row 3 Column 3
-        </td>
-      </tr>
-    </>
-  );
+    );
+  });
 
   return <tbody>{rows}</tbody>;
 };
