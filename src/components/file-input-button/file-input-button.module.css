@@ -60,11 +60,11 @@
 }
 
 .skillbookThemePrimaryLabel {
-  background-color: #2db857;
+  background-color: #08203c;
 }
 
 .skillbookThemeSecondaryLabel {
-  border: 1px solid #2db857;
+  border: 1px solid #08203c;
 }
 
 .defaultThemePrimaryLabel {
@@ -95,11 +95,11 @@
 }
 
 .skillbookThemePrimaryLabelDisabled {
-  background-color: #2db85788;
+  background-color: #08203c88;
 }
 
 .skillbookThemeSecondaryLabelDisabled {
-  border: 1px solid #2db85788;
+  border: 1px solid #08203c88;
   color: #666;
 }
 
