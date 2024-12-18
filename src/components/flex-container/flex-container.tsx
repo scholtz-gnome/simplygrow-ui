@@ -38,6 +38,7 @@ const FlexContainer: FC<FlexContainerProps> = ({
   const containerStyles = styledContainer ? styles.containerStyles : undefined;
   const wrapStyles = wrap ? styles.flexWrap : undefined;
   const flexDirectionStyles = flexDirection === 'column' ? styles.flexDirectionColumn : undefined;
+  const headingStyles = heading ? styles.withHeading : '';
   let justifyStyles;
   let alignStyles;
   let gapStyles;
@@ -92,7 +93,7 @@ const FlexContainer: FC<FlexContainerProps> = ({
       {heading && <div className={styles.heading}>{heading}</div>}
 
       <div
-        className={`${styles.flexContainer} ${wrapStyles} ${flexDirectionStyles} ${justifyStyles} ${alignStyles} ${gapStyles} ${containerStyles} ${className}`}
+        className={`${styles.flexContainer} ${wrapStyles} ${flexDirectionStyles} ${justifyStyles} ${alignStyles} ${gapStyles} ${containerStyles} ${headingStyles} ${className}`}
       >
         {!!headerText && <Header>{headerText}</Header>}
 

@@ -69,9 +69,12 @@
   gap: 24px;
 }
 
+.withHeading {
+  padding-top: 24px;
+}
+
 .heading {
   background-color: #08203c;
-  margin-bottom: 24px;
   color: white;
   border-radius: 10px 10px 0px 0px;
   padding: 12px 24px;
