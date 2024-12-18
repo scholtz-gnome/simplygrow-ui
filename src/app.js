@@ -124,6 +124,55 @@ function App() {
         </Container>
 
         <Container>
+          <Heading>FlexContainer (with heading)</Heading>
+
+          <Code>
+            {'<FlexContainer justify={"space-between" heading={"Custom heading here"}} wrap={false}></FlexContainer>'}
+          </Code>
+
+          <FlexContainer justify={'space-between'} heading={'Custom heading here'}>
+            <div
+              style={{
+                content: '',
+                height: '350px',
+                width: '265px',
+                backgroundColor: '#CCC',
+                borderRadius: '6px',
+                border: '1px solid orange',
+              }}
+            >
+              1
+            </div>
+
+            <div
+              style={{
+                content: '',
+                height: '350px',
+                width: '265px',
+                backgroundColor: '#CCC',
+                borderRadius: '6px',
+                border: '1px solid orange',
+              }}
+            >
+              2
+            </div>
+
+            <div
+              style={{
+                content: '',
+                height: '350px',
+                width: '265px',
+                backgroundColor: '#CCC',
+                borderRadius: '6px',
+                border: '1px solid orange',
+              }}
+            >
+              3
+            </div>
+          </FlexContainer>
+        </Container>
+
+        <Container>
           <Heading>FlexContainer</Heading>
 
           <Paragraph>With fixed-width children</Paragraph>

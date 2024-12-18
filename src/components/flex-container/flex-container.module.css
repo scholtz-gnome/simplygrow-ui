@@ -68,3 +68,17 @@
 .xlGap {
   gap: 24px;
 }
+
+.heading {
+  background-color: #08203c;
+  margin-bottom: 24px;
+  color: white;
+  border-radius: 10px 10px 0px 0px;
+  padding: 12px 24px;
+  color: #f1f5f9;
+  font-family: Gilroy, sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px; /* 150% */
+}
