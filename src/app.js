@@ -8,6 +8,7 @@ import {
   Heading,
   Input,
   LinkButton,
+  Modal,
   Paragraph,
   Select,
   Textarea,
@@ -468,6 +469,10 @@ function App() {
             </FlexContainer>
           </GridContainer>
         </Container>
+
+        <Modal open={true}>
+          <Paragraph>Hello</Paragraph>
+        </Modal>
       </div>
     </UIProvider>
   );
