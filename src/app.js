@@ -164,6 +164,7 @@ function App() {
               { id: 'footer11', label: 'Footer 11' },
               { id: 'footer12', label: 'Footer 12' },
             ]}
+            selectionEnabled={true}
           />
         </Container>
 

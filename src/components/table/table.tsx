@@ -12,6 +12,7 @@ type TableProps = {
   columns: { id: string; label: string }[];
   data: { id: string; value: string | ReactNode; columnId: string }[][];
   footerValues: { id: string; label: string }[];
+  selectionEnabled?: boolean;
 };
 
 const Table: FC<TableProps> = (props: TableProps) => {
@@ -38,29 +39,31 @@ const Table: FC<TableProps> = (props: TableProps) => {
       break;
   }
 
-  let title = null;
-  if (props.title) {
-    title = <caption className={styles.tableCaption}>{props.title}</caption>;
+  const { title, columns, data, footerValues, selectionEnabled } = props;
+
+  let tableTitle = null;
+  if (title) {
+    tableTitle = <caption className={styles.tableCaption}>{title}</caption>;
   }
 
-  let footer = null;
-  if (props.footerValues) {
-    footer = <TableFooter values={props.footerValues} />;
+  let tableFooter = null;
+  if (footerValues) {
+    tableFooter = <TableFooter values={footerValues} rowSelectionEnabled={selectionEnabled} />;
   }
 
-  let rows = null;
-  // if (props.data.length > 0) {
-  rows = <TableRows data={props.data} />;
+  let tableRows = null;
+  // if (data.length > 0) {
+  tableRows = <TableRows data={data} rowSelectionEnabled={selectionEnabled} />;
   // }
 
   return (
     <div className={styles.wrapper}>
       <div className={`${styles.tableContainer} ${themeStyles}`}>
         <table className={styles.table} style={{ backgroundColor: 'white' }}>
-          {title}
-          <TableHeader columns={props.columns} />
-          {rows}
-          {footer}
+          {tableTitle}
+          <TableHeader columns={columns} rowSelectionEnabled={selectionEnabled} />
+          {tableRows}
+          {tableFooter}
         </table>
       </div>
     </div>

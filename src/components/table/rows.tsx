@@ -1,9 +1,10 @@
-import { FC, ReactNode } from 'react';
+import { FC } from 'react';
 
 import styles from './table.module.css';
 
 type TableRowsProps = {
   data: { id: string; [key: string]: string }[];
+  rowSelectionEnabled?: boolean;
 };
 
 export const TableRows: FC<TableRowsProps> = (props: TableRowsProps) => {
@@ -18,6 +19,14 @@ export const TableRows: FC<TableRowsProps> = (props: TableRowsProps) => {
         </td>
       );
     });
+
+    if (props.rowSelectionEnabled) {
+      cells.unshift(
+        <td key="selection" className={styles.tableTd}>
+          <input type="checkbox" />
+        </td>,
+      );
+    }
 
     return (
       <tr className={styles.tableTr} key={row.id}>
