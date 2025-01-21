@@ -34,7 +34,7 @@ export const TableRows: FC<TableRowsProps> = (props: TableRowsProps) => {
 
       cells.unshift(
         <td key="selection" className={styles.tableTd}>
-          <input type="checkbox" checked={checked} onChange={handleChange} />
+          <input type="checkbox" checked={checked} onChange={handleChange} className={styles.checkbox} />
         </td>,
       );
     }

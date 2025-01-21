@@ -45,3 +45,13 @@
   padding: 1rem;
   font-weight: 600;
 }
+
+/* .checkbox:before {
+  content: '-';
+  text-align: center;
+  vertical-align: middle;
+}
+
+.checkbox:checked:before {
+  content: '';
+} */

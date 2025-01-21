@@ -13,6 +13,8 @@ type TableProps = {
   data: { id: string; value: string | ReactNode; columnId: string }[][];
   footerValues: { id: string; label: string }[];
   selectionEnabled?: boolean;
+  pageSize?: number; // if undefined, show all rows
+  pageSizeOptions?: number[];
 };
 
 const Table: FC<TableProps> = (props: TableProps) => {
@@ -22,6 +24,7 @@ const Table: FC<TableProps> = (props: TableProps) => {
   // const loadingStyles = loading ? styles.loadingStyles : '';
   // const disabledStyles = disabled ? styles.disabledStyles : '';
 
+  const [pageSize, setPageSize] = useState<number | undefined>(props.pageSize);
   const [selectedRowIds, setSelectedRowIds] = useState<string[]>([]);
 
   let themeStyles = '';
@@ -60,6 +63,23 @@ const Table: FC<TableProps> = (props: TableProps) => {
     }
   };
 
+  const chunkDataIntoPages = (data: { id: string; value: string | ReactNode; columnId: string }[][]) => {
+    if (data.length === 0) {
+      return [];
+    }
+
+    if (pageSize === undefined) {
+      return [data];
+    }
+
+    const pages = [];
+    for (let i = 0; i < data.length; i += pageSize) {
+      pages.push(data.slice(i, i + pageSize));
+    }
+
+    return pages;
+  };
+
   const { title, columns, data, footerValues, selectionEnabled } = props;
 
   let tableTitle = null;
@@ -74,9 +94,10 @@ const Table: FC<TableProps> = (props: TableProps) => {
 
   let tableRows = null;
   // if (data.length > 0) {
+  const dataToDisplay = chunkDataIntoPages(data);
   tableRows = (
     <TableRows
-      data={data}
+      data={dataToDisplay}
       rowSelectionEnabled={selectionEnabled}
       selectedRowIds={selectedRowIds}
       onSelect={selectRow}
