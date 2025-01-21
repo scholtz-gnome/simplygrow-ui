@@ -5,6 +5,8 @@ import styles from './table.module.css';
 type TableRowsProps = {
   data: { id: string; [key: string]: string }[];
   rowSelectionEnabled?: boolean;
+  selectedRowIds?: string[];
+  onSelect?: (id: string) => void;
 };
 
 export const TableRows: FC<TableRowsProps> = (props: TableRowsProps) => {
@@ -21,9 +23,18 @@ export const TableRows: FC<TableRowsProps> = (props: TableRowsProps) => {
     });
 
     if (props.rowSelectionEnabled) {
+      const checked = props.selectedRowIds?.includes(row.id);
+
+      let handleChange = undefined;
+      if (props.onSelect !== undefined) {
+        handleChange = () => {
+          props.onSelect(row.id);
+        };
+      }
+
       cells.unshift(
         <td key="selection" className={styles.tableTd}>
-          <input type="checkbox" />
+          <input type="checkbox" checked={checked} onChange={handleChange} />
         </td>,
       );
     }

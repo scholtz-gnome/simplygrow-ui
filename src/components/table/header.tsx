@@ -5,7 +5,8 @@ import styles from './table.module.css';
 type TableHeaderProps = {
   columns: { id: string; label: string }[];
   rowSelectionEnabled?: boolean;
-  onSelectionChange?: (selected: boolean) => void;
+  allSelected?: boolean;
+  onAllSelect?: () => void;
 };
 
 export const TableHeader: FC<TableHeaderProps> = (props: TableHeaderProps) => {
@@ -22,9 +23,10 @@ export const TableHeader: FC<TableHeaderProps> = (props: TableHeaderProps) => {
       <th key="selection" className={styles.tableTh}>
         <input
           type="checkbox"
+          checked={props.allSelected}
           onChange={(event) => {
-            if (props.onSelectionChange) {
-              props.onSelectionChange(event.target.checked);
+            if (props.onAllSelect) {
+              props.onAllSelect(event.target.checked);
             }
           }}
         />

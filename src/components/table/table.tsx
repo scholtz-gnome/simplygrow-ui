@@ -1,4 +1,4 @@
-import { FC, ReactNode, useContext } from 'react';
+import { FC, ReactNode, useContext, useState } from 'react';
 
 import { TableHeader } from './header';
 import { TableFooter } from './footer';
@@ -22,6 +22,8 @@ const Table: FC<TableProps> = (props: TableProps) => {
   // const loadingStyles = loading ? styles.loadingStyles : '';
   // const disabledStyles = disabled ? styles.disabledStyles : '';
 
+  const [selectedRowIds, setSelectedRowIds] = useState<string[]>([]);
+
   let themeStyles = '';
 
   switch (theme) {
@@ -39,6 +41,25 @@ const Table: FC<TableProps> = (props: TableProps) => {
       break;
   }
 
+  const allSelected = selectedRowIds.length === props.data.length;
+
+  const selectAll = () => {
+    if (allSelected) {
+      setSelectedRowIds([]);
+    } else {
+      setSelectedRowIds(props.data.map((row) => row.id));
+    }
+  };
+
+  const selectRow = (rowId: string) => {
+    if (selectedRowIds.includes(rowId)) {
+      const newSelectedRowIds = selectedRowIds.filter((id) => id !== rowId);
+      setSelectedRowIds(newSelectedRowIds);
+    } else {
+      setSelectedRowIds([...selectedRowIds, rowId]);
+    }
+  };
+
   const { title, columns, data, footerValues, selectionEnabled } = props;
 
   let tableTitle = null;
@@ -53,7 +74,14 @@ const Table: FC<TableProps> = (props: TableProps) => {
 
   let tableRows = null;
   // if (data.length > 0) {
-  tableRows = <TableRows data={data} rowSelectionEnabled={selectionEnabled} />;
+  tableRows = (
+    <TableRows
+      data={data}
+      rowSelectionEnabled={selectionEnabled}
+      selectedRowIds={selectedRowIds}
+      onSelect={selectRow}
+    />
+  );
   // }
 
   return (
@@ -61,7 +89,12 @@ const Table: FC<TableProps> = (props: TableProps) => {
       <div className={`${styles.tableContainer} ${themeStyles}`}>
         <table className={styles.table} style={{ backgroundColor: 'white' }}>
           {tableTitle}
-          <TableHeader columns={columns} rowSelectionEnabled={selectionEnabled} />
+          <TableHeader
+            columns={columns}
+            rowSelectionEnabled={selectionEnabled}
+            allSelected={allSelected}
+            onAllSelect={selectAll}
+          />
           {tableRows}
           {tableFooter}
         </table>
