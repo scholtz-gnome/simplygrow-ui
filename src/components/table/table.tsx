@@ -15,8 +15,30 @@ const theme = createTheme({
           backgroundColor: 'rgb(115, 135, 195)',
           color: 'white',
         },
+        columnHeaderTitleContainer: {},
       },
     },
+    MuiIconButton: {
+      styleOverrides: {
+        root: {
+          color: 'white',
+        },
+      },
+    },
+    MuiCheckbox: {
+      styleOverrides: {
+        root: {
+          color: 'white',
+        },
+      },
+    },
+    // MuiButtonBase: {
+    //   styleOverrides: {
+    //     root: {
+    //       color: 'white',
+    //     },
+    //   },
+    // },
   },
 });
 
