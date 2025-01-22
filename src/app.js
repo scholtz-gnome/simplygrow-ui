@@ -169,6 +169,7 @@ function App() {
             rowsPerPageSelectionEnabled={true}
             rowsPerPageOptions={[5, 10, 15, 25, 40]}
             pageSize={4}
+            tableHeight={500}
           />
         </Container>
 

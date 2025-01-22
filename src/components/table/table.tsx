@@ -23,6 +23,7 @@ type TableProps = {
   rowsPerPageOptions?: number[];
   pageSize?: number; // if undefined, show all rows
   pageSizeOptions?: number[];
+  tableHeight?: number;
 };
 
 const chunkDataIntoPages = (data: TableData[], pageSize: number) => {
@@ -149,7 +150,7 @@ const Table: FC<TableProps> = (props: TableProps) => {
 
   return (
     <div className={styles.wrapper}>
-      <div className={`${styles.tableContainer} ${themeStyles}`}>
+      <div className={`${styles.tableContainer} ${themeStyles}`} style={{ height: props.tableHeight }}>
         <table className={styles.table} style={{ backgroundColor: 'white' }}>
           {tableTitle}
           <TableHeader
