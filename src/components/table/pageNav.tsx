@@ -32,22 +32,29 @@ export const TablePageNav = (props: TablePageNav) => {
       <div className={styles.tablePageNavSelectContainer}>
         Rows per page:
         <select className={styles.tablePageNavSelect} onChange={handleRowsPerPageSelection}>
-        {selectorOptions}
+          {selectorOptions}
         </select>
       </div>
     );
   }
 
+  const { currentPage, numberOfPages, onPrevClick, onNextClick } = props;
+  const onFirstPage = currentPage === 1;
+  const onLastPage = currentPage === numberOfPages;
   return (
     <div className={styles.tablePageNavContainer}>
       <div className={styles.tablePageNavText}>
         {rowsPerPageSelector}
         <div>
-          Page {props.currentPage} of {props.numberOfPages}
+          Page {currentPage} of {numberOfPages}
         </div>
         <div className={styles.tablePageNavButtons}>
-          <ActionButton onClick={props.onPrevClick}>Previous</ActionButton>
-          <ActionButton onClick={props.onNextClick}>Next</ActionButton>
+          <ActionButton disabled={onFirstPage} onClick={onPrevClick}>
+            Previous
+          </ActionButton>
+          <ActionButton disabled={onLastPage} onClick={onNextClick}>
+            Next
+          </ActionButton>
         </div>
       </div>
     </div>
