@@ -165,6 +165,7 @@ function App() {
               { id: 'footer12', label: 'Footer 12' },
             ]}
             selectionEnabled={true}
+            pageSize={4}
           />
         </Container>
 
