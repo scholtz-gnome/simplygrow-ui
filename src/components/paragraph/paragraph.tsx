@@ -7,6 +7,7 @@ interface ParagraphProps {
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   alignText?: 'center';
   children: ReactNode;
+  className?: string;
 }
 
 /**
@@ -24,7 +25,7 @@ interface ParagraphProps {
  */
 const Paragraph: FC<
   ParagraphProps & Partial<DetailedHTMLProps<HTMLAttributes<HTMLParagraphElement>, HTMLParagraphElement>>
-> = ({ variant, weight = 'medium', size = 'md', alignText, children, onClick }) => {
+> = ({ variant, weight = 'medium', size = 'md', alignText, children, onClick, className }) => {
   const textAlign = alignText === 'center' ? styles.centerAlign : undefined;
   const variantStyles = variant === 'subtle' ? styles.subtle : styles.defaultVariant;
   const actionStyles = onClick ? styles.action : undefined;
@@ -63,7 +64,7 @@ const Paragraph: FC<
 
   return (
     <p
-      className={`${styles.paragraph} ${textAlign} ${variantStyles} ${weightStyles} ${sizeStyles} ${actionStyles}`}
+      className={`${styles.paragraph} ${textAlign} ${variantStyles} ${weightStyles} ${sizeStyles} ${actionStyles} ${className}`}
       onClick={onClick}
     >
       {children}

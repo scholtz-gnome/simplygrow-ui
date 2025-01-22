@@ -35,7 +35,7 @@
 }
 
 .skillbookTheme:not(:placeholder-shown):valid:focus {
-  border: 1.5px solid #2db857;
+  border: 1.5px solid #08203c;
 }
 
 .defaultTheme:not(:placeholder-shown):valid:focus {

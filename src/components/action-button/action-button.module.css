@@ -55,11 +55,11 @@
 }
 
 .skillbookThemePrimary {
-  background-color: #2db857;
+  background-color: #08203c;
 }
 
 .skillbookThemeSecondary {
-  border: 1px solid #2db857;
+  border: 1px solid #08203c;
 }
 
 .defaultThemePrimary:disabled {
@@ -75,7 +75,7 @@
 }
 
 .skillbookThemePrimary:disabled {
-  background-color: #2db85788;
+  background-color: #08203c88;
 }
 
 .defaultThemeSecondary:disabled {
@@ -94,7 +94,7 @@
 }
 
 .skillbookThemeSecondary:disabled {
-  border: 1px solid #2db85788;
+  border: 1px solid #08203c88;
   color: #666;
 }
 

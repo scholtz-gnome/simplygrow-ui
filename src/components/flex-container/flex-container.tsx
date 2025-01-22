@@ -12,6 +12,7 @@ interface FlexContainerProps {
   styledContainer?: boolean;
   className?: string;
   children: ReactNode;
+  heading?: string;
 }
 
 /**
@@ -31,11 +32,13 @@ const FlexContainer: FC<FlexContainerProps> = ({
   headerText,
   wrap = false,
   styledContainer,
+  heading,
   className,
 }) => {
   const containerStyles = styledContainer ? styles.containerStyles : undefined;
   const wrapStyles = wrap ? styles.flexWrap : undefined;
   const flexDirectionStyles = flexDirection === 'column' ? styles.flexDirectionColumn : undefined;
+  const headingStyles = heading ? styles.withHeading : '';
   let justifyStyles;
   let alignStyles;
   let gapStyles;
@@ -86,14 +89,18 @@ const FlexContainer: FC<FlexContainerProps> = ({
   }
 
   return (
-    <div
-      className={`${styles.flexContainer} ${wrapStyles} ${flexDirectionStyles} ${justifyStyles} ${alignStyles} ${gapStyles} ${containerStyles} ${className}`}
-    >
-      {!!headerText && <Header>{headerText}</Header>}
+    <div>
+      {heading && <div className={styles.heading}>{heading}</div>}
 
-      {styledContainer && <div className={styles.children}>{children}</div>}
+      <div
+        className={`${styles.flexContainer} ${wrapStyles} ${flexDirectionStyles} ${justifyStyles} ${alignStyles} ${gapStyles} ${containerStyles} ${headingStyles} ${className}`}
+      >
+        {!!headerText && <Header>{headerText}</Header>}
 
-      {!styledContainer && children}
+        {styledContainer && <div className={styles.children}>{children}</div>}
+
+        {!styledContainer && children}
+      </div>
     </div>
   );
 };
