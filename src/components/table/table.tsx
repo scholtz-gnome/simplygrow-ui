@@ -119,7 +119,6 @@ const Table: FC<TableProps> = (props: TableProps) => {
   };
 
   const handleColumnSort = (columnId: string) => {
-    console.debug('handleColumnSort');
     const newColumns = Array.from(columns);
     const column = newColumns.find((col) => col.id === columnId);
     if (!column || !column.sort) {
