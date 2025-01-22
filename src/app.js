@@ -27,7 +27,7 @@ function App() {
   const [_file, setFile] = useState(undefined);
 
   return (
-    <UIProvider appTheme={'skillbook'}>
+    <UIProvider appTheme={'peopleflow'}>
       <div
         style={{
           backgroundColor: '#f1f5f9',
@@ -38,11 +38,11 @@ function App() {
           flexDirection: 'column',
         }}
       >
-        <GridContainer gap={'md'}>
-          <Container>
-            <Table />
-          </Container>
-        </GridContainer>
+        <Container>
+          <Heading>Table</Heading>
+          <Code>{'<Table />'}</Code>
+          <Table />
+        </Container>
 
         <GridContainer gap={'md'}>
           <Container>
