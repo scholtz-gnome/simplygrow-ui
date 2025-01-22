@@ -1,9 +1,10 @@
 import { FC } from 'react';
 
+import { TableData } from './table';
 import styles from './table.module.css';
 
 type TableRowsProps = {
-  data: { id: string; [key: string]: string }[];
+  data: TableData[];
   rowSelectionEnabled?: boolean;
   selectedRowIds?: string[];
   onSelect?: (id: string) => void;

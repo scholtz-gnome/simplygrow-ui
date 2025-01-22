@@ -1,12 +1,14 @@
 import { FC } from 'react';
 
+import { TableColumn } from './table';
 import styles from './table.module.css';
 
 type TableHeaderProps = {
-  columns: { id: string; label: string }[];
+  columns: TableColumn[];
   rowSelectionEnabled?: boolean;
   allSelected?: boolean;
   onAllSelect?: () => void;
+  onColumnSortClick?: (columnId: string) => void;
 };
 
 export const TableHeader: FC<TableHeaderProps> = (props: TableHeaderProps) => {
@@ -17,9 +19,22 @@ export const TableHeader: FC<TableHeaderProps> = (props: TableHeaderProps) => {
   };
 
   const headerRow = props.columns.map((column) => {
+    let handleColumnSortClick = undefined;
+    if (props.onColumnSortClick) {
+      handleColumnSortClick = () => props.onColumnSortClick(column.id);
+    }
+
+    let sortIcon = null;
+    if (column.sort) {
+      sortIcon = column.sort === 'asc' ? <span>&#x25B2;</span> : <span>&#x25BC;</span>;
+    }
+
     return (
       <th className={styles.tableTh} key={column.id}>
         {column.label}
+        <div style={{ display: 'inline', marginLeft: 8, fontSize: 'smaller' }} onClick={handleColumnSortClick}>
+          {sortIcon}
+        </div>
       </th>
     );
   });

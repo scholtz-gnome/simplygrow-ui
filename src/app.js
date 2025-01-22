@@ -46,7 +46,7 @@ function App() {
           <Table
             title="Table Title"
             columns={[
-              { id: 'col1', label: 'Column 1' },
+              { id: 'col1', label: 'Column 1', sort: 'asc' },
               { id: 'col2', label: 'Column 2' },
               { id: 'col3', label: 'Column 3' },
               { id: 'col4', label: 'Column 4' },

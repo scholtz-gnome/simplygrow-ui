@@ -1,4 +1,4 @@
-import { FC, ReactNode, useContext, useEffect, useState } from 'react';
+import { FC, useContext, useEffect, useState } from 'react';
 
 import { TableHeader } from './header';
 import { TableFooter } from './footer';
@@ -8,14 +8,20 @@ import styles from './table.module.css';
 import ThemeContext from '../../context';
 import { TablePageNav } from './pageNav';
 
-type TableData = {
+export type TableData = {
   id: string;
   [key: string]: string;
 };
 
+export type TableColumn = {
+  id: string;
+  label: string;
+  sort?: 'asc' | 'desc';
+};
+
 type TableProps = {
   title?: string;
-  columns: { id: string; label: string }[];
+  columns: TableColumn[];
   data: TableData[];
   footerValues: { id: string; label: string }[];
   rowSelectionEnabled?: boolean;
@@ -26,7 +32,7 @@ type TableProps = {
   tableHeight?: number;
 };
 
-const chunkDataIntoPages = (data: TableData[], pageSize: number) => {
+const chunkDataIntoPages = (data: TableData[], pageSize?: number) => {
   if (data.length === 0) {
     return [];
   }
@@ -52,6 +58,7 @@ const Table: FC<TableProps> = (props: TableProps) => {
 
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize, setPageSize] = useState<number | undefined>();
+  const [columns, setColumns] = useState<TableColumn[]>([]);
   const [pages, setPages] = useState<TableData[][]>();
   const [selectedRowIds, setSelectedRowIds] = useState<string[]>([]);
 
@@ -59,13 +66,16 @@ const Table: FC<TableProps> = (props: TableProps) => {
     if (props.pageSize === undefined) {
       return;
     }
+    setColumns(props.columns);
     refreshPages(props.data, props.pageSize);
   }, []);
 
-  const refreshPages = (data: TableData[], pageSize: number) => {
+  const refreshPages = (data: TableData[], pageSize?: number) => {
     const pages = chunkDataIntoPages(data, pageSize);
     setPages(pages);
-    setPageSize(props.pageSize);
+    if (pageSize) {
+      setPageSize(props.pageSize);
+    }
   };
 
   let themeStyles = '';
@@ -108,7 +118,33 @@ const Table: FC<TableProps> = (props: TableProps) => {
     refreshPages(props.data, rowsPerPage);
   };
 
-  const { title, columns, data, footerValues, rowSelectionEnabled } = props;
+  const handleColumnSort = (columnId: string) => {
+    console.debug('handleColumnSort');
+    const newColumns = Array.from(columns);
+    const column = newColumns.find((col) => col.id === columnId);
+    if (!column || !column.sort) {
+      return;
+    }
+
+    const sortedData = props.data.sort((a, b) => {
+      if (column.sort === 'asc') {
+        return a[columnId].localeCompare(b[columnId]);
+      } else {
+        return b[columnId].localeCompare(a[columnId]);
+      }
+    });
+
+    const columnIndex = newColumns.findIndex((col) => col.id === columnId);
+    if (column.sort === 'asc') {
+      newColumns[columnIndex] = { ...column, sort: 'desc' };
+    } else {
+      newColumns[columnIndex] = { ...column, sort: 'asc' };
+    }
+    setColumns(newColumns);
+    refreshPages(sortedData, pageSize);
+  };
+
+  const { title, footerValues, rowSelectionEnabled } = props;
 
   let tableTitle = null;
   if (title) {
@@ -158,6 +194,7 @@ const Table: FC<TableProps> = (props: TableProps) => {
             rowSelectionEnabled={rowSelectionEnabled}
             allSelected={allSelected}
             onAllSelect={selectAll}
+            onColumnSortClick={handleColumnSort}
           />
           {tableRows}
           {tableFooter}
