@@ -10,6 +10,12 @@ type TableHeaderProps = {
 };
 
 export const TableHeader: FC<TableHeaderProps> = (props: TableHeaderProps) => {
+  const handleAllSelection = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (props.onAllSelect) {
+      props.onAllSelect();
+    }
+  };
+
   const headerRow = props.columns.map((column) => {
     return (
       <th className={styles.tableTh} key={column.id}>
@@ -21,15 +27,7 @@ export const TableHeader: FC<TableHeaderProps> = (props: TableHeaderProps) => {
   if (props.rowSelectionEnabled) {
     headerRow.unshift(
       <th key="selection" className={styles.tableTh}>
-        <input
-          type="checkbox"
-          checked={props.allSelected}
-          onChange={(event) => {
-            if (props.onAllSelect) {
-              props.onAllSelect(event.target.checked);
-            }
-          }}
-        />
+        <input type="checkbox" checked={props.allSelected} onChange={handleAllSelection} />
       </th>,
     );
   }
