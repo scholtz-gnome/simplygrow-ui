@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+
 import {
   ActionButton,
   Code,
@@ -11,6 +12,7 @@ import {
   Modal,
   Paragraph,
   Select,
+  Table,
   Textarea,
 } from './components';
 import Container from './container';
@@ -36,6 +38,12 @@ function App() {
           flexDirection: 'column',
         }}
       >
+        <GridContainer gap={'md'}>
+          <Container>
+            <Table />
+          </Container>
+        </GridContainer>
+
         <GridContainer gap={'md'}>
           <Container>
             <Heading>Action Buttons</Heading>
@@ -470,7 +478,7 @@ function App() {
           </GridContainer>
         </Container>
 
-        <Modal open={true}>
+        <Modal open={false}>
           <Paragraph>Hello</Paragraph>
         </Modal>
       </div>
