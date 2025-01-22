@@ -56,13 +56,22 @@
 
 .tablePageNavText {
   display: flex;
-  gap: 48px;
+  gap: 64px;
   align-items: center;
 }
 
 .tablePageNavButtons {
   display: flex;
   gap: 16px;
+}
+
+.tablePageNavSelectContainer {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.tablePageNavSelect {
 }
 
 /* .checkbox:before {

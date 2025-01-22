@@ -165,7 +165,9 @@ function App() {
               { id: 'footer11', label: 'Footer 11' },
               { id: 'footer12', label: 'Footer 12' },
             ]}
-            selectionEnabled={true}
+            rowSelectionEnabled={true}
+            rowsPerPageSelectionEnabled={true}
+            rowsPerPageOptions={[5, 10, 15, 25, 40]}
             pageSize={4}
           />
         </Container>
@@ -604,7 +606,7 @@ function App() {
           </GridContainer>
         </Container>
 
-        <Modal open={true}>
+        <Modal open={false}>
           <Paragraph>Hello</Paragraph>
         </Modal>
       </div>

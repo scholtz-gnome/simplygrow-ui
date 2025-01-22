@@ -8,17 +8,24 @@ import styles from './table.module.css';
 import ThemeContext from '../../context';
 import { TablePageNav } from './pageNav';
 
+type TableData = {
+  id: string;
+  [key: string]: string;
+};
+
 type TableProps = {
   title?: string;
   columns: { id: string; label: string }[];
-  data: { id: string; [key: string]: string }[];
+  data: TableData[];
   footerValues: { id: string; label: string }[];
-  selectionEnabled?: boolean;
+  rowSelectionEnabled?: boolean;
+  rowsPerPageSelectionEnabled?: boolean;
+  rowsPerPageOptions?: number[];
   pageSize?: number; // if undefined, show all rows
   pageSizeOptions?: number[];
 };
 
-const chunkDataIntoPages = (data: { id: string; [key: string]: string }[], pageSize: number) => {
+const chunkDataIntoPages = (data: TableData[], pageSize: number) => {
   if (data.length === 0) {
     return [];
   }
@@ -44,17 +51,21 @@ const Table: FC<TableProps> = (props: TableProps) => {
 
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize, setPageSize] = useState<number | undefined>();
-  const [pages, setPages] = useState<{ id: string; [key: string]: string }[][]>();
+  const [pages, setPages] = useState<TableData[][]>();
   const [selectedRowIds, setSelectedRowIds] = useState<string[]>([]);
 
   useEffect(() => {
     if (props.pageSize === undefined) {
       return;
     }
-    const pages = chunkDataIntoPages(props.data, props.pageSize);
+    refreshPages(props.data, props.pageSize);
+  }, []);
+
+  const refreshPages = (data: TableData[], pageSize: number) => {
+    const pages = chunkDataIntoPages(data, pageSize);
     setPages(pages);
     setPageSize(props.pageSize);
-  }, []);
+  };
 
   let themeStyles = '';
 
@@ -92,7 +103,11 @@ const Table: FC<TableProps> = (props: TableProps) => {
     }
   };
 
-  const { title, columns, data, footerValues, selectionEnabled } = props;
+  const handleRowPerPageChange = (rowsPerPage: number) => {
+    refreshPages(props.data, rowsPerPage);
+  };
+
+  const { title, columns, data, footerValues, rowSelectionEnabled } = props;
 
   let tableTitle = null;
   if (title) {
@@ -101,7 +116,7 @@ const Table: FC<TableProps> = (props: TableProps) => {
 
   let tableFooter = null;
   if (footerValues) {
-    tableFooter = <TableFooter values={footerValues} rowSelectionEnabled={selectionEnabled} />;
+    tableFooter = <TableFooter values={footerValues} rowSelectionEnabled={rowSelectionEnabled} />;
   }
 
   let tablePageNav = null;
@@ -110,8 +125,11 @@ const Table: FC<TableProps> = (props: TableProps) => {
       <TablePageNav
         currentPage={currentPage}
         numberOfPages={pages?.length || 0}
+        rowsPerPageSelectionEnabled={props.rowsPerPageSelectionEnabled}
+        rowsPerPageOptions={props.rowsPerPageOptions}
         onPrevClick={() => setCurrentPage((currentPage) => currentPage - 1)}
         onNextClick={() => setCurrentPage((currentPage) => currentPage + 1)}
+        onRowsPerPageChange={handleRowPerPageChange}
       />
     );
   }
@@ -122,7 +140,7 @@ const Table: FC<TableProps> = (props: TableProps) => {
     tableRows = (
       <TableRows
         data={pages[currentPageIndex]}
-        rowSelectionEnabled={selectionEnabled}
+        rowSelectionEnabled={rowSelectionEnabled}
         selectedRowIds={selectedRowIds}
         onSelect={selectRow}
       />
@@ -136,15 +154,15 @@ const Table: FC<TableProps> = (props: TableProps) => {
           {tableTitle}
           <TableHeader
             columns={columns}
-            rowSelectionEnabled={selectionEnabled}
+            rowSelectionEnabled={rowSelectionEnabled}
             allSelected={allSelected}
             onAllSelect={selectAll}
           />
           {tableRows}
           {tableFooter}
         </table>
-        {tablePageNav}
       </div>
+      {tablePageNav}
     </div>
   );
 };
