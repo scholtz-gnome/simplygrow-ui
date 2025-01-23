@@ -16,6 +16,7 @@ import ThemeContext from '../../context';
 type TableProps = {
   rows: GridRowsProp;
   columns: GridColDef[];
+  loading?: boolean;
   selectedRowIds?: string[];
   pageSize?: number;
   pageSizeOptions?: number[];
@@ -32,6 +33,7 @@ const Table: FC<TableProps> = (props: TableProps) => {
   const {
     rows,
     columns,
+    loading,
     pageSize = 10,
     pageSizeOptions = [5, 10, 15],
     tableHeight = 400,
@@ -88,6 +90,7 @@ const Table: FC<TableProps> = (props: TableProps) => {
         // filterModel={filterState}
         pageSizeOptions={pageSizeOptions}
         initialState={paginationState}
+        loading={loading}
         sx={sxStyleOverrides}
         onCellClick={onRowClick}
         onRowSelectionModelChange={onRowSelection}
