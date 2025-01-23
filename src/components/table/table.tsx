@@ -1,48 +1,13 @@
 import { FC } from 'react';
-import { createTheme, ThemeProvider } from '@mui/material';
-import { DataGrid, GridRowsProp, GridColDef } from '@mui/x-data-grid';
+import {
+  DataGrid,
+  GridRowsProp,
+  GridColDef,
+  // GridFilterItem,
+  // GridCallbackDetails,
+  // GridFilterModel,
+} from '@mui/x-data-grid';
 import type {} from '@mui/x-data-grid/themeAugmentation';
-
-const theme = createTheme({
-  components: {
-    // Use `MuiDataGrid` on DataGrid, DataGridPro and DataGridPremium
-    MuiDataGrid: {
-      styleOverrides: {
-        root: {
-          // backgroundColor: 'red',
-        },
-        columnHeader: {
-          backgroundColor: 'rgb(115, 135, 195)',
-          color: 'white',
-        },
-        columnHeaderTitle: {
-          fontWeight: 'bolder',
-        },
-      },
-    },
-    MuiIconButton: {
-      styleOverrides: {
-        root: {
-          color: 'white',
-        },
-      },
-    },
-    MuiSvgIcon: {
-      styleOverrides: {
-        root: {
-          fill: 'rgb(0, 200, 255)',
-        },
-      },
-    },
-    MuiCheckbox: {
-      styleOverrides: {
-        root: {
-          color: 'white',
-        },
-      },
-    },
-  },
-});
 
 type TableProps = {
   rows: GridRowsProp;
@@ -51,8 +16,10 @@ type TableProps = {
   pageSize?: number;
   pageSizeOptions?: number[];
   tableHeight?: number;
+  // filterItems?: GridFilterItem[];
   onRowClick?: (params: any) => void;
   onRowSelection?: (selectedRowIds: string[]) => void;
+  // onFilterChange?: ()
 };
 
 const Table: FC<TableProps> = (props: TableProps) => {
@@ -74,31 +41,59 @@ const Table: FC<TableProps> = (props: TableProps) => {
     },
   };
 
+  // const filterState = {
+  //   items: props.filterItems || [],
+  // };
+
   return (
     <div style={{ height: tableHeight, width: '100%' }}>
-      <ThemeProvider theme={theme}>
-        <DataGrid
-          rows={rows}
-          columns={columns}
-          checkboxSelection={true}
-          disableRowSelectionOnClick={true}
-          rowSelectionModel={props.selectedRowsIds}
-          onRowSelectionModelChange={onRowSelection}
-          pageSizeOptions={pageSizeOptions}
-          initialState={paginationState}
-          sx={styleOverrides}
-          onCellClick={onRowClick}
-        />
-      </ThemeProvider>
+      {/* <ThemeProvider theme={theme}> */}
+      <DataGrid
+        rows={rows}
+        columns={columns}
+        checkboxSelection={true}
+        disableRowSelectionOnClick={true}
+        rowSelectionModel={props.selectedRowsIds}
+        // filterModel={filterState}
+        pageSizeOptions={pageSizeOptions}
+        initialState={paginationState}
+        sx={styleOverrides}
+        onCellClick={onRowClick}
+        onRowSelectionModelChange={onRowSelection}
+        // onFilterModelChange={(model: GridFilterModel, details: GridCallbackDetails<'filter'>) => {
+        //   console.debug('MODEL', model);
+        //   console.debug('DETAILS', details);
+        // }}
+      />
+      {/* </ThemeProvider> */}
     </div>
   );
 };
 
 const styleOverrides = {
+  borderRadius: '8px',
   '& .MuiDataGrid-cell:hover': {
     cursor: 'pointer',
   },
-  borderRadius: '8px',
+  '.MuiDataGrid-columnHeader': {
+    backgroundColor: 'rgb(115, 135, 195)',
+    color: 'white',
+  },
+  '.MuiDataGrid-columnHeaderTitle': {
+    fontWeight: 'bolder',
+  },
+  '.MuiIconButton': {
+    color: 'white',
+  },
+  '.MuiDataGrid-columnHeaderTitleContainerContent .MuiCheckbox-root': {
+    color: 'white',
+  },
+  '.MuiDataGrid-columnHeader .MuiSvgIcon-root': {
+    color: 'white',
+  },
+  '.MuiDataGrid-cell .MuiSvgIcon-root': {
+    fill: 'rgb(115, 135, 195)',
+  },
 };
 
 export default Table;
