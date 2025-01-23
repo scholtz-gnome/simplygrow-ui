@@ -1,24 +1,30 @@
-import { FC } from 'react';
+import { FC, useContext } from 'react';
 import {
   DataGrid,
   GridRowsProp,
   GridColDef,
+  GridRowClassNameParams,
   // GridFilterItem,
   // GridCallbackDetails,
   // GridFilterModel,
 } from '@mui/x-data-grid';
-import type {} from '@mui/x-data-grid/themeAugmentation';
+
+import styles from './table.module.css';
+import { styleOverrides } from './table.styleOverrides';
+import ThemeContext from '../../context';
 
 type TableProps = {
   rows: GridRowsProp;
   columns: GridColDef[];
-  selectedRowsIds?: string[];
+  selectedRowIds?: string[];
   pageSize?: number;
   pageSizeOptions?: number[];
   tableHeight?: number;
+  minCellWidth?: number;
   // filterItems?: GridFilterItem[];
   onRowClick?: (params: any) => void;
   onRowSelection?: (selectedRowIds: string[]) => void;
+  getRowClassName?: (params: GridRowClassNameParams) => string;
   // onFilterChange?: ()
 };
 
@@ -28,10 +34,34 @@ const Table: FC<TableProps> = (props: TableProps) => {
     columns,
     pageSize = 10,
     pageSizeOptions = [5, 10, 15],
-    tableHeight = 300,
+    tableHeight = 400,
+    minCellWidth = 120,
     onRowClick,
     onRowSelection,
   } = props;
+
+  const theme = useContext(ThemeContext);
+  let sxStyleOverrides = undefined;
+  switch (theme) {
+    case 'peopleflow':
+      sxStyleOverrides = styleOverrides.peopleflow;
+      break;
+    case 'worklight':
+      sxStyleOverrides = styleOverrides.worklight;
+      break;
+    case 'skillbook':
+      sxStyleOverrides = styleOverrides.skillbook;
+      break;
+    case undefined:
+      break;
+  }
+
+  const applyMinCellWidth = (columns: GridColDef[]) => {
+    columns.forEach((column) => {
+      column.minWidth = minCellWidth;
+    });
+    return columns;
+  };
 
   const paginationState = {
     pagination: {
@@ -45,19 +75,20 @@ const Table: FC<TableProps> = (props: TableProps) => {
   //   items: props.filterItems || [],
   // };
 
+  const tableColumns = applyMinCellWidth(columns);
+
   return (
-    <div style={{ height: tableHeight, width: '100%' }}>
-      {/* <ThemeProvider theme={theme}> */}
+    <div className={styles.tableContainer} style={{ height: tableHeight }}>
       <DataGrid
         rows={rows}
-        columns={columns}
+        columns={tableColumns}
         checkboxSelection={true}
         disableRowSelectionOnClick={true}
-        rowSelectionModel={props.selectedRowsIds}
+        rowSelectionModel={props.selectedRowIds}
         // filterModel={filterState}
         pageSizeOptions={pageSizeOptions}
         initialState={paginationState}
-        sx={styleOverrides}
+        sx={sxStyleOverrides}
         onCellClick={onRowClick}
         onRowSelectionModelChange={onRowSelection}
         // onFilterModelChange={(model: GridFilterModel, details: GridCallbackDetails<'filter'>) => {
@@ -66,35 +97,8 @@ const Table: FC<TableProps> = (props: TableProps) => {
         // }}
         disableColumnResize={true}
       />
-      {/* </ThemeProvider> */}
     </div>
   );
-};
-
-const styleOverrides = {
-  borderRadius: '8px',
-  '& .MuiDataGrid-cell:hover': {
-    cursor: 'pointer',
-  },
-  '.MuiDataGrid-columnHeader': {
-    backgroundColor: 'rgb(115, 135, 195)',
-    color: 'white',
-  },
-  '.MuiDataGrid-columnHeaderTitle': {
-    fontWeight: 'bolder',
-  },
-  '.MuiIconButton': {
-    color: 'white',
-  },
-  '.MuiDataGrid-columnHeaderTitleContainerContent .MuiCheckbox-root': {
-    color: 'white',
-  },
-  '.MuiDataGrid-columnHeader .MuiSvgIcon-root': {
-    color: 'white',
-  },
-  '.MuiDataGrid-cell .MuiSvgIcon-root': {
-    fill: 'rgb(115, 135, 195)',
-  },
 };
 
 export default Table;

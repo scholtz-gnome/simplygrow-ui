@@ -581,12 +581,12 @@ function App() {
   ];
 
   const convertPfColumnConfigToGridColDef = (columnConfig) => {
+    // this function will be removed and exist in PF's TableService file
     return columnConfig.map((column) => {
       return {
         field: column.id,
         headerName: column.label,
         flex: column.sizeFactor,
-        minWidth: 80,
       };
     });
   };
@@ -605,11 +605,15 @@ function App() {
       >
         <Container>
           <Heading>Table</Heading>
-          <Code>{'<Table />'}</Code>
+          <Code>
+            {
+              '<Table rows={...} columns={...} selectedRowIds={[...]} onRowClick={(params) => ...} onRowSelection={(selectedRowIds) => ...} />'
+            }
+          </Code>
           <Table
             rows={peopleflowTableData}
             columns={convertPfColumnConfigToGridColDef(peopleflowColumnConfig)}
-            selectedRowsIds={selectedTableRows}
+            selectedRowIds={selectedTableRows}
             onRowSelection={(selectedRows) => setSelectedTableRows(selectedRows)}
           />
         </Container>
