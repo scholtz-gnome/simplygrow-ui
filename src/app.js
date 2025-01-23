@@ -25,6 +25,7 @@ function App() {
   const [textarea, setTextarea] = useState('');
   const [selectValue, setSelectValue] = useState('');
   const [_file, setFile] = useState(undefined);
+  const [selectedTableRows, setSelectedTableRows] = useState([2]);
 
   return (
     <UIProvider appTheme={'peopleflow'}>
@@ -41,7 +42,20 @@ function App() {
         <Container>
           <Heading>Table</Heading>
           <Code>{'<Table />'}</Code>
-          <Table />
+          <Table
+            rows={[
+              { id: 1, col1: 'Hello', col2: 'World', col3: '!' },
+              { id: 2, col1: 'DataGridPro', col2: 'is Awesome', col3: '!!' },
+              { id: 3, col1: 'MUI', col2: 'is Amazing', col3: '!!!' },
+            ]}
+            columns={[
+              { field: 'col1', headerName: 'Column 1', flex: 1, minWidth: 80 },
+              { field: 'col2', headerName: 'Column 2', flex: 1, minWidth: 80 },
+              { field: 'col3', headerName: 'Column 3', flex: 1, minWidth: 80 },
+            ]}
+            selectedRowsIds={selectedTableRows}
+            onRowSelection={(selectedRows) => setSelectedTableRows(selectedRows)}
+          />
         </Container>
 
         <GridContainer gap={'md'}>

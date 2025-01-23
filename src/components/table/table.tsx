@@ -41,38 +41,64 @@ const theme = createTheme({
         },
       },
     },
-    // MuiButtonBase: {
-    //   styleOverrides: {
-    //     root: {
-    //       color: 'white',
-    //     },
-    //   },
-    // },
   },
 });
 
-type TableProps = {};
+type TableProps = {
+  rows: GridRowsProp;
+  columns: GridColDef[];
+  selectedRowsIds?: string[];
+  pageSize?: number;
+  pageSizeOptions?: number[];
+  tableHeight?: number;
+  onRowClick?: (params: any) => void;
+  onRowSelection?: (selectedRowIds: string[]) => void;
+};
 
-const Table: FC<TableProps> = () => {
-  const rows: GridRowsProp = [
-    { id: 1, col1: 'Hello', col2: 'World', col3: '!' },
-    { id: 2, col1: 'DataGridPro', col2: 'is Awesome', col3: '!!' },
-    { id: 3, col1: 'MUI', col2: 'is Amazing', col3: '!!!' },
-  ];
+const Table: FC<TableProps> = (props: TableProps) => {
+  const {
+    rows,
+    columns,
+    pageSize = 10,
+    pageSizeOptions = [5, 10, 15],
+    tableHeight = 300,
+    onRowClick,
+    onRowSelection,
+  } = props;
 
-  const columns: GridColDef[] = [
-    { field: 'col1', headerName: 'Column 1', flex: 1, minWidth: 80 },
-    { field: 'col2', headerName: 'Column 2', flex: 1, minWidth: 80 },
-    { field: 'col3', headerName: 'Column 3', flex: 1, minWidth: 80 },
-  ];
+  const paginationState = {
+    pagination: {
+      paginationModel: {
+        pageSize,
+      },
+    },
+  };
 
   return (
-    <div style={{ height: 300, width: '100%' }}>
+    <div style={{ height: tableHeight, width: '100%' }}>
       <ThemeProvider theme={theme}>
-        <DataGrid rows={rows} columns={columns} checkboxSelection={true} disableRowSelectionOnClick={true} />
+        <DataGrid
+          rows={rows}
+          columns={columns}
+          checkboxSelection={true}
+          disableRowSelectionOnClick={true}
+          rowSelectionModel={props.selectedRowsIds}
+          onRowSelectionModelChange={onRowSelection}
+          pageSizeOptions={pageSizeOptions}
+          initialState={paginationState}
+          sx={styleOverrides}
+          onCellClick={onRowClick}
+        />
       </ThemeProvider>
     </div>
   );
+};
+
+const styleOverrides = {
+  '& .MuiDataGrid-cell:hover': {
+    cursor: 'pointer',
+  },
+  borderRadius: '8px',
 };
 
 export default Table;
