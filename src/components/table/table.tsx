@@ -64,6 +64,7 @@ const Table: FC<TableProps> = (props: TableProps) => {
         //   console.debug('MODEL', model);
         //   console.debug('DETAILS', details);
         // }}
+        disableColumnResize={true}
       />
       {/* </ThemeProvider> */}
     </div>
