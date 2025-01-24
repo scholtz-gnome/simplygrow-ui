@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+
 import {
   ActionButton,
   Code,
@@ -11,11 +12,17 @@ import {
   Modal,
   Paragraph,
   Select,
+  Table,
   Textarea,
 } from './components';
+import {
+  peopleflowTableData,
+  peopleflowColumnConfig,
+  convertPfColumnConfigToGridColDef,
+} from './components/table/peopleflow';
 import Container from './container';
-import './index.css';
 import { UIProvider } from './providers';
+import './index.css';
 
 function App() {
   const [email, setEmail] = useState('');
@@ -23,9 +30,10 @@ function App() {
   const [textarea, setTextarea] = useState('');
   const [selectValue, setSelectValue] = useState('');
   const [_file, setFile] = useState(undefined);
+  const [selectedTableRows, setSelectedTableRows] = useState([2]);
 
   return (
-    <UIProvider appTheme={'skillbook'}>
+    <UIProvider appTheme={'peopleflow'}>
       <div
         style={{
           backgroundColor: '#f1f5f9',
@@ -36,6 +44,21 @@ function App() {
           flexDirection: 'column',
         }}
       >
+        <Container>
+          <Heading>Table</Heading>
+          <Code>
+            {
+              '<Table rows={...} columns={...} selectedRowIds={[...]} onRowClick={(params) => ...} onRowSelection={(selectedRowIds) => ...} />'
+            }
+          </Code>
+          <Table
+            rows={peopleflowTableData}
+            columns={convertPfColumnConfigToGridColDef(peopleflowColumnConfig)}
+            selectedRowIds={selectedTableRows}
+            onRowSelection={(selectedRows) => setSelectedTableRows(selectedRows)}
+          />
+        </Container>
+
         <GridContainer gap={'md'}>
           <Container>
             <Heading>Action Buttons</Heading>
@@ -470,7 +493,7 @@ function App() {
           </GridContainer>
         </Container>
 
-        <Modal open={true}>
+        <Modal open={false}>
           <Paragraph>Hello</Paragraph>
         </Modal>
       </div>
