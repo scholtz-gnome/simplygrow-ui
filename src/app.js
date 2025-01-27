@@ -55,11 +55,9 @@ function App() {
             rows={peopleflowTableData}
             columns={convertPfColumnConfigToGridColDef(peopleflowColumnConfig)}
             selectedRowIds={selectedTableRows}
-            onRowClick={(params) => {
-              if (params.field === '__check__') {
-                return;
-              }
-              console.log('CLICK', params);
+            rowSelection={true}
+            onRowClick={() => {
+              console.log('CLICK');
             }}
             onRowSelection={(selectedRows) => setSelectedTableRows(selectedRows)}
           />

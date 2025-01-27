@@ -4,6 +4,7 @@ import {
   GridRowsProp,
   GridColDef,
   GridRowClassNameParams,
+  GridEventListener,
   // GridFilterItem,
   // GridCallbackDetails,
   // GridFilterModel,
@@ -17,6 +18,7 @@ type TableProps = {
   rows: GridRowsProp;
   columns: GridColDef[];
   loading?: boolean;
+  rowSelection?: boolean;
   selectedRowIds?: string[];
   pageSize?: number;
   pageSizeOptions?: number[];
@@ -38,6 +40,7 @@ const Table: FC<TableProps> = (props: TableProps) => {
     pageSizeOptions = [5, 10, 15],
     tableHeight = 400,
     minCellWidth = 120,
+    rowSelection = false,
     onRowClick,
     onRowSelection,
   } = props;
@@ -65,6 +68,16 @@ const Table: FC<TableProps> = (props: TableProps) => {
     return columns;
   };
 
+  const handleRowClick: GridEventListener<'cellClick'> = (params) => {
+    if (!onRowClick) {
+      return;
+    }
+    if (params.field === '__check__') {
+      return;
+    }
+    onRowClick(params);
+  };
+
   const paginationState = {
     pagination: {
       paginationModel: {
@@ -78,21 +91,22 @@ const Table: FC<TableProps> = (props: TableProps) => {
   // };
 
   const tableColumns = applyMinCellWidth(columns);
+  const disableRowSelectionOnClick = rowSelection && Boolean(onRowClick);
 
   return (
     <div className={styles.tableContainer} style={{ height: tableHeight }}>
       <DataGrid
         rows={rows}
         columns={tableColumns}
-        checkboxSelection={true}
-        disableRowSelectionOnClick={true}
+        checkboxSelection={rowSelection}
+        disableRowSelectionOnClick={disableRowSelectionOnClick}
         rowSelectionModel={props.selectedRowIds}
         // filterModel={filterState}
         pageSizeOptions={pageSizeOptions}
         initialState={paginationState}
         loading={loading}
         sx={sxStyleOverrides}
-        onCellClick={onRowClick}
+        onCellClick={handleRowClick}
         onRowSelectionModelChange={onRowSelection}
         // onFilterModelChange={(model: GridFilterModel, details: GridCallbackDetails<'filter'>) => {
         //   console.debug('MODEL', model);
