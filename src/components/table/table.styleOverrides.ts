@@ -24,6 +24,12 @@ export const styleOverrides = {
     '.MuiDataGrid-cell .MuiSvgIcon-root': {
       fill: 'rgb(115, 135, 195)',
     },
+    '.MuiDataGrid-cell:focus': {
+      outline: 'none',
+    },
+    '.MuiDataGrid-cell:focus-within': {
+      outline: 'none',
+    },
   },
   skillbook: {},
   worklight: {},
