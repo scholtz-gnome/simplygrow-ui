@@ -28,6 +28,8 @@ type TableProps = {
   // filterItems?: GridFilterItem[];
   toolbar?: GridSlotsComponentsProps['toolbar'];
   footer?: GridSlotsComponentsProps['footer'];
+  toolbarProps?: Record<string, any>;
+  footerProps?: Record<string, any>;
   onRowClick?: (params: any) => void;
   onRowSelection?: (selectedRowIds: string[]) => void;
   getRowClassName?: (params: GridRowClassNameParams) => string;
@@ -45,7 +47,9 @@ const Table: FC<TableProps> = (props: TableProps) => {
     minCellWidth = 120,
     rowSelection = false,
     toolbar,
+    toolbarProps,
     footer,
+    footerProps,
     onRowClick,
     onRowSelection,
   } = props;
@@ -106,6 +110,19 @@ const Table: FC<TableProps> = (props: TableProps) => {
     };
   }
 
+  let slotProps = {};
+  if (toolbar && toolbarProps) {
+    slotProps = {
+      toolbar: toolbarProps,
+    };
+  }
+  if (footer && footerProps) {
+    slotProps = {
+      ...slotProps,
+      footer: footerProps,
+    };
+  }
+
   return (
     <div className={styles.tableContainer} style={{ height: tableHeight }}>
       <DataGrid
@@ -127,6 +144,7 @@ const Table: FC<TableProps> = (props: TableProps) => {
         // }}
         disableColumnResize={true}
         slots={slots}
+        slotProps={slotProps}
       />
     </div>
   );
