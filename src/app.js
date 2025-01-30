@@ -20,6 +20,7 @@ import {
   peopleflowColumnConfig,
   convertPfColumnConfigToGridColDef,
 } from './components/table/peopleflow';
+import { TableToolbar, TableFooter } from './components/table';
 import Container from './container';
 import { UIProvider } from './providers';
 import './index.css';
@@ -60,6 +61,8 @@ function App() {
               console.log('CLICK');
             }}
             onRowSelection={(selectedRows) => setSelectedTableRows(selectedRows)}
+            toolbar={TableToolbar}
+            footer={TableFooter}
           />
         </Container>
 

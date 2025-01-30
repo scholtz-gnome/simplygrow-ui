@@ -1,10 +1,9 @@
+import { gridClasses } from '@mui/x-data-grid';
+
 export const styleOverrides = {
   overflowX: 'auto',
   borderRadius: '8px',
   peopleflow: {
-    '& .MuiDataGrid-cell:hover': {
-      cursor: 'pointer',
-    },
     '.MuiDataGrid-columnHeader': {
       backgroundColor: 'rgb(115, 135, 195)',
       color: 'white',
@@ -24,13 +23,16 @@ export const styleOverrides = {
     '.MuiDataGrid-cell .MuiSvgIcon-root': {
       fill: 'rgb(115, 135, 195)',
     },
-    '.MuiDataGrid-cell:focus': {
+    '.MuiDataGrid-columnSeparator .MuiDataGrid-columnSeparator--sideRight': {
+      display: 'none',
+    },
+    '& .MuiDataGrid-cell:hover': {
+      cursor: 'pointer',
+    },
+    [`& .${gridClasses.cell}:focus, & .${gridClasses.cell}:focus-within`]: {
       outline: 'none',
     },
-    '.MuiDataGrid-columnHeader:focus': {
-      outline: 'none',
-    },
-    '.MuiDataGrid-cell:focus-within': {
+    [`& .${gridClasses.columnHeader}:focus, & .${gridClasses.columnHeader}:focus-within`]: {
       outline: 'none',
     },
   },

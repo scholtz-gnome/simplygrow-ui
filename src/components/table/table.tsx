@@ -5,6 +5,7 @@ import {
   GridColDef,
   GridRowClassNameParams,
   GridEventListener,
+  GridSlotsComponentsProps,
   // GridFilterItem,
   // GridCallbackDetails,
   // GridFilterModel,
@@ -25,6 +26,8 @@ type TableProps = {
   tableHeight?: number;
   minCellWidth?: number;
   // filterItems?: GridFilterItem[];
+  toolbar?: GridSlotsComponentsProps['toolbar'];
+  footer?: GridSlotsComponentsProps['footer'];
   onRowClick?: (params: any) => void;
   onRowSelection?: (selectedRowIds: string[]) => void;
   getRowClassName?: (params: GridRowClassNameParams) => string;
@@ -41,6 +44,8 @@ const Table: FC<TableProps> = (props: TableProps) => {
     tableHeight = 400,
     minCellWidth = 120,
     rowSelection = false,
+    toolbar,
+    footer,
     onRowClick,
     onRowSelection,
   } = props;
@@ -93,6 +98,14 @@ const Table: FC<TableProps> = (props: TableProps) => {
   const tableColumns = applyMinCellWidth(columns);
   const disableRowSelectionOnClick = rowSelection && Boolean(onRowClick);
 
+  let slots = {};
+  if (toolbar || footer) {
+    slots = {
+      toolbar,
+      footer,
+    };
+  }
+
   return (
     <div className={styles.tableContainer} style={{ height: tableHeight }}>
       <DataGrid
@@ -113,6 +126,7 @@ const Table: FC<TableProps> = (props: TableProps) => {
         //   console.debug('DETAILS', details);
         // }}
         disableColumnResize={true}
+        slots={slots}
       />
     </div>
   );
