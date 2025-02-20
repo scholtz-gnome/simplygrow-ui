@@ -26,6 +26,9 @@ export const styleOverrides = {
     '.MuiDataGrid-columnSeparator .MuiDataGrid-columnSeparator--sideRight': {
       display: 'none',
     },
+    '.MuiDataGrid-virtualScrollerContent': {
+      color: 'rgb(150,150,175)',
+    },
     '& .MuiDataGrid-cell:hover': {
       cursor: 'pointer',
     },
