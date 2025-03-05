@@ -71,10 +71,11 @@ const Table: FC<TableProps> = (props: TableProps) => {
   }
 
   const applyMinCellWidth = (columns: GridColDef[]) => {
-    columns.forEach((column) => {
+    const cols = Array.from(columns);
+    cols.forEach((column) => {
       column.minWidth = minCellWidth;
     });
-    return columns;
+    return cols;
   };
 
   const handleRowClick: GridEventListener<'cellClick'> = (params) => {

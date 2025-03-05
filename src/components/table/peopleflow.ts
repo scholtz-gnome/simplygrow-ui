@@ -530,22 +530,19 @@ export const peopleflowTableData = [
 
 export const peopleflowColumnConfig = [
   {
-    sizeFactor: 1,
+    sizeFactor: 2,
     label: 'EMP NUM',
     id: 'employeeNumber',
   },
   {
-    sizeFactor: 1,
     label: 'Name',
     id: 'name',
   },
   {
-    sizeFactor: 1,
     label: 'Surname',
     id: 'surname',
   },
   {
-    sizeFactor: 1,
     label: 'ID / Passport',
     id: 'idPassport',
   },
