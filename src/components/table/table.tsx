@@ -154,7 +154,7 @@ const Table: FC<TableProps> = (props: TableProps) => {
     };
   }
 
-  if (!rowSelection) {
+  if (!rowSelection && columnsDef && columnsDef.length > 0) {
     // adds a little extra space when table rows don't have leading checkboxes
     columnsDef[0].cellClassName = styles.noSelectionCheckbox;
     columnsDef[0].headerClassName = styles.noSelectionCheckbox;
