@@ -1,3 +1,7 @@
 .tableContainer {
   width: 100%;
 }
+
+.noSelectionCheckbox:before {
+  content: '\00a0 \00a0 ';
+}

@@ -1,4 +1,4 @@
-import { FC, useContext } from 'react';
+import { FC, useCallback, useContext } from 'react';
 import {
   DataGrid,
   GridRowsProp,
@@ -70,13 +70,16 @@ const Table: FC<TableProps> = (props: TableProps) => {
       break;
   }
 
-  const applyMinCellWidth = (columns: GridColDef[]) => {
-    const cols = Array.from(columns);
-    cols.forEach((column) => {
-      column.minWidth = minCellWidth;
-    });
-    return cols;
-  };
+  const applyMinCellWidth = useCallback(
+    (columns: GridColDef[]) => {
+      const cols = Array.from(columns);
+      cols.forEach((column) => {
+        column.minWidth = minCellWidth;
+      });
+      return cols;
+    },
+    [columns],
+  );
 
   const handleRowClick: GridEventListener<'cellClick'> = (params) => {
     if (!onRowClick) {
@@ -100,7 +103,7 @@ const Table: FC<TableProps> = (props: TableProps) => {
   //   items: props.filterItems || [],
   // };
 
-  const tableColumns = applyMinCellWidth(columns);
+  const columnsDef = applyMinCellWidth(columns);
   const disableRowSelectionOnClick = rowSelection && Boolean(onRowClick);
 
   let slots = {};
@@ -124,11 +127,17 @@ const Table: FC<TableProps> = (props: TableProps) => {
     };
   }
 
+  if (!rowSelection) {
+    // adds a little extra space
+    columnsDef[0].cellClassName = styles.noSelectionCheckbox;
+    columnsDef[0].headerClassName = styles.noSelectionCheckbox;
+  }
+
   return (
     <div className={styles.tableContainer} style={{ height: tableHeight }}>
       <DataGrid
         rows={rows}
-        columns={tableColumns}
+        columns={columnsDef}
         checkboxSelection={rowSelection}
         disableRowSelectionOnClick={disableRowSelectionOnClick}
         rowSelectionModel={props.selectedRowIds}

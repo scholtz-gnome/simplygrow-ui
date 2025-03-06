@@ -23,6 +23,12 @@ export const styleOverrides = {
     '.MuiDataGrid-cell .MuiSvgIcon-root': {
       fill: 'rgb(115, 135, 195)',
     },
+    // '.MuiDataGrid-columnsManagementRow': {
+    //   '& .MuiSvgIcon-root': {
+    //     color: 'red !important',
+    //     fill: 'pink',
+    //   },
+    // },
     '.MuiDataGrid-columnSeparator .MuiDataGrid-columnSeparator--sideRight': {
       display: 'none',
     },
