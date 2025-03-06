@@ -61,6 +61,7 @@ function App() {
               console.log('CLICK');
             }}
             onRowSelection={(selectedRows) => setSelectedTableRows(selectedRows)}
+            editableColumns={['name', 'employeeNumber']}
             toolbar={TableToolbar}
             footer={TableFooter}
           />

@@ -6,6 +6,9 @@ import {
   GridRowClassNameParams,
   GridEventListener,
   GridSlotsComponentsProps,
+  GridCellEditStopParams,
+  MuiEvent,
+  GridRowId,
   // GridFilterItem,
   // GridCallbackDetails,
   // GridFilterModel,
@@ -30,8 +33,10 @@ type TableProps = {
   footer?: GridSlotsComponentsProps['footer'];
   toolbarProps?: Record<string, any>;
   footerProps?: Record<string, any>;
+  editableColumns?: (fieldNames: string[]) => void;
   onRowClick?: (params: any) => void;
   onRowSelection?: (selectedRowIds: string[]) => void;
+  onCellEditStop?: (rowId: GridRowId, oldValue: string, newValue: string) => void;
   getRowClassName?: (params: GridRowClassNameParams) => string;
   // onFilterChange?: ()
 };
@@ -50,8 +55,10 @@ const Table: FC<TableProps> = (props: TableProps) => {
     toolbarProps,
     footer,
     footerProps,
+    editableColumns,
     onRowClick,
     onRowSelection,
+    onCellEditStop,
   } = props;
 
   const theme = useContext(ThemeContext);
@@ -81,6 +88,17 @@ const Table: FC<TableProps> = (props: TableProps) => {
     [columns],
   );
 
+  const applyEditableColumns = useCallback(
+    (columns: GridColDef[]) => {
+      const cols = Array.from(columns);
+      cols.forEach((column) => {
+        column.editable = true;
+      });
+      return cols;
+    },
+    [columns],
+  );
+
   const handleRowClick: GridEventListener<'cellClick'> = (params) => {
     if (!onRowClick) {
       return;
@@ -89,6 +107,15 @@ const Table: FC<TableProps> = (props: TableProps) => {
       return;
     }
     onRowClick(params);
+  };
+
+  const handleCellEditStop = (params: GridCellEditStopParams, event: MuiEvent) => {
+    if (onCellEditStop) {
+      const oldValue = params.value;
+      // @ts-expect-error
+      const newValue = event?.target?.value;
+      onCellEditStop(params.id, oldValue, newValue);
+    }
   };
 
   const paginationState = {
@@ -103,7 +130,7 @@ const Table: FC<TableProps> = (props: TableProps) => {
   //   items: props.filterItems || [],
   // };
 
-  const columnsDef = applyMinCellWidth(columns);
+  let columnsDef = applyMinCellWidth(columns);
   const disableRowSelectionOnClick = rowSelection && Boolean(onRowClick);
 
   let slots = {};
@@ -128,9 +155,12 @@ const Table: FC<TableProps> = (props: TableProps) => {
   }
 
   if (!rowSelection) {
-    // adds a little extra space
+    // adds a little extra space when table rows don't have leading checkboxes
     columnsDef[0].cellClassName = styles.noSelectionCheckbox;
     columnsDef[0].headerClassName = styles.noSelectionCheckbox;
+  }
+  if (editableColumns && editableColumns.length > 0) {
+    columnsDef = applyEditableColumns(columnsDef);
   }
 
   return (
@@ -148,6 +178,7 @@ const Table: FC<TableProps> = (props: TableProps) => {
         sx={sxStyleOverrides}
         onCellClick={handleRowClick}
         onRowSelectionModelChange={onRowSelection}
+        onCellEditStop={handleCellEditStop}
         // onFilterModelChange={(model: GridFilterModel, details: GridCallbackDetails<'filter'>) => {
         //   console.debug('MODEL', model);
         //   console.debug('DETAILS', details);
