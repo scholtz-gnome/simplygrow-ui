@@ -9,7 +9,7 @@ export const styleOverrides = {
       color: 'white',
     },
     '.MuiDataGrid-columnHeaderTitle': {
-      fontWeight: 'bolder',
+      fontWeight: 550,
     },
     '.MuiIconButton': {
       color: 'white',
@@ -34,6 +34,7 @@ export const styleOverrides = {
     },
     '.MuiDataGrid-virtualScrollerContent': {
       color: 'rgb(150,150,175)',
+      fontWeight: 500,
     },
     '& .MuiDataGrid-cell:hover': {
       cursor: 'pointer',
