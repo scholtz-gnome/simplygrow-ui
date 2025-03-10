@@ -133,7 +133,7 @@ const Table: FC<TableProps> = (props: TableProps) => {
   // };
 
   let columnsDef = applyMinCellWidth(columns);
-  const disableRowSelectionOnClick = rowSelection && Boolean(onRowClick);
+  const disableRowSelectionOnClick = !rowSelection || (rowSelection && Boolean(onRowClick));
 
   let slots = {};
   if (toolbar || footer) {
