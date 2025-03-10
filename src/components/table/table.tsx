@@ -33,6 +33,7 @@ type TableProps = {
   footer?: GridSlotsComponentsProps['footer'];
   toolbarProps?: Record<string, any>;
   footerProps?: Record<string, any>;
+  noHeader?: boolean;
   editableColumns?: (fieldNames: string[]) => void;
   onRowClick?: (params: any) => void;
   onRowSelection?: (selectedRowIds: string[]) => void;
@@ -55,6 +56,7 @@ const Table: FC<TableProps> = (props: TableProps) => {
     toolbarProps,
     footer,
     footerProps,
+    noHeader,
     editableColumns,
     onRowClick,
     onRowSelection,
@@ -184,6 +186,7 @@ const Table: FC<TableProps> = (props: TableProps) => {
         //   console.debug('DETAILS', details);
         // }}
         disableColumnResize={true}
+        columnHeaderHeight={noHeader ? 0 : undefined}
         slots={slots}
         slotProps={slotProps}
       />

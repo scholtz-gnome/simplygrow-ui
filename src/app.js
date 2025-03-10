@@ -64,6 +64,7 @@ function App() {
             editableColumns={['name', 'employeeNumber']}
             toolbar={TableToolbar}
             footer={TableFooter}
+            // noHeader={true}
           />
         </Container>
 
