@@ -47,7 +47,7 @@ const Table: FC<TableProps> = (props: TableProps) => {
     rows,
     columns,
     loading,
-    pageSize = 10,
+    pageSize = 15,
     pageSizeOptions = [5, 10, 15, 30, 50],
     tableHeight = 400,
     minCellWidth = 120,
