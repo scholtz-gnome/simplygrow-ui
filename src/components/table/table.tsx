@@ -34,6 +34,7 @@ type TableProps = {
   toolbarProps?: Record<string, any>;
   footerProps?: Record<string, any>;
   noHeader?: boolean;
+  style?: Record<string, any>;
   editableColumns?: (fieldNames: string[]) => void;
   onRowClick?: (params: any) => void;
   onRowSelection?: (selectedRowIds: string[]) => void;
@@ -52,11 +53,13 @@ const Table: FC<TableProps> = (props: TableProps) => {
     tableHeight = 400,
     minCellWidth = 120,
     rowSelection = false,
+    selectedRowIds,
     toolbar,
     toolbarProps,
     footer,
     footerProps,
     noHeader,
+    style,
     editableColumns,
     onRowClick,
     onRowSelection,
@@ -172,7 +175,7 @@ const Table: FC<TableProps> = (props: TableProps) => {
         columns={columnsDef}
         checkboxSelection={rowSelection}
         disableRowSelectionOnClick={disableRowSelectionOnClick}
-        rowSelectionModel={props.selectedRowIds}
+        rowSelectionModel={selectedRowIds}
         // filterModel={filterState}
         pageSizeOptions={pageSizeOptions}
         initialState={paginationState}
@@ -189,6 +192,7 @@ const Table: FC<TableProps> = (props: TableProps) => {
         columnHeaderHeight={noHeader ? 0 : undefined}
         slots={slots}
         slotProps={slotProps}
+        style={style}
       />
     </div>
   );

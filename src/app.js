@@ -56,6 +56,7 @@ function App() {
             rows={peopleflowTableData}
             columns={convertPfColumnConfigToGridColDef(peopleflowColumnConfig)}
             selectedRowIds={selectedTableRows}
+            // selectedRowIds={['120494', '270191']}
             rowSelection={true}
             onRowClick={() => {
               console.log('CLICK');
