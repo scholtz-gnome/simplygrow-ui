@@ -61,7 +61,7 @@ function App() {
             onRowClick={() => {
               console.log('CLICK');
             }}
-            onRowSelection={(selectedRows) => setSelectedTableRows(selectedRows)}
+            onRowSelection={setSelectedTableRows}
             editableColumns={['name', 'employeeNumber']}
             toolbar={TableToolbar}
             footer={TableFooter}

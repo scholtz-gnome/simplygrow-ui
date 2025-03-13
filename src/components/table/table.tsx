@@ -182,7 +182,11 @@ const Table: FC<TableProps> = (props: TableProps) => {
         loading={loading}
         sx={sxStyleOverrides}
         onCellClick={handleRowClick}
-        onRowSelectionModelChange={onRowSelection}
+        onRowSelectionModelChange={(selectedRowIds: string[]) => {
+          if (onRowSelection) {
+            onRowSelection(selectedRowIds);
+          }
+        }}
         onCellEditStop={handleCellEditStop}
         // onFilterModelChange={(model: GridFilterModel, details: GridCallbackDetails<'filter'>) => {
         //   console.debug('MODEL', model);
