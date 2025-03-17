@@ -35,6 +35,7 @@ type TableProps = {
   footerProps?: Record<string, any>;
   noHeader?: boolean;
   style?: Record<string, any>;
+  customStyleClasses: Record<string, Record<string, any>>;
   editableColumns?: (fieldNames: string[]) => void;
   onRowClick?: (params: any) => void;
   onRowSelection?: (selectedRowIds: string[]) => void;
@@ -60,6 +61,7 @@ const Table: FC<TableProps> = (props: TableProps) => {
     footerProps,
     noHeader,
     style,
+    customStyleClasses,
     getRowClassName,
     editableColumns,
     onRowClick,
@@ -81,6 +83,9 @@ const Table: FC<TableProps> = (props: TableProps) => {
       break;
     case undefined:
       break;
+  }
+  if (customStyleClasses) {
+    sxStyleOverrides = { ...sxStyleOverrides, ...customStyleClasses };
   }
 
   const applyMinCellWidth = useCallback(
