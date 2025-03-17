@@ -60,6 +60,7 @@ const Table: FC<TableProps> = (props: TableProps) => {
     footerProps,
     noHeader,
     style,
+    getRowClassName,
     editableColumns,
     onRowClick,
     onRowSelection,
@@ -181,6 +182,11 @@ const Table: FC<TableProps> = (props: TableProps) => {
         initialState={paginationState}
         loading={loading}
         sx={sxStyleOverrides}
+        disableColumnResize={true}
+        columnHeaderHeight={noHeader ? 0 : undefined}
+        slots={slots}
+        slotProps={slotProps}
+        getRowClassName={getRowClassName}
         onCellClick={handleRowClick}
         onRowSelectionModelChange={(selectedRowIds: string[]) => {
           if (onRowSelection) {
@@ -192,10 +198,6 @@ const Table: FC<TableProps> = (props: TableProps) => {
         //   console.debug('MODEL', model);
         //   console.debug('DETAILS', details);
         // }}
-        disableColumnResize={true}
-        columnHeaderHeight={noHeader ? 0 : undefined}
-        slots={slots}
-        slotProps={slotProps}
         style={style}
       />
     </div>
