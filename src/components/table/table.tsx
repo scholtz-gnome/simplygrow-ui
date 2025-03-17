@@ -124,6 +124,12 @@ const Table: FC<TableProps> = (props: TableProps) => {
     }
   };
 
+  const handleRowSelectionModelChange = (selectedRowIds: string[]) => {
+    if (onRowSelection) {
+      onRowSelection(selectedRowIds);
+    }
+  };
+
   const paginationState = {
     pagination: {
       paginationModel: {
@@ -188,11 +194,7 @@ const Table: FC<TableProps> = (props: TableProps) => {
         slotProps={slotProps}
         getRowClassName={getRowClassName}
         onCellClick={handleRowClick}
-        onRowSelectionModelChange={(selectedRowIds: string[]) => {
-          if (onRowSelection) {
-            onRowSelection(selectedRowIds);
-          }
-        }}
+        onRowSelectionModelChange={handleRowSelectionModelChange}
         onCellEditStop={handleCellEditStop}
         // onFilterModelChange={(model: GridFilterModel, details: GridCallbackDetails<'filter'>) => {
         //   console.debug('MODEL', model);
