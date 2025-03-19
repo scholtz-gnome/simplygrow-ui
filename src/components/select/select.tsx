@@ -1,4 +1,4 @@
-import { ChangeEvent, FC, useState } from 'react';
+import { FC, useState } from 'react';
 import Dropdown from './dropdown';
 import Options from './options';
 import SelectInput from './select-input';
@@ -17,18 +17,10 @@ const Select: FC<SelectProps> = ({ id, onSelect, options, placeholder, label }) 
   const [selectedValue, setSelectedValue] = useState('');
   const [isValidInput, setIsValidInput] = useState(false);
 
-  console.log('Select()', focused);
-
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setFocused(true);
-    const value = e.target.value;
-    console.log(value);
-  };
-
-  const selectOption = (data: string) => {
+  const selectOption = (selectedValue: string) => {
     setFocused(!focused);
-    setSelectedValue(data);
-    onSelect(data);
+    setSelectedValue(selectedValue);
+    onSelect(selectedValue);
   };
 
   return (
@@ -45,7 +37,7 @@ const Select: FC<SelectProps> = ({ id, onSelect, options, placeholder, label }) 
             id={id}
             value={selectedValue}
             focused={focused}
-            onChange={handleInputChange}
+            onChange={() => {}}
             setFocused={setFocused}
             placeholder={placeholder || 'Select'}
             setIsValidInput={setIsValidInput}
