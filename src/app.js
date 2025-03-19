@@ -11,6 +11,7 @@ import {
   LinkButton,
   Modal,
   Paragraph,
+  SearchFilter,
   Select,
   Table,
   Textarea,
@@ -47,6 +48,16 @@ function App() {
       >
         <Container>
           <Heading>Table</Heading>
+          <Code>{'<SearchFilter id={abc} data={[]} setData={() => null} />'}</Code>
+          <FlexContainer justify={'space-between'}>
+            <div style={{ backgroundColor: '#CCC', padding: '24px' }}>
+              <SearchFilter id={'search-filter'} data={[]} setData={() => null} />
+            </div>
+          </FlexContainer>
+        </Container>
+
+        <Container>
+          <Heading>Table</Heading>
           <Code>
             {
               '<Table rows={...} columns={...} selectedRowIds={[...]} onRowClick={(params) => ...} onRowSelection={(selectedRowIds) => ...} />'
@@ -65,6 +76,11 @@ function App() {
             editableColumns={['name', 'employeeNumber']}
             toolbar={TableToolbar}
             footer={TableFooter}
+            // customStyleClasses={{
+            //   '.MuiDataGrid-columnHeader': {
+            //     backgroundColor: 'pink',
+            //   },
+            // }}
             // noHeader={true}
           />
         </Container>

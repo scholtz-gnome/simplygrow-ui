@@ -533,18 +533,22 @@ export const peopleflowColumnConfig = [
     sizeFactor: 2,
     label: 'EMP NUM',
     id: 'employeeNumber',
+    headerClassName: 'tableHeader',
   },
   {
     label: 'Name',
     id: 'name',
+    headerClassName: 'tableHeader',
   },
   {
     label: 'Surname',
     id: 'surname',
+    headerClassName: 'tableHeader',
   },
   {
     label: 'ID / Passport',
     id: 'idPassport',
+    headerClassName: 'tableHeader',
   },
 ];
 

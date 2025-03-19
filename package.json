@@ -83,6 +83,7 @@
     "@mui/material": "^6.4.1",
     "@mui/x-data-grid": "^7.24.0",
     "@rollup/plugin-terser": "^0.4.3",
+    "fuse.js": "^7.1.0",
     "react-otp-input": "^3.1.1",
     "serve": "^14.2.3",
     "tslib": "^2.6.2"
