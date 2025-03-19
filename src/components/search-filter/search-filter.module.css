@@ -1,0 +1,19 @@
+.searchFilter {
+  min-height: 100%;
+  background-color: #fff;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 16px 0 0;
+}
+
+.searchFilterInput {
+  border-radius: 8px;
+  outline: none;
+  min-height: 100%;
+  border: none;
+  padding: 8px 16px;
+  min-width: 300px;
+  font-size: 16px;
+}
