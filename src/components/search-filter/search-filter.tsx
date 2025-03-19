@@ -1,5 +1,3 @@
-'use client';
-
 import { BaseSyntheticEvent, Dispatch, FC, SetStateAction, useState } from 'react';
 import Fuse, { FuseOptionKey } from 'fuse.js';
 import styles from './search-filter.module.css';

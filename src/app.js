@@ -10,9 +10,11 @@ import {
   Input,
   LinkButton,
   Modal,
+  PageNavigation,
   Paragraph,
   SearchFilter,
   Select,
+  TabbedView,
   Table,
   Textarea,
 } from './components';
@@ -47,7 +49,46 @@ function App() {
         }}
       >
         <Container>
-          <Heading>Table</Heading>
+          <Heading>Page Navigation</Heading>
+          <Code>{'<PageNavigation logo={...} data={[...]} tail={...} />'}</Code>
+          <div style={{ backgroundColor: '#CCC', padding: '24px 0px' }}>
+            <PageNavigation
+              logo={<div style={{ backgroundColor: 'lightsalmon', padding: '8px', borderRadius: '50%' }}>Logo</div>}
+              navOptions={[
+                <a href={'#'} style={{ textDecoration: 'none', color: 'inherit' }}>
+                  Home
+                </a>,
+                <a href={'#'} style={{ textDecoration: 'none', color: 'inherit' }}>
+                  About
+                </a>,
+                <a href={'#'} style={{ textDecoration: 'none', color: 'inherit' }}>
+                  Services
+                </a>,
+                <a href={'#'} style={{ textDecoration: 'none', color: 'inherit' }}>
+                  Contact
+                </a>,
+              ]}
+              tail={<div style={{ backgroundColor: 'lightblue', padding: '24px', borderRadius: '50%' }}>Tail</div>}
+            />
+          </div>
+        </Container>
+
+        <Container>
+          <Heading>Tabbed View</Heading>
+          <Code>{'<TabbedView tabs={[...]} />'}</Code>
+          <div style={{ backgroundColor: '#CCC', padding: '24px' }}>
+            <TabbedView
+              tabs={[
+                { label: 'Tab 1', content: <div>Tab 1 content</div> },
+                { label: 'Tab 2', content: <div>Tab 2 content</div> },
+                { label: 'Tab 3', content: <div>Tab 3 content</div> },
+              ]}
+            />
+          </div>
+        </Container>
+
+        <Container>
+          <Heading>Search</Heading>
           <Code>{'<SearchFilter id={abc} data={[]} setData={() => null} />'}</Code>
           <FlexContainer justify={'space-between'}>
             <div style={{ backgroundColor: '#CCC', padding: '24px' }}>
