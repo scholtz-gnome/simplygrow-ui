@@ -1,7 +1,11 @@
-import { BaseSyntheticEvent, Dispatch, FC, SetStateAction, useState } from 'react';
+import { BaseSyntheticEvent, Dispatch, FC, SetStateAction, useContext, useState } from 'react';
 import Fuse, { FuseOptionKey } from 'fuse.js';
+
 import styles from './search-filter.module.css';
+import ThemeContext from '../../context';
 import SearchIcon from './search.icon';
+import { ClearIcon } from './clear.icon';
+import { styleOverrides } from './search-filter.styleOverrides';
 
 interface SearchFilterProps {
   /**
@@ -27,6 +31,22 @@ interface SearchFilterProps {
 const SearchFilter: FC<SearchFilterProps> = ({ data, setData, id, placeholder = 'Search', keys }) => {
   const [value, setValue] = useState('');
 
+  const theme = useContext(ThemeContext);
+  let iconFillColour = undefined;
+  switch (theme) {
+    case 'peopleflow':
+      iconFillColour = styleOverrides.peopleflow.fill;
+      break;
+    case 'worklight':
+      iconFillColour = styleOverrides.worklight.fill;
+      break;
+    case 'skillbook':
+      iconFillColour = styleOverrides.skillbook.fill;
+      break;
+    case undefined:
+      break;
+  }
+
   const handleChange = (e: BaseSyntheticEvent) => {
     const searchInput = e.target.value;
     setValue(searchInput);
@@ -41,6 +61,13 @@ const SearchFilter: FC<SearchFilterProps> = ({ data, setData, id, placeholder = 
     }
   };
 
+  let icon = null;
+  if (value === '') {
+    icon = <SearchIcon fillColour={iconFillColour} />;
+  } else {
+    icon = <ClearIcon fillColour={iconFillColour} onClick={() => setValue('')} />;
+  }
+
   return (
     <div className={styles.searchFilter}>
       <input
@@ -50,7 +77,7 @@ const SearchFilter: FC<SearchFilterProps> = ({ data, setData, id, placeholder = 
         value={value}
         onChange={handleChange}
       />
-      <SearchIcon />
+      {icon}
     </div>
   );
 };

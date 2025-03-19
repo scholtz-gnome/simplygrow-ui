@@ -76,15 +76,15 @@ function App() {
         <Container>
           <Heading>Tabbed View</Heading>
           <Code>{'<TabbedView tabs={[...]} />'}</Code>
-          <div style={{ backgroundColor: '#CCC', padding: '24px' }}>
-            <TabbedView
-              tabs={[
-                { label: 'Tab 1', content: <div>Tab 1 content</div> },
-                { label: 'Tab 2', content: <div>Tab 2 content</div> },
-                { label: 'Tab 3', content: <div>Tab 3 content</div> },
-              ]}
-            />
-          </div>
+          {/* <div style={{ backgroundColor: '#CCC', padding: '24px' }}> */}
+          <TabbedView
+            tabs={[
+              { label: 'Tab 1', content: <div>Tab 1 content</div> },
+              { label: 'Tab 2', content: <div>Tab 2 content</div> },
+              { label: 'Tab 3', content: <div>Tab 3 content</div> },
+            ]}
+          />
+          {/* </div> */}
         </Container>
 
         <Container>
