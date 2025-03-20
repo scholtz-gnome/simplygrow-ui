@@ -53,7 +53,7 @@ function App() {
           <Code>{'<PageNavigation logo={...} data={[...]} tail={...} />'}</Code>
           <div style={{ backgroundColor: '#CCC', padding: '24px 0px' }}>
             <PageNavigation
-              logo={<div style={{ backgroundColor: 'lightsalmon', padding: '8px', borderRadius: '50%' }}>Logo</div>}
+              logo={<div style={{ fontSize: 'bold', padding: '8px', borderRadius: '50%' }}>{`[ LOGO ]`}</div>}
               navOptions={[
                 <a href={'#'} style={{ textDecoration: 'none', color: 'inherit' }}>
                   Home
@@ -68,7 +68,16 @@ function App() {
                   Contact
                 </a>,
               ]}
-              tail={<div style={{ backgroundColor: 'lightblue', padding: '24px', borderRadius: '50%' }}>Tail</div>}
+              tail={
+                <div style={{ display: 'flex', gap: 18 }}>
+                  <div style={{ fontSize: 14 }}>
+                    John Doe
+                    <br />
+                    Acme Inc.
+                  </div>
+                  <div style={{ backgroundColor: 'lightsalmon', padding: '8px', borderRadius: '50%' }}>JD</div>
+                </div>
+              }
             />
           </div>
         </Container>
