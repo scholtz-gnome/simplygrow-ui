@@ -33,7 +33,7 @@ export default function PageNavigation(props: PageNavigationProps) {
 
   let tail = null;
   if (props.tail) {
-    tail = <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>{props.tail}</div>;
+    tail = <div className={styles.tailContainer}>{props.tail}</div>;
   }
 
   return (
@@ -41,11 +41,6 @@ export default function PageNavigation(props: PageNavigationProps) {
       {logo}
       {navOptions}
       {tail}
-      {/* <FlexContainer align="center" gap="md" className={styles.userDetails}>
-          <b>DEMO</b>
-          <div>ADMIN</div>
-        </FlexContainer>
-        <Avatar className={styles.avatar}>NB</Avatar> */}
     </nav>
   );
 }

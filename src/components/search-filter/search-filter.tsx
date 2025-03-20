@@ -4,7 +4,7 @@ import Fuse, { FuseOptionKey } from 'fuse.js';
 import styles from './search-filter.module.css';
 import ThemeContext from '../../context';
 import SearchIcon from './search.icon';
-import { ClearIcon } from './clear.icon';
+import ClearIcon from './clear.icon';
 import { styleOverrides } from './search-filter.styleOverrides';
 
 interface SearchFilterProps {

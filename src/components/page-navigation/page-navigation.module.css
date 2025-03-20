@@ -30,6 +30,12 @@
   font-weight: 550;
 }
 
+.tailContainer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
 /* .avatar {
   box-shadow: 4px 4px 8px -7px rgba(54, 54, 54, 0.75);
   -webkit-box-shadow: 4px 4px 8px -7px rgba(54, 54, 54, 0.75);

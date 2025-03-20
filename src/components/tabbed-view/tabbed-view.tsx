@@ -36,14 +36,16 @@ type TabbedViewProps = {
   tabs: { label: string; content: React.ReactNode }[];
 };
 
-export default function TabbedView(props: TabbedViewProps) {
+const TabbedView = (props: TabbedViewProps) => {
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
 
-  const tabs = props.tabs.map((tab, index) => <Tab key={index} label={tab.label} {...a11yProps(index)} />);
+  const tabs = props.tabs.map((tab, index) => (
+    <Tab key={index} label={tab.label} {...a11yProps(index)} disableRipple={true} />
+  ));
   const contents = props.tabs.map((tab, index) => (
     <CustomTabPanel key={index} value={value} index={index}>
       {tab.content}
@@ -53,11 +55,13 @@ export default function TabbedView(props: TabbedViewProps) {
   return (
     <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+        <Tabs value={value} onChange={handleChange} aria-label="Tabbed view">
           {tabs}
         </Tabs>
       </Box>
       {contents}
     </Box>
   );
-}
+};
+
+export default TabbedView;
