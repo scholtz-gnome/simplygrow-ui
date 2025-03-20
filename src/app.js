@@ -85,7 +85,6 @@ function App() {
         <Container>
           <Heading>Tabbed View</Heading>
           <Code>{'<TabbedView tabs={[...]} />'}</Code>
-          {/* <div style={{ backgroundColor: '#CCC', padding: '24px' }}> */}
           <TabbedView
             tabs={[
               { label: 'Tab 1', content: <div>Tab 1 content</div> },
@@ -93,7 +92,6 @@ function App() {
               { label: 'Tab 3', content: <div>Tab 3 content</div> },
             ]}
           />
-          {/* </div> */}
         </Container>
 
         <Container>
