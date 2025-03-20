@@ -1,5 +1,3 @@
-import { gridClasses } from '@mui/x-data-grid';
-
 export const styleOverrides = {
   overflowX: 'auto',
   borderRadius: '8px',
