@@ -1,10 +1,11 @@
-import { ReactNode } from 'react';
+import { CSSProperties, ReactNode } from 'react';
 import styles from './page-navigation.module.css';
 
 export type PageNavigationProps = {
   logo?: string | ReactNode;
   navOptions: any[];
   tail?: React.ReactNode;
+  style?: CSSProperties;
 };
 
 export default function PageNavigation(props: PageNavigationProps) {
@@ -37,7 +38,7 @@ export default function PageNavigation(props: PageNavigationProps) {
   }
 
   return (
-    <nav className={styles.container}>
+    <nav className={styles.container} style={props.style}>
       {logo}
       {navOptions}
       {tail}
