@@ -1,4 +1,5 @@
 export { default as ActionButton } from './action-button';
+export { default as ActionsToolbar } from './actions-toolbar';
 export { default as CheckboxInput } from './checkbox-input';
 export { default as Code } from './code';
 export { default as FileInputButton } from './file-input-button';

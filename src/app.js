@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 
 import {
   ActionButton,
+  ActionsToolbar,
   Code,
   FileInputButton,
   FlexContainer,
   GridContainer,
-  Header,
   Heading,
   Input,
   LinkButton,
@@ -102,6 +102,12 @@ function App() {
             <div style={{ backgroundColor: '#CCC', padding: '24px' }}>
               <SearchFilter id={'search-filter'} data={[]} setData={() => null} />
             </div>
+            <ActionsToolbar
+              buttons={[
+                { label: 'Add', variant: 'secondary', onClick: () => console.log('Add') },
+                { label: 'Delete', variant: 'secondary', onClick: () => console.log('Delete') },
+              ]}
+            />
           </FlexContainer>
         </Container>
 

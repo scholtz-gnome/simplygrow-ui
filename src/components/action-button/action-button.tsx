@@ -51,6 +51,13 @@ const ActionButton: FC<ActionButtonProps & Partial<ButtonHTMLAttributes<HTMLButt
         themeStyles = styles.skillbookThemeSecondary;
       }
       break;
+    case 'quicktask':
+      if (variant === 'primary') {
+        themeStyles = styles.quicktaskThemePrimary;
+      } else {
+        themeStyles = styles.quicktaskThemeSecondary;
+      }
+      break;
     case undefined:
       if (variant === 'primary') {
         themeStyles = styles.defaultThemePrimary;

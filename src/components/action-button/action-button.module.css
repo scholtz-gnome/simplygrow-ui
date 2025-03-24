@@ -62,6 +62,20 @@
   border: 1px solid #08203c;
 }
 
+.quicktaskThemePrimary {
+  background-color: #ee6c4d;
+}
+
+.quicktaskThemeSecondary {
+  border: 1px solid #08203c;
+}
+
+.quicktaskThemeSecondary:hover {
+  background-color: rgb(242, 148, 21);
+  color: #efefef;
+  border: 1px solid rgb(242, 148, 21);
+}
+
 .defaultThemePrimary:disabled {
   background-color: #313c5a88;
 }
@@ -76,6 +90,10 @@
 
 .skillbookThemePrimary:disabled {
   background-color: #08203c88;
+}
+
+.quicktaskThemeSecondary:disabled {
+  background-color: #dfdfdf;
 }
 
 .defaultThemeSecondary:disabled {
@@ -96,6 +114,12 @@
 .skillbookThemeSecondary:disabled {
   border: 1px solid #08203c88;
   color: #666;
+}
+
+.quicktaskThemeSecondary:disabled {
+  border: 1px solid #08203c88;
+  color: #666;
+  background-color: #fff;
 }
 
 .fullWidth {
