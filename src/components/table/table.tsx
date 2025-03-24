@@ -15,7 +15,7 @@ import {
 } from '@mui/x-data-grid';
 
 import styles from './table.module.css';
-import { themes } from './table.theme';
+import { themes } from './table.themes';
 import ThemeContext from '../../context';
 
 type TableProps = {

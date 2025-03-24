@@ -3,7 +3,7 @@ import { useContext, useState } from 'react';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
-import { themes } from './tabbed-view.theme';
+import { themes } from './tabbed-view.themes';
 import ThemeContext from '../../context';
 
 interface TabProps {
