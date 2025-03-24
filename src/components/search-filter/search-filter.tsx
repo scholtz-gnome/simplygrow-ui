@@ -5,7 +5,6 @@ import styles from './search-filter.module.css';
 import ThemeContext from '../../context';
 import SearchIcon from './search.icon';
 import ClearIcon from './clear.icon';
-import { styleOverrides } from './search-filter.styleOverrides';
 
 interface SearchFilterProps {
   /**
@@ -35,18 +34,22 @@ const SearchFilter: FC<SearchFilterProps> = ({ data, setData, id, placeholder = 
   let iconFillColour = undefined;
   switch (theme) {
     case 'peopleflow':
-      iconFillColour = styleOverrides.peopleflow.fill;
+      iconFillColour = styles.peopleflowIconColour;
       break;
     case 'worklight':
-      iconFillColour = styleOverrides.worklight.fill;
+      iconFillColour = styles.worklight;
       break;
     case 'skillbook':
-      iconFillColour = styleOverrides.skillbook.fill;
+      iconFillColour = styles.skillbook;
+      break;
+    case 'quicktask':
+      iconFillColour = styles.quicktaskIconColour;
       break;
     case undefined:
       break;
   }
 
+  console.info('iconFillColour', iconFillColour);
   const handleChange = (e: BaseSyntheticEvent) => {
     const searchInput = e.target.value;
     setValue(searchInput);

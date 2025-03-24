@@ -17,3 +17,8 @@
   min-width: 300px;
   font-size: 16px;
 }
+
+:export {
+  peopleflowIconColour: rgb(115, 135, 195);
+  quicktaskIconColour: rgb(40, 116, 151);
+}

@@ -85,6 +85,9 @@ const Table: FC<TableProps> = (props: TableProps) => {
     case 'skillbook':
       sxStyleOverrides = styleOverrides.skillbook;
       break;
+    case 'quicktask':
+      sxStyleOverrides = styleOverrides.quicktask;
+      break;
     case undefined:
       break;
   }

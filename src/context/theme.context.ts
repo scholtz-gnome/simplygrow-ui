@@ -1,6 +1,6 @@
 import { createContext } from 'react';
 
-export type AppTheme = undefined | 'worklight' | 'peopleflow' | 'skillbook';
+export type AppTheme = undefined | 'worklight' | 'peopleflow' | 'skillbook' | 'quicktask';
 
 const ThemeContext = createContext<AppTheme>(undefined);
 
