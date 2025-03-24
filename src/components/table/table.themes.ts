@@ -23,6 +23,9 @@ export const themes = {
     '.MuiDataGrid-cell .MuiSvgIcon-root': {
       fill: 'rgb(115, 135, 195)',
     },
+    '.MuiDataGrid-columnSeparator': {
+      display: 'none',
+    },
     // '.MuiDataGrid-columnsManagementRow': {
     //   '& .MuiSvgIcon-root': {
     //     color: 'red !important',
@@ -74,6 +77,9 @@ export const themes = {
       color: 'rgb(150,150,175)',
       fontWeight: 500,
     },
+    '.MuiDataGrid-columnSeparator': {
+      display: 'none',
+    },
     '& .MuiDataGrid-cell:hover': {
       cursor: 'pointer',
     },
@@ -110,6 +116,9 @@ export const themes = {
     '.MuiDataGrid-virtualScrollerContent': {
       color: 'rgb(150,150,175)',
       fontWeight: 500,
+    },
+    '.MuiDataGrid-columnSeparator': {
+      display: 'none',
     },
     '& .MuiDataGrid-cell:hover': {
       cursor: 'pointer',
