@@ -91,6 +91,7 @@ function App() {
               { label: 'Tab 2', content: <div>Tab 2 content</div> },
               { label: 'Tab 3', content: <div>Tab 3 content</div> },
             ]}
+            tabColour={'rgb(40,116,151)'}
           />
         </Container>
 

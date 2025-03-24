@@ -34,6 +34,7 @@ function a11yProps(index: number) {
 
 type TabbedViewProps = {
   tabs: { label: string; content: React.ReactNode }[];
+  tabColour?: Record<string, any>;
 };
 
 const TabbedView = (props: TabbedViewProps) => {
@@ -55,7 +56,19 @@ const TabbedView = (props: TabbedViewProps) => {
   return (
     <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <Tabs value={value} onChange={handleChange} aria-label="Tabbed view">
+        <Tabs
+          value={value}
+          onChange={handleChange}
+          sx={{
+            '& .MuiTabs-indicator': {
+              backgroundColor: props.tabColour,
+            },
+            '& .MuiTab-root.Mui-selected': {
+              color: props.tabColour,
+            },
+          }}
+          aria-label="Tabbed view"
+        >
           {tabs}
         </Tabs>
       </Box>
