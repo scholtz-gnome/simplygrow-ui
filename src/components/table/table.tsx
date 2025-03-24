@@ -34,6 +34,8 @@ type TableProps = {
   toolbarProps?: Record<string, any>;
   footerProps?: Record<string, any>;
   noHeader?: boolean;
+  columnHeaderBackgroundColour?: string;
+  columnHeaderFontColour?: string;
   style?: Record<string, any>;
   customStyleClasses: Record<string, Record<string, any>>;
   editableColumns?: (fieldNames: string[]) => void;
@@ -60,6 +62,8 @@ const Table: FC<TableProps> = (props: TableProps) => {
     footer,
     footerProps,
     noHeader,
+    columnHeaderBackgroundColour,
+    columnHeaderFontColour,
     style,
     customStyleClasses,
     getRowClassName,
@@ -86,6 +90,22 @@ const Table: FC<TableProps> = (props: TableProps) => {
   }
   if (customStyleClasses) {
     sxStyleOverrides = { ...sxStyleOverrides, ...customStyleClasses };
+  }
+  if (columnHeaderBackgroundColour) {
+    sxStyleOverrides = {
+      ...sxStyleOverrides,
+      '.MuiDataGrid-columnHeader': {
+        backgroundColor: columnHeaderBackgroundColour,
+      },
+    };
+  }
+  if (columnHeaderFontColour) {
+    sxStyleOverrides = {
+      ...sxStyleOverrides,
+      '.MuiDataGrid-columnHeader': {
+        color: columnHeaderFontColour,
+      },
+    };
   }
 
   const applyMinCellWidth = useCallback(
