@@ -15,7 +15,7 @@ import {
 } from '@mui/x-data-grid';
 
 import styles from './table.module.css';
-import { styleOverrides } from './table.styleOverrides';
+import { themes } from './table.theme';
 import ThemeContext from '../../context';
 
 type TableProps = {
@@ -70,25 +70,13 @@ const Table: FC<TableProps> = (props: TableProps) => {
   } = props;
 
   const theme = useContext(ThemeContext);
-  let sxStyleOverrides = undefined;
-  switch (theme) {
-    case 'peopleflow':
-      sxStyleOverrides = styleOverrides.peopleflow;
-      break;
-    case 'worklight':
-      sxStyleOverrides = styleOverrides.worklight;
-      break;
-    case 'skillbook':
-      sxStyleOverrides = styleOverrides.skillbook;
-      break;
-    case 'quicktask':
-      sxStyleOverrides = styleOverrides.quicktask;
-      break;
-    case undefined:
-      break;
+  let themeStyle = undefined;
+  if (theme && themes[theme] !== undefined) {
+    themeStyle = themes[theme];
   }
+
   if (customStyleClasses) {
-    sxStyleOverrides = { ...sxStyleOverrides, ...customStyleClasses };
+    themeStyle = { ...themeStyle, ...customStyleClasses };
   }
 
   const applyMinCellWidth = useCallback(
@@ -195,7 +183,7 @@ const Table: FC<TableProps> = (props: TableProps) => {
         pageSizeOptions={pageSizeOptions}
         initialState={paginationState}
         loading={loading}
-        sx={sxStyleOverrides}
+        sx={themeStyle}
         disableColumnResize={true}
         columnHeaderHeight={noHeader ? 0 : undefined}
         slots={slots}

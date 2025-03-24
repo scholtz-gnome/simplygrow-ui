@@ -1,10 +1,10 @@
-import * as React from 'react';
-import { ThemeContext } from '@emotion/react';
+import { useContext, useState } from 'react';
 
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
-import styles from './tabbed-view.module.css';
+import { themes } from './tabbed-view.theme';
+import ThemeContext from '../../context';
 
 interface TabProps {
   children?: React.ReactNode;
@@ -40,24 +40,10 @@ type TabbedViewProps = {
 };
 
 const TabbedView = (props: TabbedViewProps) => {
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = useState(0);
 
-  const theme = React.useContext(ThemeContext);
-  let tabColour = undefined;
-  switch (theme) {
-    case 'peopleflow':
-      tabColour = styles.peopleflowTabColour;
-      break;
-    case 'worklight':
-      break;
-    case 'skillbook':
-      break;
-    case 'quicktask':
-      tabColour = styles.quicktaskTabColour;
-      break;
-    case undefined:
-      break;
-  }
+  const theme = useContext(ThemeContext);
+  let themeStyle = theme ? themes[theme] : undefined;
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
@@ -71,23 +57,11 @@ const TabbedView = (props: TabbedViewProps) => {
       {tab.content}
     </CustomTabPanel>
   ));
-
+  console.info('>>> themeStyle', themeStyle);
   return (
     <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          sx={{
-            '& .MuiTabs-indicator': {
-              backgroundColor: tabColour,
-            },
-            '& .MuiTab-root.Mui-selected': {
-              color: tabColour,
-            },
-          }}
-          aria-label="Tabbed view"
-        >
+        <Tabs value={value} onChange={handleChange} sx={themeStyle} aria-label="Tabbed view">
           {tabs}
         </Tabs>
       </Box>
