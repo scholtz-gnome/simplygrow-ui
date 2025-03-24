@@ -86,7 +86,7 @@ export const styleOverrides = {
   },
   quicktask: {
     '.MuiDataGrid-columnHeader': {
-      backgroundColor: 'rgb(224, 45,32)',
+      backgroundColor: 'rgb(224,45,32)',
       color: 'white',
     },
     '.MuiDataGrid-columnHeaderTitle': {
@@ -102,7 +102,7 @@ export const styleOverrides = {
       color: 'white',
     },
     '.MuiDataGrid-cell .MuiSvgIcon-root': {
-      fill: 'rgb(224, 45,32)',
+      fill: 'rgb(224,45,32)',
     },
     '.MuiDataGrid-columnSeparator .MuiDataGrid-columnSeparator--sideRight': {
       display: 'none',

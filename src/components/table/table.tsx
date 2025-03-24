@@ -35,7 +35,7 @@ type TableProps = {
   footerProps?: Record<string, any>;
   noHeader?: boolean;
   style?: Record<string, any>;
-  customStyleClasses: Record<string, Record<string, any>>;
+  customStyleClasses?: Record<string, Record<string, any>>;
   editableColumns?: (fieldNames: string[]) => void;
   onRowClick?: (params: any) => void;
   onRowSelection?: (selectedRowIds: string[]) => void;
