@@ -1,7 +1,10 @@
 import * as React from 'react';
+import { ThemeContext } from '@emotion/react';
+
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
+import styles from './tabbed-view.module.css';
 
 interface TabProps {
   children?: React.ReactNode;
@@ -34,11 +37,27 @@ function a11yProps(index: number) {
 
 type TabbedViewProps = {
   tabs: { label: string; content: React.ReactNode }[];
-  tabColour?: Record<string, any>;
 };
 
 const TabbedView = (props: TabbedViewProps) => {
   const [value, setValue] = React.useState(0);
+
+  const theme = React.useContext(ThemeContext);
+  let tabColour = undefined;
+  switch (theme) {
+    case 'peopleflow':
+      tabColour = styles.peopleflowTabColour;
+      break;
+    case 'worklight':
+      break;
+    case 'skillbook':
+      break;
+    case 'quicktask':
+      tabColour = styles.quicktaskTabColour;
+      break;
+    case undefined:
+      break;
+  }
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
@@ -61,10 +80,10 @@ const TabbedView = (props: TabbedViewProps) => {
           onChange={handleChange}
           sx={{
             '& .MuiTabs-indicator': {
-              backgroundColor: props.tabColour,
+              backgroundColor: tabColour,
             },
             '& .MuiTab-root.Mui-selected': {
-              color: props.tabColour,
+              color: tabColour,
             },
           }}
           aria-label="Tabbed view"

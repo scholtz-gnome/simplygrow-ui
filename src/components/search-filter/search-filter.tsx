@@ -37,10 +37,8 @@ const SearchFilter: FC<SearchFilterProps> = ({ data, setData, id, placeholder = 
       iconFillColour = styles.peopleflowIconColour;
       break;
     case 'worklight':
-      iconFillColour = styles.worklight;
       break;
     case 'skillbook':
-      iconFillColour = styles.skillbook;
       break;
     case 'quicktask':
       iconFillColour = styles.quicktaskIconColour;
