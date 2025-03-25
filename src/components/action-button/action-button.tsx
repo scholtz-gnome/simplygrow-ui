@@ -9,16 +9,18 @@ interface ActionButtonProps {
   fullWidth?: boolean;
   children: ReactNode;
   disabled?: boolean;
+  className?: string;
 }
 
 const ActionButton: FC<ActionButtonProps & Partial<ButtonHTMLAttributes<HTMLButtonElement>>> = ({
-  onClick,
   fullWidth = false,
   loading = false,
   variant = 'primary',
   disabled = false,
   type,
   children,
+  className,
+  onClick,
 }) => {
   const theme = useContext(ThemeContext);
 
@@ -70,7 +72,7 @@ const ActionButton: FC<ActionButtonProps & Partial<ButtonHTMLAttributes<HTMLButt
   return (
     <button
       onClick={onClick}
-      className={`${styles.commonStyles} ${variantStyles} ${fullWidthStyles} ${loadingStyles} ${disabledStyles} ${themeStyles}`}
+      className={`${styles.commonStyles} ${variantStyles} ${fullWidthStyles} ${loadingStyles} ${disabledStyles} ${themeStyles} ${className}`}
       disabled={loading || disabled}
       type={type}
     >
