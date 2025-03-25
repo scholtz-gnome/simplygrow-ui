@@ -9,10 +9,10 @@ export const themes = {
   },
   quicktask: {
     '& .MuiTabs-indicator': {
-      backgroundColor: 'rgb(40,116,151)',
+      backgroundColor: '#EE6C4D',
     },
     '& .MuiTab-root.Mui-selected': {
-      color: 'rgb(40,116,151)',
+      color: '#EE6C4D',
     },
   },
   skillbook: {},

@@ -71,9 +71,9 @@
 }
 
 .quicktaskThemeSecondary:hover {
-  background-color: rgb(242, 148, 21);
+  background-color: #ee6c4d;
   color: #efefef;
-  border: 1px solid rgb(242, 148, 21);
+  border: 1px solid #ee6c4d;
 }
 
 .defaultThemePrimary:disabled {

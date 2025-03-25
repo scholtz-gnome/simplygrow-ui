@@ -57,7 +57,6 @@ const TabbedView = (props: TabbedViewProps) => {
       {tab.content}
     </CustomTabPanel>
   ));
-  console.info('>>> themeStyle', themeStyle);
   return (
     <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>

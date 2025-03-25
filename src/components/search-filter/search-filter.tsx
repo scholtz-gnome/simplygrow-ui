@@ -47,7 +47,6 @@ const SearchFilter: FC<SearchFilterProps> = ({ data, setData, id, placeholder = 
       break;
   }
 
-  console.info('iconFillColour', iconFillColour);
   const handleChange = (e: BaseSyntheticEvent) => {
     const searchInput = e.target.value;
     setValue(searchInput);
