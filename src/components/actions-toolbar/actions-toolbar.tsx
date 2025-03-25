@@ -7,6 +7,7 @@ type ActionButton = {
   fullWidth?: boolean;
   loading?: boolean;
   disabled?: boolean;
+  className?: string;
   onClick: () => void;
 };
 
