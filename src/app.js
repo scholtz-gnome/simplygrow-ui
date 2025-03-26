@@ -38,7 +38,7 @@ function App() {
   const [selectedTableRows, setSelectedTableRows] = useState([2]);
 
   return (
-    <UIProvider appTheme={'skillbook'}>
+    <UIProvider appTheme={'quicktask'}>
       <div
         style={{
           backgroundColor: '#f1f5f9',
@@ -137,6 +137,10 @@ function App() {
             //   },
             // }}
             // noHeader={true}
+            style={{
+              borderTopLeftRadius: 10,
+              borderTopRightRadius: 10,
+            }}
           />
         </Container>
 

@@ -34,8 +34,9 @@ type TableProps = {
   toolbarProps?: Record<string, any>;
   footerProps?: Record<string, any>;
   noHeader?: boolean;
-  style?: Record<string, any>;
+  style?: Record<string, any>; // affects wrapped DataGrid component
   customStyleClasses?: Record<string, Record<string, any>>;
+  className?: string;
   editableColumns?: (fieldNames: string[]) => void;
   onRowClick?: (params: any) => void;
   onRowSelection?: (selectedRowIds: string[]) => void;
@@ -62,6 +63,7 @@ const Table: FC<TableProps> = (props: TableProps) => {
     noHeader,
     style,
     customStyleClasses,
+    className,
     getRowClassName,
     editableColumns,
     onRowClick,
@@ -172,7 +174,7 @@ const Table: FC<TableProps> = (props: TableProps) => {
   }
 
   return (
-    <div className={styles.tableContainer} style={{ height: tableHeight }}>
+    <div style={{ height: tableHeight }}>
       <DataGrid
         rows={rows}
         columns={columnsDef}
@@ -197,6 +199,7 @@ const Table: FC<TableProps> = (props: TableProps) => {
         //   console.debug('DETAILS', details);
         // }}
         style={style}
+        className={className}
       />
     </div>
   );
