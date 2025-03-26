@@ -17,6 +17,8 @@ import {
 import styles from './table.module.css';
 import { themes } from './table.themes';
 import ThemeContext from '../../context';
+import { ThemeProvider } from '@mui/material';
+import { stripedTheme } from './table.theme-striped';
 
 type TableProps = {
   rows: GridRowsProp;
@@ -175,32 +177,34 @@ const Table: FC<TableProps> = (props: TableProps) => {
 
   return (
     <div style={{ height: tableHeight }}>
-      <DataGrid
-        rows={rows}
-        columns={columnsDef}
-        checkboxSelection={rowSelection}
-        disableRowSelectionOnClick={disableRowSelectionOnClick}
-        rowSelectionModel={selectedRowIds}
-        // filterModel={filterState}
-        pageSizeOptions={pageSizeOptions}
-        initialState={paginationState}
-        loading={loading}
-        sx={themeStyle}
-        disableColumnResize={true}
-        columnHeaderHeight={noHeader ? 0 : undefined}
-        slots={slots}
-        slotProps={slotProps}
-        getRowClassName={getRowClassName}
-        onCellClick={handleRowClick}
-        onRowSelectionModelChange={handleRowSelectionModelChange}
-        onCellEditStop={handleCellEditStop}
-        // onFilterModelChange={(model: GridFilterModel, details: GridCallbackDetails<'filter'>) => {
-        //   console.debug('MODEL', model);
-        //   console.debug('DETAILS', details);
-        // }}
-        style={style}
-        className={className}
-      />
+      <ThemeProvider theme={stripedTheme}>
+        <DataGrid
+          rows={rows}
+          columns={columnsDef}
+          checkboxSelection={rowSelection}
+          disableRowSelectionOnClick={disableRowSelectionOnClick}
+          rowSelectionModel={selectedRowIds}
+          // filterModel={filterState}
+          pageSizeOptions={pageSizeOptions}
+          initialState={paginationState}
+          loading={loading}
+          sx={themeStyle}
+          disableColumnResize={true}
+          columnHeaderHeight={noHeader ? 0 : undefined}
+          slots={slots}
+          slotProps={slotProps}
+          getRowClassName={getRowClassName}
+          onCellClick={handleRowClick}
+          onRowSelectionModelChange={handleRowSelectionModelChange}
+          onCellEditStop={handleCellEditStop}
+          // onFilterModelChange={(model: GridFilterModel, details: GridCallbackDetails<'filter'>) => {
+          //   console.debug('MODEL', model);
+          //   console.debug('DETAILS', details);
+          // }}
+          style={style}
+          className={className}
+        />
+      </ThemeProvider>
     </div>
   );
 };
