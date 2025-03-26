@@ -1,6 +1,7 @@
-import { FC, ReactNode } from 'react';
+import { FC, ReactNode, useContext } from 'react';
 import Header from '../header';
 import styles from './flex-container.module.css';
+import ThemeContext from '../../context';
 
 interface FlexContainerProps {
   flexDirection?: 'column';
@@ -35,6 +36,13 @@ const FlexContainer: FC<FlexContainerProps> = ({
   heading,
   className,
 }) => {
+  const theme = useContext(ThemeContext) as string;
+
+  let headingBackground = styles.default;
+  if (heading && styles[`${theme}Heading`] !== undefined) {
+    headingBackground = styles[`${theme}Heading`];
+  }
+
   const containerStyles = styledContainer ? styles.containerStyles : undefined;
   const wrapStyles = wrap ? styles.flexWrap : undefined;
   const flexDirectionStyles = flexDirection === 'column' ? styles.flexDirectionColumn : undefined;
@@ -90,13 +98,13 @@ const FlexContainer: FC<FlexContainerProps> = ({
 
   return (
     <div>
-      {heading && <div className={styles.heading}>{heading}</div>}
+      {heading && <div className={`${styles.heading} ${headingBackground}`}>{heading}</div>}
 
       <div
+        // NOTE: consider using classnames (https://www.npmjs.com/package/classnames) - see how simple appyling conditional classes become
         className={`${styles.flexContainer} ${wrapStyles} ${flexDirectionStyles} ${justifyStyles} ${alignStyles} ${gapStyles} ${containerStyles} ${headingStyles} ${className}`}
       >
         {!!headerText && <Header>{headerText}</Header>}
-
         {styledContainer && <div className={styles.children}>{children}</div>}
 
         {!styledContainer && children}

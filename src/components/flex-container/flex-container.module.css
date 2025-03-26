@@ -85,3 +85,19 @@
   font-weight: 500;
   line-height: 24px; /* 150% */
 }
+
+.peopleflowHeading {
+  background-color: #2bc8ff;
+}
+
+.quicktaskHeading {
+  background-color: #ee6c4d;
+}
+
+.worklightHeading {
+  background-color: #8bcc33;
+}
+
+.defaultHeading {
+  background-color: #313c5a;
+}

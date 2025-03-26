@@ -38,7 +38,7 @@ function App() {
   const [selectedTableRows, setSelectedTableRows] = useState([2]);
 
   return (
-    <UIProvider appTheme={'peopleflow'}>
+    <UIProvider appTheme={'skillbook'}>
       <div
         style={{
           backgroundColor: '#f1f5f9',
