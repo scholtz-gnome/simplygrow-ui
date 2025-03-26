@@ -37,6 +37,7 @@ function a11yProps(index: number) {
 
 type TabbedViewProps = {
   tabs: { label: string; content: React.ReactNode }[];
+  className?: string;
 };
 
 const TabbedView = (props: TabbedViewProps) => {
@@ -58,7 +59,7 @@ const TabbedView = (props: TabbedViewProps) => {
     </CustomTabPanel>
   ));
   return (
-    <Box sx={{ width: '100%' }}>
+    <Box sx={{ width: '100%' }} className={props.className}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} sx={themeStyle} aria-label="Tabbed view">
           {tabs}
