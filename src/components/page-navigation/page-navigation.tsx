@@ -3,7 +3,7 @@ import styles from './page-navigation.module.css';
 
 export type PageNavigationProps = {
   logo?: string | ReactNode;
-  navOptions: any[];
+  navOptions?: any[];
   tail?: React.ReactNode;
   style?: CSSProperties;
 };
