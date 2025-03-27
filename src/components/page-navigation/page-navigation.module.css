@@ -27,6 +27,14 @@
 .navOption {
   padding-inline: 20px;
   font-weight: 550;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.navOption:hover {
+  margin-top: 3px;
+  border-bottom: 3px solid #08203c;
 }
 
 .tailContainer {
