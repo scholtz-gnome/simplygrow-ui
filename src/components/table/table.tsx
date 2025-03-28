@@ -176,7 +176,7 @@ const Table: FC<TableProps> = (props: TableProps) => {
   }
 
   return (
-    <div style={{ height: tableHeight }}>
+    <div className={styles.tableContainer} style={{ height: tableHeight }}>
       <ThemeProvider theme={stripedTheme}>
         <DataGrid
           rows={rows}
