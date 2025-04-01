@@ -1,4 +1,4 @@
-import { BaseSyntheticEvent, Dispatch, FC, SetStateAction, useContext } from 'react';
+import { BaseSyntheticEvent, Dispatch, FC, SetStateAction, useContext, useState } from 'react';
 import ThemeContext from '../../context';
 import { formatIDNumber } from '../../utils/format-id-number.util';
 import { formatMobile } from '../../utils/format-mobile.util';
@@ -13,6 +13,7 @@ interface InputProps {
   required?: boolean;
   label?: string;
   minLength?: number;
+  customValidator?: (input: string) => boolean;
 }
 
 const Input: FC<InputProps> = ({
@@ -24,28 +25,42 @@ const Input: FC<InputProps> = ({
   label,
   required = false,
   minLength = 10,
+  customValidator,
 }) => {
+  const [valid, setValid] = useState(false);
   const theme = useContext(ThemeContext);
 
   let themeStyles = '';
+  let invalidStyles = '';
 
   switch (theme) {
     case 'peopleflow':
+      invalidStyles = valid ? styles.peopleflowThemeValid : styles.invalid;
       themeStyles = styles.peopleflowTheme;
       break;
     case 'worklight':
+      invalidStyles = valid ? styles.worklightThemeValid : styles.invalid;
       themeStyles = styles.worklightTheme;
       break;
     case 'skillbook':
+      invalidStyles = valid ? styles.skillbookThemeValid : styles.invalid;
       themeStyles = styles.skillbookTheme;
       break;
     case undefined:
+      invalidStyles = valid ? styles.defaultThemeValid : styles.invalid;
       themeStyles = styles.defaultTheme;
       break;
   }
 
   const handleInput = (e: BaseSyntheticEvent) => {
     const providedValue = e.target.value;
+
+    if (customValidator) {
+      const isValid = customValidator(providedValue);
+      setValid(isValid);
+    } else {
+      setValid(e.target.validity.valid);
+    }
 
     let formattedValue = providedValue.trim();
 
@@ -69,7 +84,7 @@ const Input: FC<InputProps> = ({
       )}
 
       <input
-        className={`${styles.input} ${themeStyles}`}
+        className={`${styles.input} ${invalidStyles} ${themeStyles}`}
         required={required}
         id={id}
         type={type}
@@ -77,8 +92,6 @@ const Input: FC<InputProps> = ({
         placeholder={placeholder}
         onChange={handleInput}
         value={value}
-        minLength={type === 'password' ? minLength : undefined}
-        maxLength={type === 'password' ? undefined : 64}
       />
     </div>
   );

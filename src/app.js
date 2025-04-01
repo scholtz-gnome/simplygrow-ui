@@ -19,26 +19,27 @@ import {
   Table,
   Textarea,
 } from './components';
+import { TableFooter, TableToolbar } from './components/table';
 import {
-  peopleflowTableData,
-  peopleflowColumnConfig,
   convertPfColumnConfigToGridColDef,
+  peopleflowColumnConfig,
+  peopleflowTableData,
 } from './components/table/peopleflow';
-import { TableToolbar, TableFooter } from './components/table';
 import Container from './container';
-import { UIProvider } from './providers';
 import './index.css';
+import { UIProvider } from './providers';
 
 function App() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmedPassword, setConfirmedPassword] = useState('');
   const [textarea, setTextarea] = useState('');
   const [selectValue, setSelectValue] = useState('');
   const [_file, setFile] = useState(undefined);
   const [selectedTableRows, setSelectedTableRows] = useState([2]);
 
   return (
-    <UIProvider appTheme={'quicktask'}>
+    <UIProvider appTheme={'worklight'}>
       <div
         style={{
           backgroundColor: '#f1f5f9',
@@ -548,6 +549,18 @@ function App() {
                 placeholder={'Password'}
                 value={password}
                 setValue={setPassword}
+                customValidator={(input) => input.length > 8}
+              />
+
+              <Input
+                required
+                label={'Confirm password'}
+                id={'confirmed-password'}
+                type={'password'}
+                placeholder={'Confirm'}
+                value={confirmedPassword}
+                setValue={setConfirmedPassword}
+                customValidator={(input) => input === password}
               />
             </FlexContainer>
 

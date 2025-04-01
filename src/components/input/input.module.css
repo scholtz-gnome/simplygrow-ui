@@ -22,40 +22,28 @@
   outline: none;
 }
 
-.input:not(:placeholder-shown):invalid {
+.invalid:focus {
   border: 1.5px solid red;
 }
 
-.peopleflowTheme:not(:placeholder-shown):valid:focus {
+.invalid:not(:placeholder-shown) {
+  border: 1.5px solid orange;
+}
+
+.peopleflowThemeValid:not(:placeholder-shown):focus {
   border: 1.5px solid #2bc8ff;
 }
 
-.worklightTheme:not(:placeholder-shown):valid:focus {
+.worklightThemeValid:not(:placeholder-shown):focus {
   border: 1.5px solid #8bcc33;
 }
 
-.skillbookTheme:not(:placeholder-shown):valid:focus {
+.skillbookThemeValid:not(:placeholder-shown):focus {
   border: 1.5px solid #08203c;
 }
 
-.defaultTheme:not(:placeholder-shown):valid:focus {
+.defaultThemeValid:not(:placeholder-shown):focus {
   border: 1.5px solid #313c5a;
-}
-
-.peopleflowTheme:focus:invalid {
-  border: 1.5px solid orange;
-}
-
-.worklightTheme:focus:invalid {
-  border: 1.5px solid orange;
-}
-
-.skillbookTheme:focus:invalid {
-  border: 1.5px solid orange;
-}
-
-.defaultTheme:focus:invalid {
-  border: 1.5px solid orange;
 }
 
 .label {
