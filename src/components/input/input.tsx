@@ -7,16 +7,21 @@ import styles from './input.module.css';
 interface InputProps {
   value: string;
   setValue: Dispatch<SetStateAction<string>>;
+
+  /**
+   * If provided, will override the default onChange handler provided by simplygrow-ui.
+   */
+  onChange?: React.ChangeEventHandler<HTMLInputElement>;
   id: string;
   type?: 'text' | 'email' | 'radio' | 'password' | 'id' | 'mobile';
   placeholder?: string;
   required?: boolean;
   label?: string;
-  minLength?: number;
   customValidator?: (input: string) => boolean;
 }
 
 const Input: FC<InputProps> = ({
+  onChange,
   value,
   setValue,
   id,
@@ -24,7 +29,6 @@ const Input: FC<InputProps> = ({
   type = 'text',
   label,
   required = false,
-  minLength = 10,
   customValidator,
 }) => {
   const [valid, setValid] = useState(false);
@@ -90,7 +94,7 @@ const Input: FC<InputProps> = ({
         type={type}
         name={id}
         placeholder={placeholder}
-        onChange={handleInput}
+        onChange={onChange ? onChange : handleInput}
         value={value}
       />
     </div>
