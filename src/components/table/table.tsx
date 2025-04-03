@@ -29,6 +29,7 @@ type TableProps = {
   pageSize?: number;
   pageSizeOptions?: number[];
   tableHeight?: number;
+  rowHeight?: number;
   minCellWidth?: number;
   // filterItems?: GridFilterItem[];
   toolbar?: GridSlotsComponentsProps['toolbar'];
@@ -55,6 +56,7 @@ const Table: FC<TableProps> = (props: TableProps) => {
     pageSize = 15,
     pageSizeOptions = [5, 10, 15, 30, 50],
     tableHeight = 400,
+    rowHeight,
     minCellWidth = 120,
     rowSelection = false,
     selectedRowIds,
@@ -191,6 +193,7 @@ const Table: FC<TableProps> = (props: TableProps) => {
           sx={themeStyle}
           disableColumnResize={true}
           columnHeaderHeight={noHeader ? 0 : undefined}
+          rowHeight={rowHeight}
           slots={slots}
           slotProps={slotProps}
           getRowClassName={getRowClassName}

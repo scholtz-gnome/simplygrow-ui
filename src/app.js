@@ -125,6 +125,7 @@ function App() {
             selectedRowIds={selectedTableRows}
             // selectedRowIds={['120494', '270191']}
             rowSelection={true}
+            rowHeight={32}
             onRowClick={() => {
               console.log('CLICK');
             }}
