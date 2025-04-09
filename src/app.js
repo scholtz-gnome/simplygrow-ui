@@ -24,7 +24,7 @@ import {
   convertPfColumnConfigToGridColDef,
   peopleflowColumnConfig,
   peopleflowTableData,
-} from './components/table/peopleflow';
+} from './components/table/dummy-data/peopleflow';
 import Container from './container';
 import './index.css';
 import { UIProvider } from './providers';
@@ -39,7 +39,7 @@ function App() {
   const [selectedTableRows, setSelectedTableRows] = useState([2]);
 
   return (
-    <UIProvider appTheme={'worklight'}>
+    <UIProvider appTheme={'peopleflow'}>
       <div
         style={{
           backgroundColor: '#f1f5f9',

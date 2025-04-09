@@ -7,7 +7,7 @@ import banner from 'rollup-plugin-banner2';
 import dts from 'rollup-plugin-dts';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import postcss from 'rollup-plugin-postcss';
-import { ROLLUP_INCLUDE_USE_CLIENT } from './rollup-exclude-use-client.mjs';
+import { ROLLUP_EXCLUDE_USE_CLIENT } from './rollup-exclude-use-client.mjs';
 
 export default [
   {
@@ -36,7 +36,7 @@ export default [
         extract: true,
       }),
       banner((chunk) => {
-        if (!ROLLUP_INCLUDE_USE_CLIENT.includes(chunk.fileName)) {
+        if (!ROLLUP_EXCLUDE_USE_CLIENT.includes(chunk.fileName)) {
           return "'use client';\n";
         }
 

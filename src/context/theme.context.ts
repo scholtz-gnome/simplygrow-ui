@@ -1,7 +1,6 @@
 import { createContext } from 'react';
+import { ThemesEnum } from './type.definitions';
 
-export type AppTheme = undefined | 'worklight' | 'peopleflow' | 'skillbook' | 'quicktask';
-
-const ThemeContext = createContext<AppTheme>(undefined);
+const ThemeContext = createContext<ThemesEnum>(ThemesEnum.peopleflow);
 
 export default ThemeContext;

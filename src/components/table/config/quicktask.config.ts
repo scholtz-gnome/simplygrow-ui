@@ -1,0 +1,3 @@
+const quicktaskProps = {};
+
+export { quicktaskProps };

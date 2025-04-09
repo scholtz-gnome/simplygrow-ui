@@ -1,62 +1,29 @@
-import { FC, useCallback, useContext } from 'react';
+import { FC, useCallback, useContext } from "react";
 import {
   DataGrid,
-  GridRowsProp,
   GridColDef,
-  GridRowClassNameParams,
-  GridEventListener,
-  GridSlotsComponentsProps,
   GridCellEditStopParams,
+  GridEventListener,
   MuiEvent,
-  GridRowId,
-  // GridFilterItem,
-  // GridCallbackDetails,
-  // GridFilterModel,
-} from '@mui/x-data-grid';
+  GridSlotsComponentsProps,
+} from "@mui/x-data-grid";
 
-import styles from './table.module.css';
-import { themes } from './table.themes';
-import ThemeContext from '../../context';
-import { ThemeProvider } from '@mui/material';
-import { stripedTheme } from './table.theme-striped';
-
-type TableProps = {
-  rows: GridRowsProp;
-  columns: GridColDef[];
-  loading?: boolean;
-  rowSelection?: boolean;
-  selectedRowIds?: string[];
-  pageSize?: number;
-  pageSizeOptions?: number[];
-  tableHeight?: number;
-  rowHeight?: number;
-  minCellWidth?: number;
-  // filterItems?: GridFilterItem[];
-  toolbar?: GridSlotsComponentsProps['toolbar'];
-  footer?: GridSlotsComponentsProps['footer'];
-  toolbarProps?: Record<string, any>;
-  footerProps?: Record<string, any>;
-  noHeader?: boolean;
-  style?: Record<string, any>; // affects wrapped DataGrid component
-  customStyleClasses?: Record<string, Record<string, any>>;
-  className?: string;
-  editableColumns?: (fieldNames: string[]) => void;
-  onRowClick?: (params: any) => void;
-  onRowSelection?: (selectedRowIds: string[]) => void;
-  onCellEditStop?: (rowId: GridRowId, oldValue: string, newValue: string) => void;
-  getRowClassName?: (params: GridRowClassNameParams) => string;
-  // onFilterChange?: ()
-};
+import styles from "./table.module.css";
+import { buildTheme, getRowHeight, getColumnHeaderHeight } from "./table.style.provider";
+import ThemeContext from "../../context";
+import { ThemeProvider } from "@mui/material";
+import { TableProps } from "./type.definitions";
+// import { getOpacityColor } from "../../utils/color-utils";
+// import colorPalette from "../../providers/colors/peopleflow.colors";
 
 const Table: FC<TableProps> = (props: TableProps) => {
   const {
     rows,
     columns,
     loading,
-    pageSize = 15,
+    pageSize = 50,
     pageSizeOptions = [5, 10, 15, 30, 50],
     tableHeight = 400,
-    rowHeight,
     minCellWidth = 120,
     rowSelection = false,
     selectedRowIds,
@@ -66,7 +33,6 @@ const Table: FC<TableProps> = (props: TableProps) => {
     footerProps,
     noHeader,
     style,
-    customStyleClasses,
     className,
     getRowClassName,
     editableColumns,
@@ -75,43 +41,35 @@ const Table: FC<TableProps> = (props: TableProps) => {
     onCellEditStop,
   } = props;
 
-  const theme = useContext(ThemeContext);
-  let themeStyle = undefined;
-  if (theme && themes[theme] !== undefined) {
-    themeStyle = themes[theme];
-  }
-
-  if (customStyleClasses) {
-    themeStyle = { ...themeStyle, ...customStyleClasses };
-  }
+  const themeName = useContext(ThemeContext);
+  const themeObject = buildTheme(themeName);
 
   const applyMinCellWidth = useCallback(
     (columns: GridColDef[]) => {
-      const cols = Array.from(columns);
-      cols.forEach((column) => {
+      return Array.from(columns).map((column) => {
         column.minWidth = minCellWidth;
+        return column;
       });
-      return cols;
     },
     [columns],
   );
 
   const applyEditableColumns = useCallback(
     (columns: GridColDef[]) => {
-      const cols = Array.from(columns);
-      cols.forEach((column) => {
+      return Array.from(columns).map((column) => {
         column.editable = true;
+        return column;
       });
-      return cols;
     },
     [columns],
   );
 
-  const handleRowClick: GridEventListener<'cellClick'> = (params) => {
+  const handleRowClick: GridEventListener<"cellClick"> = (params) => {
     if (!onRowClick) {
       return;
     }
-    if (params.field === '__check__') {
+    const CHECKBOX_FIELD = "__check__";
+    if (params.field === CHECKBOX_FIELD) {
       return;
     }
     onRowClick(params);
@@ -132,74 +90,88 @@ const Table: FC<TableProps> = (props: TableProps) => {
     }
   };
 
-  const paginationState = {
-    pagination: {
-      paginationModel: {
-        pageSize,
+  const buildPaginationState = () => {
+    return {
+      pagination: {
+        paginationModel: {
+          pageSize,
+        },
       },
-    },
+    };
   };
 
-  // const filterState = {
-  //   items: props.filterItems || [],
-  // };
+  const buildColumnDef = (columns: GridColDef[]) => {
+    let columnsDef = applyMinCellWidth(columns);
+    if (!rowSelection && columnsDef && columnsDef.length > 0) {
+      // adds a little extra space when table rows don't have leading checkboxes
+      columnsDef[0].cellClassName = styles.noSelectionCheckbox;
+      columnsDef[0].headerClassName = styles.noSelectionCheckbox;
+    }
+    if (editableColumns && editableColumns.length > 0) {
+      columnsDef = applyEditableColumns(columnsDef);
+    }
+    return columnsDef;
+  };
 
-  let columnsDef = applyMinCellWidth(columns);
-  const disableRowSelectionOnClick = !rowSelection || (rowSelection && Boolean(onRowClick));
+  const shouldDisableRowSelectionOnClick = (rowSelection: boolean, onRowClick?: (params: any) => void) => {
+    return !rowSelection || (rowSelection && Boolean(onRowClick));
+  };
 
-  let slots = {};
-  if (toolbar || footer) {
-    slots = {
-      toolbar,
-      footer,
-    };
-  }
+  const buildSlots = (toolbar?: GridSlotsComponentsProps["toolbar"], footer?: GridSlotsComponentsProps["footer"]) => {
+    let slots = {};
+    if (toolbar || footer) {
+      slots = {
+        toolbar,
+        footer,
+      };
+    }
+    return slots;
+  };
 
-  let slotProps = {};
-  if (toolbar && toolbarProps) {
-    slotProps = {
-      toolbar: toolbarProps,
-    };
-  }
-  if (footer && footerProps) {
-    slotProps = {
-      ...slotProps,
-      footer: footerProps,
-    };
-  }
-
-  if (!rowSelection && columnsDef && columnsDef.length > 0) {
-    // adds a little extra space when table rows don't have leading checkboxes
-    columnsDef[0].cellClassName = styles.noSelectionCheckbox;
-    columnsDef[0].headerClassName = styles.noSelectionCheckbox;
-  }
-  if (editableColumns && editableColumns.length > 0) {
-    columnsDef = applyEditableColumns(columnsDef);
-  }
+  const buildSlotProps = (
+    toolbar?: GridSlotsComponentsProps["toolbar"],
+    footer?: GridSlotsComponentsProps["footer"],
+    toolbarProps?: Record<string, any>,
+    footerProps?: Record<string, any>,
+  ) => {
+    let slotProps = {};
+    if (toolbar && toolbarProps) {
+      slotProps = {
+        toolbar: toolbarProps,
+      };
+    }
+    if (footer && footerProps) {
+      slotProps = {
+        ...slotProps,
+        footer: footerProps,
+      };
+    }
+    return slotProps;
+  };
 
   return (
-    <div className={styles.tableContainer} style={{ height: tableHeight }}>
-      <ThemeProvider theme={stripedTheme}>
+    <ThemeProvider theme={themeObject}>
+      <div className={styles.tableContainer} style={{ height: tableHeight }}>
         <DataGrid
           rows={rows}
-          columns={columnsDef}
+          columns={buildColumnDef(columns)}
           checkboxSelection={rowSelection}
-          disableRowSelectionOnClick={disableRowSelectionOnClick}
+          disableRowSelectionOnClick={shouldDisableRowSelectionOnClick(rowSelection, onRowClick)}
           rowSelectionModel={selectedRowIds}
-          // filterModel={filterState}
           pageSizeOptions={pageSizeOptions}
-          initialState={paginationState}
+          initialState={buildPaginationState()}
           loading={loading}
-          sx={themeStyle}
           disableColumnResize={true}
-          columnHeaderHeight={noHeader ? 0 : undefined}
-          rowHeight={rowHeight}
-          slots={slots}
-          slotProps={slotProps}
+          columnHeaderHeight={noHeader ? 0 : getColumnHeaderHeight(themeName)}
+          rowHeight={getRowHeight(themeName)}
+          slots={buildSlots(toolbar, footer)}
+          slotProps={buildSlotProps(toolbar, footer, toolbarProps, footerProps)}
           getRowClassName={getRowClassName}
           onCellClick={handleRowClick}
           onRowSelectionModelChange={handleRowSelectionModelChange}
           onCellEditStop={handleCellEditStop}
+          // sx={themeStyle}
+          // filterModel={filterState}
           // onFilterModelChange={(model: GridFilterModel, details: GridCallbackDetails<'filter'>) => {
           //   console.debug('MODEL', model);
           //   console.debug('DETAILS', details);
@@ -207,8 +179,8 @@ const Table: FC<TableProps> = (props: TableProps) => {
           style={style}
           className={className}
         />
-      </ThemeProvider>
-    </div>
+      </div>
+    </ThemeProvider>
   );
 };
 

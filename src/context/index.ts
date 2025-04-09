@@ -1,1 +1,2 @@
-export { default, type AppTheme } from './theme.context';
+export { default } from './theme.context';
+export * from './type.definitions';

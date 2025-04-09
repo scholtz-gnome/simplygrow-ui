@@ -1,0 +1,3 @@
+const skillbookProps = {};
+
+export { skillbookProps };

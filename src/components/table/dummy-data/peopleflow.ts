@@ -532,22 +532,22 @@ export const peopleflowColumnConfig = [
   {
     sizeFactor: 2,
     label: 'EMP NUM',
-    id: 'employeeNumber',
+    key: 'employeeNumber',
     headerClassName: 'tableHeader',
   },
   {
     label: 'Name',
-    id: 'name',
+    key: 'name',
     headerClassName: 'tableHeader',
   },
   {
     label: 'Surname',
-    id: 'surname',
+    key: 'surname',
     headerClassName: 'tableHeader',
   },
   {
     label: 'ID / Passport',
-    id: 'idPassport',
+    key: 'idPassport',
     headerClassName: 'tableHeader',
   },
 ];
@@ -556,7 +556,7 @@ export const convertPfColumnConfigToGridColDef = (columnConfig: typeof peopleflo
   // this function will be removed to exist in PF's TableService file
   return columnConfig.map((column) => {
     return {
-      field: column.id,
+      field: column.key,
       headerName: column.label,
       flex: column.sizeFactor,
     };
