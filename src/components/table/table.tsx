@@ -1,4 +1,4 @@
-import { FC, useCallback, useContext } from "react";
+import { FC, useCallback, useContext, useState } from "react";
 import {
   DataGrid,
   GridColDef,
@@ -12,9 +12,7 @@ import styles from "./table.module.css";
 import { buildTheme, getRowHeight, getColumnHeaderHeight } from "./table.style.provider";
 import ThemeContext from "../../context";
 import { ThemeProvider } from "@mui/material";
-import { TableProps } from "./type.definitions";
-// import { getOpacityColor } from "../../utils/color-utils";
-// import colorPalette from "../../providers/colors/peopleflow.colors";
+import { TableProps, TableFilters } from "./type.definitions";
 
 const Table: FC<TableProps> = (props: TableProps) => {
   const {
@@ -32,14 +30,18 @@ const Table: FC<TableProps> = (props: TableProps) => {
     footer,
     footerProps,
     noHeader,
-    style,
-    className,
+    // style,
+    // className,
+    initialFilterState,
     getRowClassName,
     editableColumns,
     onRowClick,
     onRowSelection,
     onCellEditStop,
+    onFilterChange = () => {},
   } = props;
+
+  const [filterState, setFilterState] = useState(initialFilterState);
 
   const themeName = useContext(ThemeContext);
   const themeObject = buildTheme(themeName);
@@ -90,14 +92,20 @@ const Table: FC<TableProps> = (props: TableProps) => {
     }
   };
 
-  const buildPaginationState = () => {
-    return {
+  const onFilterModelChange = (model: TableFilters) => {
+    setFilterState(model);
+    onFilterChange(model);
+  };
+
+  const buildInitialState = () => {
+    const state: any = {
       pagination: {
         paginationModel: {
           pageSize,
         },
       },
     };
+    return state;
   };
 
   const buildColumnDef = (columns: GridColDef[]) => {
@@ -159,7 +167,7 @@ const Table: FC<TableProps> = (props: TableProps) => {
           disableRowSelectionOnClick={shouldDisableRowSelectionOnClick(rowSelection, onRowClick)}
           rowSelectionModel={selectedRowIds}
           pageSizeOptions={pageSizeOptions}
-          initialState={buildPaginationState()}
+          initialState={buildInitialState()}
           loading={loading}
           disableColumnResize={true}
           columnHeaderHeight={noHeader ? 0 : getColumnHeaderHeight(themeName)}
@@ -170,14 +178,10 @@ const Table: FC<TableProps> = (props: TableProps) => {
           onCellClick={handleRowClick}
           onRowSelectionModelChange={handleRowSelectionModelChange}
           onCellEditStop={handleCellEditStop}
-          // sx={themeStyle}
-          // filterModel={filterState}
-          // onFilterModelChange={(model: GridFilterModel, details: GridCallbackDetails<'filter'>) => {
-          //   console.debug('MODEL', model);
-          //   console.debug('DETAILS', details);
-          // }}
-          style={style}
-          className={className}
+          filterModel={filterState}
+          onFilterModelChange={(model: TableFilters) => onFilterModelChange(model)}
+          // style={style}
+          // className={className}
         />
       </div>
     </ThemeProvider>

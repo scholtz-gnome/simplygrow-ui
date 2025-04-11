@@ -23,7 +23,7 @@ const defaultTheme = {
           [`&.even`]: {
             backgroundColor: "rgba(245, 245, 248, 1)",
             "&:hover": {
-              filter: "brightness(92%)",
+              filter: "brightness(95%)",
               "@media (hover: none)": {
                 backgroundColor: "transparent",
               },

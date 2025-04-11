@@ -64,6 +64,7 @@ const peopleflowTheme = {
       },
       styleOverrides: {
         root: {
+          borderRadius: "0px",
           ".MuiDataGrid-columnHeader": {
             backgroundColor: colorPalette.DARK_GREY,
             color: "white",
