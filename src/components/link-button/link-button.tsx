@@ -1,11 +1,12 @@
-import { AnchorHTMLAttributes, FC, ReactNode, useContext } from 'react';
-import ThemeContext from '../../context';
-import styles from './link-button.module.css';
+import Link from "next/link";
+import { AnchorHTMLAttributes, FC, ReactNode, useContext } from "react";
+import ThemeContext from "../../context";
+import styles from "./link-button.module.css";
 
 interface LinkButtonProps {
   href: string;
-  buttonWidth?: 'default' | 'big' | 'full-width';
-  variant?: 'primary' | 'secondary';
+  buttonWidth?: "default" | "big" | "full-width";
+  variant?: "primary" | "secondary";
   disabled?: boolean;
   children: ReactNode;
 }
@@ -13,55 +14,55 @@ interface LinkButtonProps {
 const LinkButton: FC<LinkButtonProps & Partial<AnchorHTMLAttributes<HTMLAnchorElement>>> = ({
   href,
   target,
-  variant = 'primary',
-  buttonWidth = 'default',
+  variant = "primary",
+  buttonWidth = "default",
   disabled = false,
   children,
 }) => {
   const theme = useContext(ThemeContext);
 
-  const variantStyles = variant === 'primary' ? styles.primaryVariant : styles.secondaryVariant;
-  const disabledStyles = disabled ? styles.disabledStyles : '';
+  const variantStyles = variant === "primary" ? styles.primaryVariant : styles.secondaryVariant;
+  const disabledStyles = disabled ? styles.disabledStyles : "";
 
   let buttonWidthStyles;
-  let themeStyles = '';
+  let themeStyles = "";
 
   switch (buttonWidth) {
-    case 'default':
+    case "default":
       buttonWidthStyles = styles.defaultWidth;
       break;
-    case 'big':
+    case "big":
       buttonWidthStyles = styles.bigWidth;
       break;
-    case 'full-width':
+    case "full-width":
       buttonWidthStyles = styles.fullWidth;
       break;
   }
 
   switch (theme) {
-    case 'peopleflow':
-      if (variant === 'primary') {
+    case "peopleflow":
+      if (variant === "primary") {
         themeStyles = styles.peopleflowThemePrimary;
       } else {
         themeStyles = styles.peopleflowThemeSecondary;
       }
       break;
-    case 'worklight':
-      if (variant === 'primary') {
+    case "worklight":
+      if (variant === "primary") {
         themeStyles = styles.worklightThemePrimary;
       } else {
         themeStyles = styles.worklightThemeSecondary;
       }
       break;
-    case 'skillbook':
-      if (variant === 'primary') {
+    case "skillbook":
+      if (variant === "primary") {
         themeStyles = styles.skillbookThemePrimary;
       } else {
         themeStyles = styles.skillbookThemeSecondary;
       }
       break;
     case undefined:
-      if (variant === 'primary') {
+      if (variant === "primary") {
         themeStyles = styles.defaultThemePrimary;
       } else {
         themeStyles = styles.defaultThemeSecondary;
@@ -74,9 +75,9 @@ const LinkButton: FC<LinkButtonProps & Partial<AnchorHTMLAttributes<HTMLAnchorEl
       className={`${styles.commonStyles} ${disabledStyles} ${variantStyles} ${buttonWidthStyles} ${themeStyles} ${styles.commonStyles}`}
       disabled={disabled}
     >
-      <a target={target} className={styles.link} href={href}>
+      <Link target={target} className={styles.link} href={href}>
         {children}
-      </a>
+      </Link>
     </button>
   );
 };
