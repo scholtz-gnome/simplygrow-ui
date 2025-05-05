@@ -28,20 +28,6 @@ const TopNav: FC<TopNavProps> = ({ logo, links, className, tail }) => {
     }
   }
 
-  let navOptionsElement: JSX.Element | null = null;
-
-  if (links && links.length) {
-    const options = links.map((link, index) => (
-      <li key={`topNavLink_${index}`} className={styles.link}>
-        <Link className={path === link.href ? styles.active : styles.inactive} href={link.href}>
-          {link.text}
-        </Link>
-      </li>
-    ));
-
-    navOptionsElement = <ul className={styles.links}>{options}</ul>;
-  }
-
   let tailElement: JSX.Element | null = null;
 
   if (tail) {
@@ -52,7 +38,15 @@ const TopNav: FC<TopNavProps> = ({ logo, links, className, tail }) => {
     <nav className={`${styles.topNav} ${className}`}>
       {logoElement}
 
-      {navOptionsElement}
+      <ul className={styles.links}>
+        {links?.map((link, index) => (
+          <li key={`topNavLink_${index}`} className={styles.link}>
+            <Link className={path === link.href ? styles.active : styles.inactive} href={link.href}>
+              {link.text}
+            </Link>
+          </li>
+        ))}
+      </ul>
 
       {tailElement}
     </nav>
