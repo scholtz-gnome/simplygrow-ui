@@ -6,7 +6,9 @@ export const usePathname = () => {
 
   useEffect(() => {
     const handleLocationChange = () => {
-      setPath(window.location.pathname);
+      if (typeof window !== "undefined") {
+        setPath(window.location.pathname);
+      }
     };
 
     window.addEventListener("popstate", handleLocationChange);
