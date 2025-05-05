@@ -11,12 +11,16 @@ export const usePathname = () => {
       }
     };
 
-    window.addEventListener("popstate", handleLocationChange);
-    window.addEventListener("pushstate", handleLocationChange);
+    if (typeof window !== "undefined") {
+      window.addEventListener("popstate", handleLocationChange);
+      window.addEventListener("pushstate", handleLocationChange);
+    }
 
     return () => {
-      window.removeEventListener("popstate", handleLocationChange);
-      window.removeEventListener("pushstate", handleLocationChange);
+      if (typeof window !== "undefined") {
+        window.removeEventListener("popstate", handleLocationChange);
+        window.removeEventListener("pushstate", handleLocationChange);
+      }
     };
   }, []);
 
