@@ -31,7 +31,7 @@ const TopNav: FC<TopNavProps> = ({ logo, links, className, tail }) => {
   if (links && links.length) {
     const options = links.map((link, index) => (
       <li key={`topNavLink_${index}`} className={styles.link}>
-        <a className={path === link.href ? styles.active : styles.inactive} href={link.href}>
+        <a className={path === link.href ? styles.active : styles.inactive} id={path} href={link.href}>
           {link.text}
         </a>
       </li>
