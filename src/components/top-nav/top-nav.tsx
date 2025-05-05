@@ -12,6 +12,9 @@ export type TopNavProps = {
 const TopNav: FC<TopNavProps> = ({ logo, links, className, tail }) => {
   const path = usePathname();
 
+  console.log("▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾");
+  console.log(path);
+
   let logoElement: JSX.Element | null = null;
 
   if (logo) {
@@ -31,7 +34,7 @@ const TopNav: FC<TopNavProps> = ({ logo, links, className, tail }) => {
   if (links && links.length) {
     const options = links.map((link, index) => (
       <li key={`topNavLink_${index}`} className={styles.link}>
-        <a className={path === link.href ? styles.active : styles.inactive} id={path} href={link.href}>
+        <a className={path === link.href ? styles.active : styles.inactive} href={link.href}>
           {link.text}
         </a>
       </li>
