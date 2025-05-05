@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 
 export const usePathname = () => {
-  const [path, setPath] = useState(window.location.pathname);
+  const [path, setPath] = useState(typeof window !== "undefined" ? window.location.pathname : "");
 
   useEffect(() => {
     const handleLocationChange = () => {
