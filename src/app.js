@@ -11,13 +11,13 @@ import {
   Input,
   LinkButton,
   Modal,
-  PageNavigation,
   Paragraph,
   SearchFilter,
   Select,
   TabbedView,
   Table,
   Textarea,
+  TopNav,
 } from "./components";
 import { TableFooter, TableToolbar } from "./components/table";
 import {
@@ -43,46 +43,31 @@ function App() {
       <div
         style={{
           backgroundColor: "#f1f5f9",
-          padding: "24px 24px 236px 24px",
+          padding: "124px 24px 236px 24px",
           minHeight: "100svh",
           display: "flex",
           gap: "12px",
           flexDirection: "column",
         }}
       >
-        <Container>
-          <Heading>Page Navigation</Heading>
-          <Code>{"<PageNavigation logo={...} data={[...]} tail={...} />"}</Code>
-          <div style={{ backgroundColor: "#CCC", padding: "24px 0px" }}>
-            <PageNavigation
-              logo={<div style={{ fontSize: "bold", padding: "8px", borderRadius: "50%" }}>{`[ LOGO ]`}</div>}
-              navOptions={[
-                <a href={"#"} style={{ textDecoration: "none", color: "inherit" }}>
-                  Home
-                </a>,
-                <a href={"#"} style={{ textDecoration: "none", color: "inherit" }}>
-                  About
-                </a>,
-                <a href={"#"} style={{ textDecoration: "none", color: "inherit" }}>
-                  Services
-                </a>,
-                <a href={"#"} style={{ textDecoration: "none", color: "inherit" }}>
-                  Contact
-                </a>,
-              ]}
-              tail={
-                <div style={{ display: "flex", gap: 18 }}>
-                  <div style={{ fontSize: 14 }}>
-                    John Doe
-                    <br />
-                    Acme Inc.
-                  </div>
-                  <div style={{ backgroundColor: "lightsalmon", padding: "8px", borderRadius: "50%" }}>JD</div>
-                </div>
-              }
-            />
-          </div>
-        </Container>
+        <TopNav
+          logo={<div style={{ fontSize: "bold", padding: "8px", borderRadius: "50%" }}>{`[ LOGO ]`}</div>}
+          links={[
+            { href: "/", text: "Home" },
+            { href: "/about", text: "About" },
+            { href: "/contact-us", text: "Contact Us" },
+          ]}
+          tail={
+            <div style={{ display: "flex", gap: 18 }}>
+              <div style={{ fontSize: 14 }}>
+                John Doe
+                <br />
+                Acme Inc.
+              </div>
+              <div style={{ backgroundColor: "lightsalmon", padding: "8px", borderRadius: "50%" }}>JD</div>
+            </div>
+          }
+        />
 
         <Container>
           <Heading>Tabbed View</Heading>
