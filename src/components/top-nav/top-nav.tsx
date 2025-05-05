@@ -1,5 +1,4 @@
 "use client";
-import { usePathname } from "next/navigation";
 import { FC, ReactNode } from "react";
 import styles from "./top-nav.module.css";
 
@@ -11,10 +10,7 @@ export type TopNavProps = {
 };
 
 const TopNav: FC<TopNavProps> = ({ logo, links, className, tail }) => {
-  const path = usePathname();
-
-  console.log("▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾");
-  console.log(path);
+  const path = window.location.pathname;
 
   let logoElement: JSX.Element | null = null;
 
