@@ -1,7 +1,6 @@
 "use client";
-import Link from "next/link";
+import TopNavLink from "@/top-nav/top-nav-link";
 import { FC, ReactNode } from "react";
-import { usePathname } from "../../hooks";
 import styles from "./top-nav.module.css";
 
 export type TopNavProps = {
@@ -12,8 +11,6 @@ export type TopNavProps = {
 };
 
 const TopNav: FC<TopNavProps> = ({ logo, links, className, tail }) => {
-  const path = usePathname();
-
   let logoElement: JSX.Element | null = null;
 
   if (logo) {
@@ -39,13 +36,7 @@ const TopNav: FC<TopNavProps> = ({ logo, links, className, tail }) => {
       {logoElement}
 
       <ul className={styles.links}>
-        {links?.map((link, index) => (
-          <li key={`topNavLink_${index}`} className={styles.link}>
-            <Link className={path === link.href ? styles.active : styles.inactive} href={link.href}>
-              {link.text}
-            </Link>
-          </li>
-        ))}
+        {links?.map((link, index) => <TopNavLink href={link.href} text={link.text} key={index} />)}
       </ul>
 
       {tailElement}
