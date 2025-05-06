@@ -1,15 +1,38 @@
 "use client";
-import { FC, ReactNode } from "react";
+import { Dispatch, FC, ReactNode, SetStateAction } from "react";
 import styles from "./top-nav.module.css";
 
 export type TopNavProps = {
   logo?: string | ReactNode;
   links?: ReactNode[];
-  tail?: React.ReactNode;
+  profileDetails?: { username?: string; firstName?: string; lastName?: string };
   className?: string;
+  profileDialog?: ReactNode;
+  profileDialogActive?: boolean;
+  setProfileDialogActive?: Dispatch<SetStateAction<boolean>>;
 };
 
-const TopNav: FC<TopNavProps> = ({ logo, links, className, tail }) => {
+const abbreviateUsernameOrFullName = (params: { username?: string; firstName?: string; lastName?: string }) => {
+  if (params.firstName && params.lastName) {
+    return `${params.firstName.trim().toUpperCase()[0]}${params.lastName.trim().toUpperCase()[0]}`;
+  }
+
+  if (params.username) {
+    return `${params.username.trim().toUpperCase()[0]}${params.username.trim().toUpperCase()[1]}`;
+  }
+
+  return "";
+};
+
+const TopNav: FC<TopNavProps> = ({
+  logo,
+  links,
+  className,
+  profileDialog,
+  profileDetails,
+  profileDialogActive,
+  setProfileDialogActive,
+}) => {
   let logoElement: JSX.Element | null = null;
 
   if (logo) {
@@ -24,25 +47,35 @@ const TopNav: FC<TopNavProps> = ({ logo, links, className, tail }) => {
     }
   }
 
-  let tailElement: JSX.Element | null = null;
-
-  if (tail) {
-    tailElement = <div className={styles.tailContainer}>{tail}</div>;
-  }
+  const handleClick = () => {
+    if (setProfileDialogActive) {
+      setProfileDialogActive(!profileDialogActive);
+    }
+  };
 
   return (
     <nav className={`${styles.topNav} ${className}`}>
       {logoElement}
 
-      <ul className={styles.links}>
-        {links?.map((link, index) => (
-          <li key={index} className={styles.link}>
-            {link}
-          </li>
-        ))}
-      </ul>
+      <div className={styles.right}>
+        <ul className={styles.links}>
+          {links?.map((link, index) => (
+            <li key={index} className={styles.link}>
+              {link}
+            </li>
+          ))}
+        </ul>
 
-      {tailElement}
+        {profileDetails && (
+          <>
+            <div className={styles.profileDialog} onClick={handleClick}>
+              {abbreviateUsernameOrFullName(profileDetails)}
+            </div>
+
+            {profileDialogActive && profileDialog}
+          </>
+        )}
+      </div>
     </nav>
   );
 };

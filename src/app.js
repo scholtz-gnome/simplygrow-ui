@@ -38,6 +38,11 @@ function App() {
   const [_file, setFile] = useState(undefined);
   const [selectedTableRows, setSelectedTableRows] = useState([2]);
 
+  const [profileDialogActive, setProfileDialogActive] = useState(false);
+
+  console.log("▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾");
+  console.log(profileDialogActive);
+
   return (
     <UIProvider appTheme={"peopleflow"}>
       <div
@@ -53,16 +58,10 @@ function App() {
         <TopNav
           logo={<div style={{ fontSize: "bold", padding: "8px", borderRadius: "50%" }}>{`[ LOGO ]`}</div>}
           links={[<a href={"/"}>Home</a>, <a href={"/contact"}>Contact Us</a>, <a href={"/about"}>About</a>]}
-          tail={
-            <div style={{ display: "flex", gap: 18 }}>
-              <div style={{ fontSize: 14 }}>
-                John Doe
-                <br />
-                Acme Inc.
-              </div>
-              <div style={{ backgroundColor: "lightsalmon", padding: "8px", borderRadius: "50%" }}>JD</div>
-            </div>
-          }
+          profileDetails={{ username: "johndoe", firstName: "John", lastName: "Doe" }}
+          profileDialog={<p>Hi mom</p>}
+          profileDialogActive={profileDialogActive}
+          setProfileDialogActive={setProfileDialogActive}
         />
 
         <Container>
