@@ -12,6 +12,9 @@ interface TopNavLinkProps {
 const TopNavLink: FC<TopNavLinkProps> = ({ href, text }) => {
   const path = usePathname();
 
+  console.log("▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾");
+  console.log(path);
+
   const anchorStyles = path === href ? styles.active : styles.inactive;
 
   return (

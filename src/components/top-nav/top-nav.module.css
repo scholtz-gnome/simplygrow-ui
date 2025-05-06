@@ -32,6 +32,7 @@
 .active {
   color: #144c73;
   font-weight: 700;
+  font-size: 19px;
 }
 
 .active::before {
@@ -47,6 +48,7 @@
 .inactive {
   color: #144c73;
   font-weight: 700;
+  font-size: 19px;
 }
 
 .navOption:hover {
