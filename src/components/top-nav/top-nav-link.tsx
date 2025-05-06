@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import { FC } from "react";
 import { usePathname } from "../../hooks";
@@ -11,9 +12,11 @@ interface TopNavLinkProps {
 const TopNavLink: FC<TopNavLinkProps> = ({ href, text }) => {
   const path = usePathname();
 
+  const anchorStyles = path === href ? styles.active : styles.inactive;
+
   return (
     <li className={styles.link}>
-      <Link className={path === href ? styles.active : styles.inactive} href={href}>
+      <Link className={anchorStyles} href={href}>
         {text}
       </Link>
     </li>
