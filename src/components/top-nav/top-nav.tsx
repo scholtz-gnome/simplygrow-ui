@@ -66,7 +66,7 @@ const TopNav: FC<TopNavProps> = ({
           ))}
         </ul>
 
-        {profileDetails && (
+        {(profileDetails?.username || profileDetails?.firstName || profileDetails?.lastName) && (
           <>
             <div className={styles.profileDialog} onClick={handleClick}>
               {abbreviateUsernameOrFullName(profileDetails)}
