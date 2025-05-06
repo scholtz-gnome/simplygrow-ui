@@ -1,11 +1,10 @@
 "use client";
-import TopNavLink from "@/top-nav/top-nav-link";
 import { FC, ReactNode } from "react";
 import styles from "./top-nav.module.css";
 
 export type TopNavProps = {
   logo?: string | ReactNode;
-  links?: Array<{ href: string; text: string }>;
+  links?: ReactNode[];
   tail?: React.ReactNode;
   className?: string;
 };
@@ -36,7 +35,11 @@ const TopNav: FC<TopNavProps> = ({ logo, links, className, tail }) => {
       {logoElement}
 
       <ul className={styles.links}>
-        {links?.map((link, index) => <TopNavLink href={link.href} text={link.text} key={index} />)}
+        {links?.map((link, index) => (
+          <li key={index} className={styles.link}>
+            {link}
+          </li>
+        ))}
       </ul>
 
       {tailElement}

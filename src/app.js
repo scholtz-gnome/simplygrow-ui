@@ -52,11 +52,7 @@ function App() {
       >
         <TopNav
           logo={<div style={{ fontSize: "bold", padding: "8px", borderRadius: "50%" }}>{`[ LOGO ]`}</div>}
-          links={[
-            { href: "/", text: "Home" },
-            { href: "/about", text: "About" },
-            { href: "/contact-us", text: "Contact Us" },
-          ]}
+          links={[<a href={"/"}>Home</a>, <a href={"/contact"}>Contact Us</a>, <a href={"/about"}>About</a>]}
           tail={
             <div style={{ display: "flex", gap: 18 }}>
               <div style={{ fontSize: 14 }}>
