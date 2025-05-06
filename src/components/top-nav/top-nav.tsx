@@ -70,9 +70,9 @@ const TopNav: FC<TopNavProps> = ({
           <>
             <div className={styles.profileDialog} onClick={handleClick}>
               {abbreviateUsernameOrFullName(profileDetails)}
-            </div>
 
-            {profileDialogActive && profileDialog}
+              {profileDialogActive && profileDialog}
+            </div>
           </>
         )}
       </div>
