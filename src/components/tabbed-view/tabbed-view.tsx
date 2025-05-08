@@ -1,10 +1,11 @@
-import { useContext, useState } from 'react';
+import { useContext, useState } from "react";
 
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
-import Box from '@mui/material/Box';
-import { themes } from './tabbed-view.themes';
-import ThemeContext from '../../context';
+import { buildTheme } from "@/tabbed-view/tabbed-view.style.provider";
+import { ThemeProvider } from "@mui/material";
+import Box from "@mui/material/Box";
+import Tab from "@mui/material/Tab";
+import Tabs from "@mui/material/Tabs";
+import ThemeContext from "../../context";
 
 interface TabProps {
   children?: React.ReactNode;
@@ -31,7 +32,7 @@ function CustomTabPanel(props: TabProps) {
 function a11yProps(index: number) {
   return {
     id: `simple-tab-${index}`,
-    'aria-controls': `simple-tabpanel-${index}`,
+    "aria-controls": `simple-tabpanel-${index}`,
   };
 }
 
@@ -43,10 +44,7 @@ type TabbedViewProps = {
 const TabbedView = (props: TabbedViewProps) => {
   const [value, setValue] = useState(0);
 
-  const theme = useContext(ThemeContext);
-  let themeStyle = theme ? themes[theme] : undefined;
-
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+  const handleChange = (_event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
 
@@ -58,15 +56,21 @@ const TabbedView = (props: TabbedViewProps) => {
       {tab.content}
     </CustomTabPanel>
   ));
+
+  const themeName = useContext(ThemeContext);
+  const themeObject = buildTheme(themeName);
+
   return (
-    <Box sx={{ width: '100%' }} className={props.className}>
-      <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <Tabs value={value} onChange={handleChange} sx={themeStyle} aria-label="Tabbed view">
-          {tabs}
-        </Tabs>
+    <ThemeProvider theme={themeObject}>
+      <Box sx={{ width: "100%" }} className={props.className}>
+        <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+          <Tabs value={value} onChange={handleChange} aria-label="Tabbed view">
+            {tabs}
+          </Tabs>
+        </Box>
+        {contents}
       </Box>
-      {contents}
-    </Box>
+    </ThemeProvider>
   );
 };
 

@@ -1,8 +1,9 @@
+import { Theme } from "@mui/material";
 import { gridClasses } from "@mui/x-data-grid";
 
-const quicktaskTheme = {
+const quicktaskTheme: Partial<Theme> = {
   components: {
-    MuiDataGrid: {
+    MuiGrid: {
       styleOverrides: {
         root: {
           ".MuiDataGrid-columnHeader": {
@@ -42,6 +43,26 @@ const quicktaskTheme = {
           },
           [`& .${gridClasses.columnHeader}:focus, & .${gridClasses.columnHeader}:focus-within`]: {
             outline: "none",
+          },
+        },
+      },
+    },
+    MuiTabs: {
+      styleOverrides: {
+        root: {
+          ".MuiTabs-indicator": {
+            backgroundColor: "#EE6C4D",
+          },
+          ".MuiTab-root": {
+            minWidth: "fit-content",
+            paddingLeft: "0",
+            paddingRight: "0",
+          },
+          ".MuiTab-root.Mui-selected": {
+            color: "#EE6C4D",
+          },
+          ".MuiTabs-flexContainer": {
+            gap: "28px",
           },
         },
       },

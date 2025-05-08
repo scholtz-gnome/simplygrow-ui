@@ -40,11 +40,8 @@ function App() {
 
   const [profileDialogActive, setProfileDialogActive] = useState(false);
 
-  console.log("▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾");
-  console.log(profileDialogActive);
-
   return (
-    <UIProvider appTheme={"peopleflow"}>
+    <UIProvider appTheme={"quicktask"}>
       <div
         style={{
           backgroundColor: "#f1f5f9",
