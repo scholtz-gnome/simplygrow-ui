@@ -1,18 +1,18 @@
-import { FC, useCallback, useContext, useState } from "react";
 import {
   DataGrid,
-  GridColDef,
   GridCellEditStopParams,
+  GridColDef,
   GridEventListener,
-  MuiEvent,
   GridSlotsComponentsProps,
+  MuiEvent,
 } from "@mui/x-data-grid";
+import { FC, useCallback, useContext, useState } from "react";
 
-import styles from "./table.module.css";
-import { buildTheme, getRowHeight, getColumnHeaderHeight } from "./table.style.provider";
-import ThemeContext from "../../context";
 import { ThemeProvider } from "@mui/material";
-import { TableProps, TableFilters } from "./type.definitions";
+import ThemeContext from "../../context";
+import styles from "./table.module.css";
+import { buildTheme, getColumnHeaderHeight, getRowHeight } from "./table.style.provider";
+import { TableFilters, TableProps } from "./type.definitions";
 
 const Table: FC<TableProps> = (props: TableProps) => {
   const {
@@ -180,6 +180,7 @@ const Table: FC<TableProps> = (props: TableProps) => {
           onCellEditStop={handleCellEditStop}
           filterModel={filterState}
           onFilterModelChange={(model: TableFilters) => onFilterModelChange(model)}
+          style={{ height: props.dynamicHeight ? "auto" : "100%" }}
           // style={style}
           // className={className}
         />

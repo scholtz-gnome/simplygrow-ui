@@ -1,10 +1,10 @@
 import {
-  GridRowsProp,
   GridColDef,
-  GridRowClassNameParams,
-  GridSlotsComponentsProps,
-  GridRowId,
   GridFilterModel,
+  GridRowClassNameParams,
+  GridRowId,
+  GridRowsProp,
+  GridSlotsComponentsProps,
 } from "@mui/x-data-grid";
 
 type TableFilters = GridFilterModel;
@@ -34,6 +34,7 @@ type TableProps = {
   onCellEditStop?: (rowId: GridRowId, oldValue: string, newValue: string) => void;
   getRowClassName?: (params: GridRowClassNameParams) => string;
   onFilterChange?: (model: GridFilterModel) => void; // Optional callback for filter model changes
+  dynamicHeight?: boolean;
 };
 
-export { TableProps, TableFilters };
+export { TableFilters, TableProps };
