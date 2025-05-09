@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-
+import { useState } from "react";
+import React from "react";
 import {
   ActionButton,
   ActionsToolbar,
@@ -17,7 +17,6 @@ import {
   TabbedView,
   Table,
   Textarea,
-  TopNav,
 } from "./components";
 import { TableFooter, TableToolbar } from "./components/table";
 import {
